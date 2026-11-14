@@ -41,6 +41,7 @@ import {
   Waves,
   RotateCw,
 } from 'lucide-react';
+import { DataBadge, Panel, PanelHeader, SeverityBadge, StatValue } from '../components/ui/index.tsx';
 
 interface MapViewProps {
   villages: Village[];
@@ -133,7 +134,57 @@ export const MapView: React.FC<MapViewProps> = ({
   return (
     <div className="flex flex-col gap-3 h-[calc(100vh-140px)] min-h-[620px] pb-2">
       {/* Top View Mode Navigation Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 rounded-none border border-pehra-border-subtle bg-white px-4 py-2.5 shadow-none shrink-0">
+      <Panel className="shrink-0">
+        <PanelHeader
+          title="Geospatial telemetry observatory"
+          badge={<DataBadge source="seeded-store" asOf="Mumbai operational dataset" />}
+          actions={
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => onNavigate('drone-recon')}
+                className="inline-flex items-center gap-1.5 border border-pehra-border-subtle bg-pehra-panel px-3 py-1 font-semibold text-xs text-pehra-text hover:bg-pehra-raised"
+              >
+                <Plane className="h-3.5 w-3.5" aria-hidden="true" />
+                Drone recon
+              </button>
+              <div className="flex items-center gap-1 border border-pehra-border-subtle p-1" role="group" aria-label="Map display mode">
+                {([
+                  ['2d', '2D map', Globe],
+                  ['3d', '3D terrain', Box],
+                  ['split', 'Split view', Columns],
+                ] as const).map(([mode, label, Icon]) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => setDisplayMode(mode)}
+                    aria-pressed={displayMode === mode}
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${
+                      displayMode === mode
+                        ? 'bg-pehra-accent text-pehra-accent-contrast'
+                        : 'text-pehra-text-2 hover:bg-pehra-raised'
+                    } ${mode === 'split' ? 'hidden lg:inline-flex' : ''}`}
+                  >
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          }
+        />
+        <div className="flex items-center justify-between gap-3 px-3 py-2 text-xs text-pehra-text-2">
+          <div className="flex items-center gap-2">
+            <Mountain className="h-4 w-4 text-pehra-text-2" aria-hidden="true" />
+            <span>Map-first flood intelligence with sensor-grounded layers.</span>
+          </div>
+          <span className="hidden sm:inline-flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-pehra-data-live" aria-hidden="true" />
+            Live telemetry when available
+          </span>
+        </div>
+      </Panel>
+      <div className="hidden">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <Mountain className="h-4 w-4 text-pehra-text" />
