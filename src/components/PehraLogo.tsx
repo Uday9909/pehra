@@ -15,12 +15,12 @@ export const PehraLogo: React.FC<PehraLogoProps> = ({
   className = '',
   size = 32,
   showText = true,
-  textColor = 'text-[#17242A]',
+  textColor = 'text-pehra-text',
 }) => {
   return (
     <div className={`flex items-center gap-2.5 select-none ${className}`}>
       <div
-        className="relative flex items-center justify-center rounded-xl bg-gradient-to-br from-[#18B7A0] to-[#35C9D0] text-white shadow-xs p-1.5 shrink-0"
+        className="relative flex items-center justify-center rounded-none bg-pehra-panelr from-pehra-panel to-pehra-panel text-white shadow-none p-1.5 shrink-0"
         style={{ width: size, height: size }}
       >
         <svg
@@ -68,14 +68,14 @@ export const PehraLogo: React.FC<PehraLogoProps> = ({
       {showText && (
         <div className="flex flex-col leading-none">
           <div className="flex items-center gap-1.5">
-            <span className={`font-bold tracking-tight text-[17px] font-sans ${textColor}`}>
+            <span className={`font-bold tracking-tight text-pehra-text font-sans ${textColor}`}>
               PEHRA
             </span>
-            <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#DDF8F6] text-[#18B7A0] border border-[#35C9D0]/30">
+            <span className="text-pehra-text font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-pehra-panel text-pehra-text border border-pehra-border-subtle/30">
               MMR
             </span>
           </div>
-          <span className={`text-[10px] ${textColor === 'text-white' ? 'text-[#B9C9CD]' : 'text-[#6B7C83]'} font-medium tracking-tight mt-0.5`}>
+          <span className={`text-pehra-text ${textColor === 'text-white' ? 'text-pehra-text' : 'text-pehra-text'} font-medium tracking-tight mt-0.5`}>
             Flood Risk Intelligence
           </span>
         </div>
