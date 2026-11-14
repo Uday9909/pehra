@@ -61,45 +61,45 @@ export const SimulationView: React.FC = () => {
   return (
     <div className="space-y-6 pb-16">
       {/* Simulation Banner - Mandatory "SIMULATION - NOT LIVE" */}
-      <div className="flex items-center justify-between rounded-xl border border-amber-600/80 bg-amber-950/40 p-4 text-amber-200 shadow-md">
+      <div className="flex items-center justify-between rounded-none border border-pehra-border-subtle bg-pehra-panel p-4 text-pehra-text shadow-none">
         <div className="flex items-center gap-2.5">
-          <AlertTriangle className="h-5 w-5 text-amber-400 shrink-0" />
+          <AlertTriangle className="h-5 w-5 text-pehra-text shrink-0" />
           <div>
-            <div className="font-bold text-sm uppercase tracking-wider text-amber-300">
+            <div className="font-bold text-sm uppercase tracking-wider text-pehra-text">
               SIMULATION LAB — EXPERIMENTAL ENVIRONMENT (NOT LIVE DATA)
             </div>
-            <div className="text-xs text-slate-300">
+            <div className="text-xs text-pehra-text">
               Disaster scenario sandboxing for municipal preparedness, subway flood mitigation, and shelter capacity forecasting.
             </div>
           </div>
         </div>
-        <span className="rounded bg-amber-500 px-2.5 py-1 text-xs font-black text-slate-950 uppercase font-mono">
+        <span className="rounded bg-pehra-panel px-2.5 py-1 text-xs font-black text-pehra-text uppercase font-mono">
           TESTBED
         </span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Controls Column */}
-        <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-5 space-y-5">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-5 space-y-5">
+          <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
             <div className="flex items-center gap-2">
-              <Cpu className="h-5 w-5 text-cyan-400" />
+              <Cpu className="h-5 w-5 text-pehra-text" />
               <h2 className="text-base font-bold text-white">Scenario Parameters</h2>
             </div>
           </div>
 
           {/* Presets */}
           <div>
-            <label className="block text-slate-300 text-xs font-semibold mb-2">Preset Scenarios:</label>
+            <label className="block text-pehra-text text-xs font-semibold mb-2">Preset Scenarios:</label>
             <div className="space-y-1.5">
               {presets.map((p) => (
                 <button
                   key={p.name}
                   onClick={() => handleApplyPreset(p)}
-                  className={`w-full text-left rounded-lg p-2 text-xs font-medium border transition-all ${
+                  className={`w-full text-left rounded-none p-2 text-xs font-medium border transition-all ${
                     scenario === p.name
-                      ? 'bg-cyan-950/80 border-cyan-500 text-cyan-300'
-                      : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
+                      ? 'bg-pehra-panel border-pehra-border-subtle text-pehra-text'
+                      : 'bg-pehra-panel border-pehra-border-subtle text-pehra-text hover:text-pehra-text'
                   }`}
                 >
                   {p.name}
@@ -112,8 +112,8 @@ export const SimulationView: React.FC = () => {
           <div className="space-y-4 text-xs">
             <div>
               <div className="flex justify-between mb-1">
-                <span className="text-slate-300">Rainfall Intensity:</span>
-                <span className="font-mono font-bold text-cyan-400">{rainfallMmHr} mm/hr</span>
+                <span className="text-pehra-text">Rainfall Intensity:</span>
+                <span className="font-mono font-bold text-pehra-text">{rainfallMmHr} mm/hr</span>
               </div>
               <input
                 type="range"
@@ -124,7 +124,7 @@ export const SimulationView: React.FC = () => {
                 onChange={(e) => setRainfallMmHr(parseInt(e.target.value))}
                 className="w-full accent-cyan-400"
               />
-              <div className="flex justify-between text-[10px] text-slate-500">
+              <div className="flex justify-between text-pehra-text text-pehra-text">
                 <span>10 mm/hr (Light)</span>
                 <span>65 (Heavy)</span>
                 <span>150 (Extreme Cloudburst)</span>
@@ -133,8 +133,8 @@ export const SimulationView: React.FC = () => {
 
             <div>
               <div className="flex justify-between mb-1">
-                <span className="text-slate-300">Storm Duration:</span>
-                <span className="font-mono font-bold text-cyan-400">{durationHours} Hours</span>
+                <span className="text-pehra-text">Storm Duration:</span>
+                <span className="font-mono font-bold text-pehra-text">{durationHours} Hours</span>
               </div>
               <input
                 type="range"
@@ -149,8 +149,8 @@ export const SimulationView: React.FC = () => {
 
             <div>
               <div className="flex justify-between mb-1">
-                <span className="text-slate-300">Arabian Sea Tide Height:</span>
-                <span className="font-mono font-bold text-cyan-400">{tideLevelM} meters</span>
+                <span className="text-pehra-text">Arabian Sea Tide Height:</span>
+                <span className="font-mono font-bold text-pehra-text">{tideLevelM} meters</span>
               </div>
               <input
                 type="range"
@@ -161,7 +161,7 @@ export const SimulationView: React.FC = () => {
                 onChange={(e) => setTideLevelM(parseFloat(e.target.value))}
                 className="w-full accent-cyan-400"
               />
-              <div className="flex justify-between text-[10px] text-slate-500">
+              <div className="flex justify-between text-pehra-text text-pehra-text">
                 <span>1.5m (Low Tide)</span>
                 <span>4.0m (High Tide)</span>
                 <span>5.0m+ (Surge Lockout)</span>
@@ -172,7 +172,7 @@ export const SimulationView: React.FC = () => {
           <button
             onClick={handleRunSimulation}
             disabled={simulating}
-            className="w-full flex items-center justify-center gap-2 rounded-lg bg-cyan-500 py-2.5 font-bold text-slate-950 hover:bg-cyan-400 shadow-lg shadow-cyan-950/40 transition-all"
+            className="w-full flex items-center justify-center gap-2 rounded-none bg-pehra-panel py-2.5 font-bold text-pehra-text hover:bg-pehra-panel shadow-none shadow-none transition-all"
           >
             <Play className="h-4 w-4 fill-current" />
             <span>{simulating ? 'Executing Hydrodynamic Model...' : 'Execute Simulation Run'}</span>
@@ -181,68 +181,68 @@ export const SimulationView: React.FC = () => {
 
         {/* Results Matrix */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-5 space-y-5">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-5 space-y-5">
+            <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
               <div>
                 <h3 className="text-base font-bold text-white">Projected Impact Analysis</h3>
-                <span className="text-xs text-slate-400">Scenario: {scenario}</span>
+                <span className="text-xs text-pehra-text">Scenario: {scenario}</span>
               </div>
-              <span className="rounded bg-rose-950 border border-rose-800 px-2 py-0.5 text-xs font-mono font-bold text-rose-300">
+              <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-xs font-mono font-bold text-pehra-text">
                 HIGH SEVERITY
               </span>
             </div>
 
             {/* Impact Metric Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-              <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-                <span className="text-slate-400 text-[10px] block">Estimated Inundation</span>
-                <span className="text-xl font-bold font-mono text-cyan-400">
+              <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+                <span className="text-pehra-text text-pehra-text block">Estimated Inundation</span>
+                <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? `${results.summary.maxPredictedDepthM} m` : '2.35 m'}
                 </span>
-                <span className="text-[10px] text-rose-400 block mt-0.5">Low-lying depressions</span>
+                <span className="text-pehra-text text-pehra-text block mt-0.5">Low-lying depressions</span>
               </div>
 
-              <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-                <span className="text-slate-400 text-[10px] block">Exposed Population</span>
+              <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+                <span className="text-pehra-text text-pehra-text block">Exposed Population</span>
                 <span className="text-xl font-bold font-mono text-white">
                   {results ? results.summary.affectedPopulation.toLocaleString() : '84,000'}
                 </span>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Wards L, F/N, H/E</span>
+                <span className="text-pehra-text text-pehra-text block mt-0.5">Wards L, F/N, H/E</span>
               </div>
 
-              <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-                <span className="text-slate-400 text-[10px] block">Submerged Subways</span>
-                <span className="text-xl font-bold font-mono text-rose-400">
+              <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+                <span className="text-pehra-text text-pehra-text block">Submerged Subways</span>
+                <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? results.summary.subwaysFlooded.length : 3}
                 </span>
-                <span className="text-[10px] text-slate-400 block mt-0.5">Milan, Andheri, Sion</span>
+                <span className="text-pehra-text text-pehra-text block mt-0.5">Milan, Andheri, Sion</span>
               </div>
 
-              <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
-                <span className="text-slate-400 text-[10px] block">Required Shelter Beds</span>
-                <span className="text-xl font-bold font-mono text-amber-400">
+              <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+                <span className="text-pehra-text text-pehra-text block">Required Shelter Beds</span>
+                <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? results.summary.sheltersRequired : 6} Facilities
                 </span>
-                <span className="text-[10px] text-slate-400 block mt-0.5">~3,200 emergency beds</span>
+                <span className="text-pehra-text text-pehra-text block mt-0.5">~3,200 emergency beds</span>
               </div>
             </div>
 
             {/* Submerged Subways List */}
             <div className="space-y-2">
-              <span className="text-xs font-bold text-slate-300 block">Critical Road Infrastructure Submersion Risk:</span>
+              <span className="text-xs font-bold text-pehra-text block">Critical Road Infrastructure Submersion Risk:</span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                 {['Milan Subway (Vile Parle)', 'Andheri Subway', 'Gandhi Market Highway Dip'].map((subway, i) => (
-                  <div key={i} className="rounded border border-rose-900/60 bg-rose-950/30 p-2 text-rose-200">
+                  <div key={i} className="rounded border border-pehra-border-subtle bg-pehra-panel p-2 text-pehra-text">
                     <span className="font-bold block">⚠️ {subway}</span>
-                    <span className="text-[10px] text-slate-300">Predicted Depth: &gt;1.8m (Impassable)</span>
+                    <span className="text-pehra-text text-pehra-text">Predicted Depth: &gt;1.8m (Impassable)</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Projected Hourly Progression Timeline */}
-            <div className="space-y-2 pt-2 border-t border-slate-800">
-              <span className="text-xs font-bold text-slate-300 block">Projected Hourly Flood Progression:</span>
+            <div className="space-y-2 pt-2 border-t border-pehra-border-subtle">
+              <span className="text-xs font-bold text-pehra-text block">Projected Hourly Flood Progression:</span>
               <div className="space-y-2 text-xs">
                 {(results?.timeline || [
                   { hour: 1, text: 'Stormwater drains at 100% capacity; gutters begin spilling at Kurla station.' },
@@ -250,11 +250,11 @@ export const SimulationView: React.FC = () => {
                   { hour: 3, text: 'High tide peak locks Arabian Sea outflow; water backflows through storm gates.' },
                   { hour: 4, text: 'Peak inundation reached; Milan subway completely impassable; evacuation mandatory.' },
                 ]).map((t: any, idx: number) => (
-                  <div key={idx} className="flex items-start gap-3 rounded bg-slate-950/60 p-2.5 border border-slate-800">
-                    <span className="rounded bg-cyan-950 border border-cyan-800 px-2 py-0.5 font-mono font-bold text-cyan-300 text-[11px]">
+                  <div key={idx} className="flex items-start gap-3 rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle">
+                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 font-mono font-bold text-pehra-text text-pehra-text">
                       T+{t.hour}h
                     </span>
-                    <span className="text-slate-300">{t.text}</span>
+                    <span className="text-pehra-text">{t.text}</span>
                   </div>
                 ))}
               </div>
