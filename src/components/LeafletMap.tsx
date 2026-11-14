@@ -872,60 +872,60 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
   ]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-xl border border-[#E5EAF0] bg-white flex flex-col shadow-xs">
+    <div className="relative h-full w-full overflow-hidden rounded-none border border-pehra-border-subtle bg-white flex flex-col shadow-none">
       {/* Live Real-Time Air Pressure, Directional Wind & Normal Water Details Strip */}
       {liveTelemetry && (
-        <div className="z-20 border-b border-[#E5EAF0] bg-slate-900 text-white px-3 py-1.5 text-[11px] flex flex-wrap items-center justify-between gap-2 shrink-0">
+        <div className="z-20 border-b border-pehra-border-subtle bg-pehra-panel text-white px-3 py-1.5 text-pehra-text flex flex-wrap items-center justify-between gap-2 shrink-0">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-500/20 border border-emerald-400/40 px-2 py-0.5 text-[10px] font-bold text-emerald-300 uppercase tracking-wider">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text font-bold text-pehra-text uppercase tracking-wider">
+              <span className="h-1.5 w-1.5 rounded-none bg-pehra-panel " />
               Live Open-Meteo / IMD Feed
             </span>
 
             {/* Air Pressure & Directional Gradient */}
-            <div className="flex items-center gap-1.5 border-r border-slate-700 pr-3">
-              <Gauge className="h-3.5 w-3.5 text-sky-400 shrink-0" />
-              <span className="text-slate-400">Air Pressure:</span>
-              <strong className="font-mono text-sky-300">
+            <div className="flex items-center gap-1.5 border-r border-pehra-border-subtle pr-3">
+              <Gauge className="h-3.5 w-3.5 text-pehra-text shrink-0" />
+              <span className="text-pehra-text">Air Pressure:</span>
+              <strong className="font-mono text-pehra-text">
                 {liveTelemetry.airPressureMslHpa} hPa (MSL)
               </strong>
-              <span className="text-[10px] text-slate-400">
+              <span className="text-pehra-text text-pehra-text">
                 (Surf: {liveTelemetry.surfacePressureHpa} hPa • {liveTelemetry.pressureTrend})
               </span>
             </div>
 
             {/* Directional Wind */}
-            <div className="flex items-center gap-1.5 border-r border-slate-700 pr-3">
-              <Wind className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
-              <span className="text-slate-400">Directional Wind:</span>
-              <strong className="font-mono text-emerald-300">
+            <div className="flex items-center gap-1.5 border-r border-pehra-border-subtle pr-3">
+              <Wind className="h-3.5 w-3.5 text-pehra-text shrink-0" />
+              <span className="text-pehra-text">Directional Wind:</span>
+              <strong className="font-mono text-pehra-text">
                 {liveTelemetry.windSpeedKmh} km/h {liveTelemetry.windCardinal} ({liveTelemetry.windDirectionDeg}°)
               </strong>
-              <span className="text-[10px] text-slate-400">
+              <span className="text-pehra-text text-pehra-text">
                 Gusts {liveTelemetry.windGustsKmh} km/h
               </span>
             </div>
 
             {/* Normal Water & River Details */}
-            <div className="flex items-center gap-1.5 border-r border-slate-700 pr-3">
-              <Droplets className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
-              <span className="text-slate-400">Water Level:</span>
-              <strong className="font-mono text-cyan-300">
+            <div className="flex items-center gap-1.5 border-r border-pehra-border-subtle pr-3">
+              <Droplets className="h-3.5 w-3.5 text-pehra-text shrink-0" />
+              <span className="text-pehra-text">Water Level:</span>
+              <strong className="font-mono text-pehra-text">
                 {liveTelemetry.mithiWaterLevelM}m
               </strong>
-              <span className="text-[10px] text-slate-400">
+              <span className="text-pehra-text text-pehra-text">
                 (Norm {liveTelemetry.mithiNormalLevelM}m / Danger {liveTelemetry.mithiDangerLevelM}m • Flow {liveTelemetry.riverDischargeM3s} m³/s)
               </span>
             </div>
 
             {/* Tide & Sea Waves */}
             <div className="hidden xl:flex items-center gap-1.5">
-              <Waves className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-              <span className="text-slate-400">Tide & Sea:</span>
-              <strong className="font-mono text-blue-300">
+              <Waves className="h-3.5 w-3.5 text-pehra-text shrink-0" />
+              <span className="text-pehra-text">Tide & Sea:</span>
+              <strong className="font-mono text-pehra-text">
                 {liveTelemetry.tideHeightM}m ({liveTelemetry.tideState})
               </strong>
-              <span className="text-[10px] text-slate-400">
+              <span className="text-pehra-text text-pehra-text">
                 • Wave {liveTelemetry.waveHeightM}m @ {liveTelemetry.waveDirectionDeg}° ({liveTelemetry.waveDirectionCardinal})
               </span>
             </div>
@@ -934,10 +934,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
           <button
             onClick={refreshLiveTelemetry}
             disabled={isRefreshingLive}
-            className="flex items-center gap-1 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-600 px-2 py-0.5 text-[10px] font-semibold text-slate-200 transition-colors"
+            className="flex items-center gap-1 rounded-md bg-pehra-panel hover:bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text font-semibold text-pehra-text transition-colors"
             title="Fetch Latest Live Atmospheric & Water Telemetry"
           >
-            <RotateCw className={`h-3 w-3 ${isRefreshingLive ? 'animate-spin text-sky-400' : ''}`} />
+            <RotateCw className={`h-3 w-3 ${isRefreshingLive ? ' text-pehra-text' : ''}`} />
             <span>{isRefreshingLive ? 'Syncing...' : 'Sync Live'}</span>
           </button>
         </div>
@@ -946,13 +946,13 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       {/* Top Map Control Bar: Basemaps & Location Search */}
       <div className="absolute top-12 left-3 z-10 flex flex-wrap items-center gap-2 max-w-[calc(100%-15rem)]">
         {/* Basemap Switcher */}
-        <div className="flex items-center rounded-xl border border-[#E5EAF0] bg-white/95 p-1 backdrop-blur-md shadow-sm text-xs">
+        <div className="flex items-center rounded-none border border-pehra-border-subtle bg-white/95 p-1  shadow-none text-xs">
           <button
             onClick={() => setBasemap('light')}
-            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 rounded-none px-2.5 py-1 font-semibold transition-colors ${
               basemap === 'light'
-                ? 'bg-[#2563EB] text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-pehra-panel text-white shadow-none'
+                : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
             }`}
             title="Clean Light Basemap (Apple Maps style)"
           >
@@ -961,10 +961,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
           <button
             onClick={() => setBasemap('topo')}
-            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 rounded-none px-2.5 py-1 font-semibold transition-colors ${
               basemap === 'topo'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-pehra-panel text-white shadow-none'
+                : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
             }`}
             title="OpenTopoMap with contour lines and mountain relief"
           >
@@ -974,10 +974,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
           <button
             onClick={() => setBasemap('physical')}
-            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 rounded-none px-2.5 py-1 font-semibold transition-colors ${
               basemap === 'physical'
-                ? 'bg-blue-700 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-pehra-panel text-white shadow-none'
+                : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
             }`}
             title="ESRI Physical Relief"
           >
@@ -987,10 +987,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
           <button
             onClick={() => setBasemap('streets')}
-            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 rounded-none px-2.5 py-1 font-semibold transition-colors ${
               basemap === 'streets'
-                ? 'bg-slate-800 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-pehra-panel text-white shadow-none'
+                : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
             }`}
             title="OpenStreetMap Street Network"
           >
@@ -1001,14 +1001,14 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         {/* 2.5D Tilt Perspective Button */}
         <button
           onClick={() => setIs3DTilt(!is3DTilt)}
-          className={`flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md shadow-sm transition-all ${
+          className={`flex items-center gap-1.5 rounded-none border px-2.5 py-1.5 text-xs font-semibold  shadow-none transition-all ${
             is3DTilt
-              ? 'bg-blue-50 text-blue-700 border-blue-300'
-              : 'border-[#E5EAF0] bg-white/95 text-slate-700 hover:bg-slate-50'
+              ? 'bg-pehra-panel text-pehra-text border-pehra-border-subtle'
+              : 'border-pehra-border-subtle bg-white/95 text-pehra-text hover:bg-pehra-panel'
           }`}
           title="Toggle 2.5D Isometric Map Tilt Perspective"
         >
-          <Compass className={`h-3.5 w-3.5 ${is3DTilt ? 'rotate-45 text-blue-600' : 'text-slate-500'}`} />
+          <Compass className={`h-3.5 w-3.5 ${is3DTilt ? 'rotate-45 text-pehra-text' : 'text-pehra-text'}`} />
           <span className="hidden sm:inline">{is3DTilt ? '2.5D Tilt Active' : '2.5D Tilt'}</span>
         </button>
 
@@ -1016,16 +1016,16 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         <button
           onClick={handleLocateMe}
           disabled={isLocating}
-          className={`flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md shadow-sm transition-all ${
+          className={`flex items-center gap-1.5 rounded-none border px-2.5 py-1.5 text-xs font-semibold  shadow-none transition-all ${
             isLocating
-              ? 'border-blue-300 bg-blue-50 text-blue-700'
+              ? 'border-pehra-border-subtle bg-pehra-panel text-pehra-text'
               : userLocation
-              ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
-              : 'border-[#E5EAF0] bg-white/95 text-slate-700 hover:bg-slate-50'
+              ? 'border-pehra-border-subtle bg-pehra-panel text-pehra-text'
+              : 'border-pehra-border-subtle bg-white/95 text-pehra-text hover:bg-pehra-panel'
           }`}
           title="Detect Current GPS Location & Topographic Elevation"
         >
-          <Navigation className={`h-3.5 w-3.5 ${isLocating ? 'animate-spin text-blue-600' : 'text-slate-500'}`} />
+          <Navigation className={`h-3.5 w-3.5 ${isLocating ? ' text-pehra-text' : 'text-pehra-text'}`} />
           <span>{isLocating ? 'Locating...' : userLocation ? 'GPS Locked' : 'Locate Me'}</span>
         </button>
 
@@ -1033,29 +1033,29 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowSearchDropdown(!showSearchDropdown)}
-            className="flex items-center gap-1.5 rounded-xl border border-[#E5EAF0] bg-white/95 px-2.5 py-1.5 text-xs font-semibold text-slate-700 backdrop-blur-md shadow-sm hover:bg-slate-50"
+            className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-white/95 px-2.5 py-1.5 text-xs font-semibold text-pehra-text  shadow-none hover:bg-pehra-panel"
           >
-            <Search className="h-3.5 w-3.5 text-slate-500" />
+            <Search className="h-3.5 w-3.5 text-pehra-text" />
             <span className="hidden md:inline">Hotspots</span>
           </button>
 
           {showSearchDropdown && (
-            <div className="absolute top-full left-0 mt-1.5 w-64 rounded-xl border border-[#E5EAF0] bg-white p-2 shadow-xl z-30 max-h-72 overflow-y-auto text-xs">
-              <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <div className="absolute top-full left-0 mt-1.5 w-64 rounded-none border border-pehra-border-subtle bg-white p-2 shadow-none z-30 max-h-72 overflow-y-auto text-xs">
+              <div className="px-2 py-1 text-pehra-text font-bold uppercase tracking-wider text-pehra-text">
                 Mumbai Topographic Hotspots
               </div>
               {MUMBAI_TOPOGRAPHIC_LANDMARKS.map((lm) => (
                 <button
                   key={lm.id}
                   onClick={() => flyToLandmark(lm)}
-                  className="flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-left text-slate-700 hover:bg-slate-50 transition-colors"
+                  className="flex w-full items-center justify-between rounded-none px-2 py-1.5 text-left text-pehra-text hover:bg-pehra-panel transition-colors"
                 >
                   <span className="truncate">{lm.name}</span>
                   <span
-                    className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
+                    className={`shrink-0 rounded px-1.5 py-0.5 text-pehra-text font-mono font-bold ${
                       lm.floodVulnerability === 'CRITICAL'
-                        ? 'bg-rose-50 text-rose-700 border border-rose-200'
-                        : 'bg-slate-100 text-slate-600'
+                        ? 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle'
+                        : 'bg-pehra-panel text-pehra-text'
                     }`}
                   >
                     {lm.elevationM}m
@@ -1085,20 +1085,20 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       </div>
 
       {/* Layer Toggles Floating Control Panel */}
-      <div className="absolute top-12 right-3 z-10 rounded-xl border border-[#E5EAF0] bg-white/95 p-3 backdrop-blur-md shadow-md text-xs text-slate-700 w-60 max-h-[82%] overflow-y-auto">
-        <div className="mb-2 flex items-center justify-between border-b border-slate-100 pb-1.5 font-semibold uppercase tracking-wider text-[11px] text-blue-600">
+      <div className="absolute top-12 right-3 z-10 rounded-none border border-pehra-border-subtle bg-white/95 p-3  shadow-none text-xs text-pehra-text w-60 max-h-[82%] overflow-y-auto">
+        <div className="mb-2 flex items-center justify-between border-b border-pehra-border-subtle pb-1.5 font-semibold uppercase tracking-wider text-pehra-text text-pehra-text">
           <span>Live Map Overlays</span>
-          <span className="text-[10px] text-emerald-600 font-mono font-bold">REAL-TIME</span>
+          <span className="text-pehra-text text-pehra-text font-mono font-bold">REAL-TIME</span>
         </div>
 
-        <div className="space-y-1.5 text-slate-600">
+        <div className="space-y-1.5 text-pehra-text">
           {/* Live Air Pressure & Wind Vectors */}
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900 font-semibold text-blue-800">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text font-semibold text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.airPressureWind}
               onChange={() => toggleLayer('airPressureWind')}
-              className="rounded border-slate-300 text-blue-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🧭</span>
@@ -1107,12 +1107,12 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
           </label>
 
           {/* Live Water Level & Tide Gauges */}
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900 font-semibold text-teal-800">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text font-semibold text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.waterLevels}
               onChange={() => toggleLayer('waterLevels')}
-              className="rounded border-slate-300 text-teal-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🌊</span>
@@ -1121,12 +1121,12 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
           </label>
 
           {/* Live Rainfall & Soil Moisture */}
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900 font-medium text-sky-800">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text font-medium text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.rainfall}
               onChange={() => toggleLayer('rainfall')}
-              className="rounded border-slate-300 text-sky-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🌧️</span>
@@ -1135,26 +1135,26 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
           </label>
 
           {/* Topographic Contours Toggle */}
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900 font-medium text-emerald-700">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text font-medium text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.topoContours}
               onChange={() => toggleLayer('topoContours')}
-              className="rounded border-slate-300 text-emerald-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
-              <Mountain className="h-3.5 w-3.5 text-emerald-600" />
+              <Mountain className="h-3.5 w-3.5 text-pehra-text" />
               <span>Elevation Contours</span>
             </span>
           </label>
 
           {/* Topographic Landmarks */}
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.topoLandmarks}
               onChange={() => toggleLayer('topoLandmarks')}
-              className="rounded border-slate-300 text-blue-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🏔️</span>
@@ -1162,38 +1162,38 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.riskZones}
               onChange={() => toggleLayer('riskZones')}
-              className="rounded border-slate-300 text-rose-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-red-500" />
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" />
               <span>Basin Flood Zones</span>
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.evacuationRoutes}
               onChange={() => toggleLayer('evacuationRoutes')}
-              className="rounded border-slate-300 text-emerald-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" />
               <span>Evacuation Routes</span>
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.shelters}
               onChange={() => toggleLayer('shelters')}
-              className="rounded border-slate-300 text-amber-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🏕️</span>
@@ -1201,12 +1201,12 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.hospitals}
               onChange={() => toggleLayer('hospitals')}
-              className="rounded border-slate-300 text-blue-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🏥</span>
@@ -1214,12 +1214,12 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.citizenReports}
               onChange={() => toggleLayer('citizenReports')}
-              className="rounded border-slate-300 text-orange-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>⚠️</span>
@@ -1227,25 +1227,25 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.devices}
               onChange={() => toggleLayer('devices')}
-              className="rounded border-slate-300 text-emerald-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-600" />
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" />
               <span>Responders / Teams</span>
             </span>
           </label>
 
-          <label className="flex items-center gap-2 cursor-pointer hover:text-slate-900 font-semibold text-blue-700">
+          <label className="flex items-center gap-2 cursor-pointer hover:text-pehra-text font-semibold text-pehra-text">
             <input
               type="checkbox"
               checked={activeLayers.drones}
               onChange={() => toggleLayer('drones')}
-              className="rounded border-slate-300 text-blue-600 focus:ring-0"
+              className="rounded border-pehra-border-subtle text-pehra-text focus:ring-0"
             />
             <span className="flex items-center gap-1.5">
               <span>🚁</span>
@@ -1257,12 +1257,12 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
       {/* Location Status & Elevation Notification Bar */}
       {locationStatusText && (
-        <div className="absolute bottom-14 left-3 z-10 flex items-center gap-2 rounded-xl border border-blue-200 bg-white/95 px-3 py-1.5 backdrop-blur-md shadow-md text-xs text-blue-800 max-w-md">
-          <Navigation className="h-3.5 w-3.5 shrink-0 text-blue-600" />
+        <div className="absolute bottom-14 left-3 z-10 flex items-center gap-2 rounded-none border border-pehra-border-subtle bg-white/95 px-3 py-1.5  shadow-none text-xs text-pehra-text max-w-md">
+          <Navigation className="h-3.5 w-3.5 shrink-0 text-pehra-text" />
           <span className="truncate">{locationStatusText}</span>
           <button
             onClick={() => setLocationStatusText(null)}
-            className="ml-auto text-slate-400 hover:text-slate-700"
+            className="ml-auto text-pehra-text hover:text-pehra-text"
           >
             ✕
           </button>
@@ -1270,42 +1270,42 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       )}
 
       {/* Map Legend: Contours & Risk Scale */}
-      <div className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-3 rounded-xl border border-[#E5EAF0] bg-white/95 px-3 py-2 backdrop-blur-md shadow-sm text-[11px] text-slate-700">
+      <div className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-3 rounded-none border border-pehra-border-subtle bg-white/95 px-3 py-2  shadow-none text-pehra-text text-pehra-text">
         <div>
-          <span className="font-semibold text-slate-500 block mb-0.5">Topographic Contours:</span>
-          <div className="flex items-center gap-2 font-mono text-[10px]">
+          <span className="font-semibold text-pehra-text block mb-0.5">Topographic Contours:</span>
+          <div className="flex items-center gap-2 font-mono text-pehra-text">
             <span className="flex items-center gap-1">
-              <span className="h-1 w-3 bg-cyan-500" /> 5m
+              <span className="h-1 w-3 bg-pehra-panel" /> 5m
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-1 w-3 bg-emerald-500" /> 15m
+              <span className="h-1 w-3 bg-pehra-panel" /> 15m
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-1 w-3 bg-amber-500" /> 50m
+              <span className="h-1 w-3 bg-pehra-panel" /> 50m
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-1 w-3 bg-rose-500" /> 300m
+              <span className="h-1 w-3 bg-pehra-panel" /> 300m
             </span>
           </div>
         </div>
 
-        <div className="border-l border-slate-200 pl-3">
-          <span className="font-semibold text-slate-500 block mb-0.5">Risk Scale:</span>
+        <div className="border-l border-pehra-border-subtle pl-3">
+          <span className="font-semibold text-pehra-text block mb-0.5">Risk Scale:</span>
           <div className="flex items-center gap-2">
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" /> Safe
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" /> Safe
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-blue-500" /> Low
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" /> Low
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-amber-500" /> Moderate
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" /> Moderate
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-orange-500" /> High
+              <span className="h-2 w-2 rounded-none bg-pehra-panel" /> High
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-rose-500 animate-pulse" /> Critical
+              <span className="h-2 w-2 rounded-none bg-pehra-panel " /> Critical
             </span>
           </div>
         </div>
