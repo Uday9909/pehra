@@ -11,8 +11,7 @@ import {
   Observation,
 } from '../types/index.ts';
 import { LeafletMap } from '../components/LeafletMap.tsx';
-import { Mumbai3DView } from '../components/Mumbai3DView.tsx';
-import { MUMBAI_TOPOGRAPHIC_LANDMARKS, getMumbaiElevation } from '../utils/mumbaiElevation.ts';
+import { MUMBAI_TOPOGRAPHIC_LANDMARKS } from '../utils/mumbaiElevation.ts';
 import {
   fetchLiveMumbaiTelemetry,
   LiveMumbaiSummary,
@@ -246,30 +245,6 @@ export const MapView: React.FC<MapViewProps> = ({
             </div>
           )}
 
-          {/* 3D WebGL Digital Elevation Model (Shown in '3d' or 'split' modes) */}
-          {(displayMode === '3d' || displayMode === 'split') && (
-            <div className={`h-full relative ${displayMode === 'split' ? 'w-full md:w-1/2' : 'w-full'}`}>
-              <Mumbai3DView
-                villages={villages}
-                incidents={incidents}
-                shelters={shelters}
-                userLocation={userLocation}
-                onSelectLocation={(lat, lng, elevation) => {
-                  const elevData = getMumbaiElevation(lat, lng);
-                  setProbedLocation({
-                    lat,
-                    lng,
-                    elevation,
-                    zoneName: elevData.zoneName,
-                    vulnerability: elevData.floodVulnerability,
-                  });
-                  setInspectedShelter(null);
-                  setInspectedRoute(null);
-                  onSelectVillage(null);
-                }}
-              />
-            </div>
-          )}
         </div>
 
         {/* Side Inspector & Topographic Telemetry Drawer */}

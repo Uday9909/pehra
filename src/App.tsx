@@ -285,8 +285,8 @@ export default function App() {
           <div className="max-w-[1480px] mx-auto w-full">
             {loading ? (
               <div className="flex flex-col items-center justify-center min-h-[400px] space-y-3">
-                <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#18B7A0] border-t-transparent" />
-                <div className="text-sm text-[#6B7C83] font-medium">
+                <div className="h-10 w-10 border-4 border-pehra-action border-t-transparent" />
+                <div className="text-sm text-pehra-text-2 font-medium">
                   Connecting to PEHRA Real-time Flood Telemetry...
                 </div>
               </div>
@@ -464,7 +464,7 @@ export default function App() {
       <button
         onClick={() => setIsReportModalOpen(true)}
         id="fab-report-flood-btn"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-[#18B7A0] px-5 py-3 text-sm font-bold text-white shadow-lg hover:bg-[#15a28e] hover:shadow-xl transition-all duration-200 active:scale-95"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 border border-pehra-border-control bg-pehra-action px-5 py-3 text-sm font-bold text-pehra-action-text transition-colors"
         title="Crowdsourced Flood Reporting"
       >
         <Plus className="h-4 w-4 stroke-[3]" />
@@ -479,10 +479,10 @@ export default function App() {
       />
 
       {/* 5. OPERATIONAL PERSISTENT FOOTER */}
-      <footer className="border-t border-[#E2EAED] bg-white px-4 sm:px-6 py-3 text-xs text-[#6B7C83]">
+      <footer className="border-t border-pehra-border-subtle bg-pehra-panel px-4 sm:px-6 py-3 text-xs text-pehra-text-2">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#17242A]">PEHRA</span>
+            <span className="font-bold text-pehra-text">PEHRA</span>
             <span>•</span>
             <span className="text-[11px]">
               Predictive Early-warning for Hyperlocal Risk Assessment
@@ -494,13 +494,13 @@ export default function App() {
               MCGM Disaster Cell: <strong className="text-rose-600 font-semibold">1916</strong>
             </span>
             <span>
-              Police: <strong className="text-[#17242A] font-semibold">112</strong>
+              Police: <strong className="text-pehra-text font-semibold">112</strong>
             </span>
             <span>
-              Ambulance: <strong className="text-[#17242A] font-semibold">108</strong>
+              Ambulance: <strong className="text-pehra-text font-semibold">108</strong>
             </span>
             <span>
-              State Emergency Ops: <strong className="text-[#18B7A0] font-semibold">1070</strong>
+              State Emergency Ops: <strong className="text-pehra-action font-semibold">1070</strong>
             </span>
           </div>
         </div>

@@ -233,7 +233,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const probeIcon = L.divIcon({
           className: 'probe-marker-icon',
-          html: `<div style="background:#0284c7;color:#fff;width:30px;height:30px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(2,132,199,0.8);font-size:14px;font-weight:bold;">
+          html: `<div style="background:currentColor;color:currentColor;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(2,132,199,0.8);font-size:14px;font-weight:bold;">
             📍
           </div>`,
           iconSize: [30, 30],
@@ -242,28 +242,28 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const probeMarker = L.marker([lat, lng], { icon: probeIcon });
         probeMarker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:240px;">
-            <div style="font-weight:bold;color:#0284c7;margin-bottom:3px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:240px;">
+            <div style="font-weight:bold;color:currentColor;margin-bottom:3px;display:flex;align-items:center;justify-content:space-between;">
               <span>📍 Live Coordinate Telemetry</span>
-              <span style="font-size:9px;background:#dcfce7;color:#15803d;padding:1px 5px;border-radius:4px;">LIVE API</span>
+              <span style="font-size:9px;background:currentColor;color:currentColor;padding:1px 5px;border-radius:4px;">LIVE API</span>
             </div>
-            <p style="margin:0 0 4px 0;font-size:11px;color:#64748b;">${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E • ${elevData.zoneName}</p>
+            <p style="margin:0 0 4px 0;font-size:11px;color:currentColor;">${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E • ${elevData.zoneName}</p>
             ${
               liveCoordData
                 ? `
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:5px 0;">
-                  <div style="padding:4px 6px;background:#eff6ff;border-radius:5px;border:1px solid #bfdbfe;">
-                    <span style="font-size:9px;color:#1d4ed8;display:block;">Air Pressure (MSL)</span>
-                    <strong style="font-size:12px;color:#1e3a8a;">${liveCoordData.seaLevelPressureHpa} hPa</strong>
-                    <span style="font-size:9px;color:#64748b;display:block;">Surf: ${liveCoordData.surfacePressureHpa} hPa</span>
+                  <div style="padding:4px 6px;background:currentColor;border-radius:5px;border:1px solid currentColor;">
+                    <span style="font-size:9px;color:currentColor;display:block;">Air Pressure (MSL)</span>
+                    <strong style="font-size:12px;color:currentColor;">${liveCoordData.seaLevelPressureHpa} hPa</strong>
+                    <span style="font-size:9px;color:currentColor;display:block;">Surf: ${liveCoordData.surfacePressureHpa} hPa</span>
                   </div>
-                  <div style="padding:4px 6px;background:#f0fdf4;border-radius:5px;border:1px solid #bbf7d0;">
-                    <span style="font-size:9px;color:#15803d;display:block;">Directional Wind</span>
-                    <strong style="font-size:12px;color:#14532d;">${liveCoordData.windSpeedKmh} km/h ${liveCoordData.windCardinal}</strong>
-                    <span style="font-size:9px;color:#64748b;display:block;">Dir: ${liveCoordData.windDirectionDeg}° • Gust: ${liveCoordData.windGustsKmh}</span>
+                  <div style="padding:4px 6px;background:currentColor;border-radius:5px;border:1px solid currentColor;">
+                    <span style="font-size:9px;color:currentColor;display:block;">Directional Wind</span>
+                    <strong style="font-size:12px;color:currentColor;">${liveCoordData.windSpeedKmh} km/h ${liveCoordData.windCardinal}</strong>
+                    <span style="font-size:9px;color:currentColor;display:block;">Dir: ${liveCoordData.windDirectionDeg}° • Gust: ${liveCoordData.windGustsKmh}</span>
                   </div>
                 </div>
-                <div style="padding:5px 6px;background:#ecfeff;border-radius:5px;border:1px solid #a5f3fc;margin-bottom:4px;font-size:11px;">
+                <div style="padding:5px 6px;background:currentColor;border-radius:5px;border:1px solid currentColor;margin-bottom:4px;font-size:11px;">
                   <div><strong>Water & Rain Details:</strong></div>
                   <div>Rain: <strong>${liveCoordData.precipitationMm} mm</strong> (Rate: ${liveCoordData.rainMmHr} mm/h)</div>
                   <div>Surface Runoff: <strong>${liveCoordData.runoffMm} mm</strong> • Soil Moisture: <strong>${Math.round(liveCoordData.soilMoistureM3M3 * 100)}%</strong></div>
@@ -385,8 +385,8 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
             const accuracyCircle = L.circle([latitude, longitude], {
               radius: accuracy,
-              color: '#38bdf8',
-              fillColor: '#0284c7',
+              color: 'currentColor',
+              fillColor: 'currentColor',
               fillOpacity: 0.15,
               weight: 1.5,
             });
@@ -395,8 +395,8 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
             const userIcon = L.divIcon({
               className: 'user-gps-pulse-marker',
               html: `<div style="position:relative;width:24px;height:24px;">
-                <div style="position:absolute;inset:0;border-radius:50%;background:#38bdf8;animation:ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;opacity:0.75;"></div>
-                <div style="position:absolute;inset:2px;border-radius:50%;background:#0284c7;border:2.5px solid #fff;box-shadow:0 0 10px #38bdf8;"></div>
+                <div style="position:absolute;inset:0;border-radius:50%;background:currentColor;animation:ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;opacity:0.75;"></div>
+                <div style="position:absolute;inset:2px;border-radius:50%;background:currentColor;border:2.5px solid currentColor;box-shadow:0 0 10px currentColor;"></div>
               </div>`,
               iconSize: [24, 24],
               iconAnchor: [12, 12],
@@ -404,13 +404,13 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
             const userMarker = L.marker([latitude, longitude], { icon: userIcon });
             userMarker.bindPopup(`
-              <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:210px;">
-                <h4 style="margin:0 0 4px 0;font-weight:bold;color:#0284c7;">📍 Your GPS Location</h4>
+              <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:210px;">
+                <h4 style="margin:0 0 4px 0;font-weight:bold;color:currentColor;">📍 Your GPS Location</h4>
                 <p style="margin:0 0 2px 0;">Ground Elevation: <strong>${elevData.elevationM} m (MSL)</strong></p>
                 <p style="margin:0 0 2px 0;">Terrain: <strong>${elevData.terrainType}</strong></p>
                 <p style="margin:0 0 2px 0;">GPS Precision: <strong>±${Math.round(accuracy)} meters</strong></p>
                 <p style="margin:0;font-size:11px;">Flood Vulnerability: <strong style="color:${
-                  elevData.floodVulnerability === 'CRITICAL' ? '#dc2626' : '#16a34a'
+                  elevData.floodVulnerability === 'CRITICAL' ? 'currentColor' : 'currentColor'
                 };">${elevData.floodVulnerability}</strong></p>
               </div>
             `).openPopup();
@@ -468,11 +468,11 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
     // Risk level colors
     const riskColors: Record<string, string> = {
-      SAFE: '#10b981',
-      LOW: '#3b82f6',
-      MODERATE: '#f59e0b',
-      HIGH: '#f97316',
-      CRITICAL: '#ef4444',
+      SAFE: 'currentColor',
+      LOW: 'currentColor',
+      MODERATE: 'currentColor',
+      HIGH: 'currentColor',
+      CRITICAL: 'currentColor',
     };
 
     // A. TOPOGRAPHIC CONTOUR ISOLINES
@@ -499,11 +499,11 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       MUMBAI_TOPOGRAPHIC_LANDMARKS.forEach((lm) => {
         const isBowl = lm.terrainType === 'FLOOD_BOWL' || lm.terrainType === 'RECLAIMED_LOWLAND';
         const iconEmoji = isBowl ? '⚠️' : lm.elevationM > 200 ? '🏔️' : '⛰️';
-        const badgeColor = isBowl ? '#ef4444' : lm.elevationM > 100 ? '#b45309' : '#0284c7';
+        const badgeColor = isBowl ? 'currentColor' : lm.elevationM > 100 ? 'currentColor' : 'currentColor';
 
         const icon = L.divIcon({
           className: 'topo-landmark-icon',
-          html: `<div style="background:${badgeColor};color:#fff;font-size:11px;font-weight:bold;padding:2px 6px;border-radius:12px;border:1.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.5);display:flex;align-items:center;gap:3px;white-space:nowrap;">
+          html: `<div style="background:${badgeColor};color:currentColor;font-size:11px;font-weight:bold;padding:2px 6px;border-radius:12px;border:1.5px solid currentColor;box-shadow:0 2px 6px rgba(0,0,0,0.5);display:flex;align-items:center;gap:3px;white-space:nowrap;">
             <span>${iconEmoji}</span>
             <span>${lm.name.split(' ')[0]}</span>
             <span style="background:rgba(0,0,0,0.3);padding:1px 4px;border-radius:8px;font-size:9px;font-family:monospace;">${lm.elevationM}m</span>
@@ -514,17 +514,17 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([lm.lat, lm.lng], { icon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:210px;">
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:210px;">
             <h4 style="margin:0 0 3px 0;font-weight:bold;color:${badgeColor};">${lm.name}</h4>
-            <div style="margin:4px 0;padding:4px 6px;background:#f8fafc;border-radius:4px;border:1px solid #cbd5e1;">
-              <span style="font-size:10px;color:#64748b;display:block;">Topographic Elevation:</span>
-              <strong style="font-size:14px;color:#0f172a;">${lm.elevationM} meters (MSL)</strong>
+            <div style="margin:4px 0;padding:4px 6px;background:currentColor;border-radius:4px;border:1px solid currentColor;">
+              <span style="font-size:10px;color:currentColor;display:block;">Topographic Elevation:</span>
+              <strong style="font-size:14px;color:currentColor;">${lm.elevationM} meters (MSL)</strong>
             </div>
             <p style="margin:0 0 2px 0;">Ward: <strong>${lm.ward}</strong></p>
             <p style="margin:0 0 2px 0;">Geomorphology: <strong>${lm.terrainType}</strong></p>
-            <p style="margin:0 0 4px 0;font-size:11px;color:#475569;">${lm.description}</p>
+            <p style="margin:0 0 4px 0;font-size:11px;color:currentColor;">${lm.description}</p>
             <p style="margin:0;font-size:11px;">Flood Vulnerability: <strong style="color:${
-              lm.floodVulnerability === 'CRITICAL' ? '#dc2626' : lm.floodVulnerability === 'HIGH' ? '#ea580c' : '#16a34a'
+              lm.floodVulnerability === 'CRITICAL' ? 'currentColor' : lm.floodVulnerability === 'HIGH' ? 'currentColor' : 'currentColor'
             };">${lm.floodVulnerability}</strong></p>
           </div>
         `);
@@ -536,10 +536,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
     if (activeLayers.riskZones) {
       villages.forEach((village) => {
         const isSelected = village.id === selectedVillageId;
-        const color = riskColors[village.riskLevel] || '#94a3b8';
+        const color = riskColors[village.riskLevel] || 'currentColor';
 
         const polygon = L.polygon(village.polygon, {
-          color: isSelected ? '#38bdf8' : color,
+          color: isSelected ? 'currentColor' : color,
           weight: isSelected ? 3 : 2,
           fillColor: color,
           fillOpacity: isSelected ? 0.45 : 0.22,
@@ -573,7 +573,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
             [endLat, endLng],
           ],
           {
-            color: '#2563eb',
+            color: 'currentColor',
             weight: 2.5,
             opacity: 0.85,
             dashArray: '5, 5',
@@ -588,10 +588,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const trendArrow = st.pressureTrend === 'RISING' ? '▲' : st.pressureTrend === 'FALLING' ? '▼' : '●';
         const pressureIcon = L.divIcon({
           className: 'air-pressure-wind-icon',
-          html: `<div style="background:rgba(30,58,138,0.94);color:#fff;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:8px;border:1.5px solid #60a5fa;box-shadow:0 2px 8px rgba(37,99,235,0.45);display:flex;align-items:center;gap:5px;white-space:nowrap;">
-            <span style="display:inline-block;transform:rotate(${(st.windDirectionDeg + 180) % 360}deg);font-size:12px;color:#93c5fd;">➤</span>
+          html: `<div style="background:rgba(30,58,138,0.94);color:currentColor;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:8px;border:1.5px solid currentColor;box-shadow:0 2px 8px rgba(37,99,235,0.45);display:flex;align-items:center;gap:5px;white-space:nowrap;">
+            <span style="display:inline-block;transform:rotate(${(st.windDirectionDeg + 180) % 360}deg);font-size:12px;color:currentColor;">➤</span>
             <span>${st.seaLevelPressureHpa} hPa ${trendArrow}</span>
-            <span style="color:#bfdbfe;">| ${st.windSpeedKmh} km/h ${st.windCardinal} (${st.windDirectionDeg}°)</span>
+            <span style="color:currentColor;">| ${st.windSpeedKmh} km/h ${st.windCardinal} (${st.windDirectionDeg}°)</span>
           </div>`,
           iconSize: [185, 24],
           iconAnchor: [92, -10],
@@ -599,19 +599,19 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([st.lat, st.lng], { icon: pressureIcon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:245px;">
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:245px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-              <strong style="color:#1d4ed8;font-size:13px;">${st.name}</strong>
-              <span style="background:#dbeafe;color:#1e40af;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:bold;">LIVE BAROMETRIC</span>
+              <strong style="color:currentColor;font-size:13px;">${st.name}</strong>
+              <span style="background:currentColor;color:currentColor;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:bold;">LIVE BAROMETRIC</span>
             </div>
-            <p style="margin:0 0 4px 0;font-size:11px;color:#64748b;">${st.ward} • Elev: ${st.elevationM}m MSL</p>
-            <div style="background:#eff6ff;padding:6px;border-radius:6px;border:1px solid #bfdbfe;margin-bottom:5px;font-size:11px;">
+            <p style="margin:0 0 4px 0;font-size:11px;color:currentColor;">${st.ward} • Elev: ${st.elevationM}m MSL</p>
+            <div style="background:currentColor;padding:6px;border-radius:6px;border:1px solid currentColor;margin-bottom:5px;font-size:11px;">
               <div>Sea-Level Air Pressure: <strong>${st.seaLevelPressureHpa} hPa (mbar)</strong></div>
               <div>Surface Air Pressure: <strong>${st.surfacePressureHpa} hPa</strong></div>
               <div>Barometric Trend: <strong>${trendArrow} ${st.pressureTrend}</strong></div>
               <div>Pressure Gradient: <strong>${st.pressureGradientDirection}</strong></div>
             </div>
-            <div style="background:#f8fafc;padding:6px;border-radius:6px;border:1px solid #e2e8f0;font-size:11px;">
+            <div style="background:currentColor;padding:6px;border-radius:6px;border:1px solid currentColor;font-size:11px;">
               <div>Wind Speed (10m): <strong>${st.windSpeedKmh} km/h</strong></div>
               <div>Wind Direction: <strong>${st.windDirectionDeg}° (${st.windCardinal})</strong></div>
               <div>Wind Gusts: <strong>${st.windGustsKmh} km/h</strong></div>
@@ -628,7 +628,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       liveTelemetry.stations.forEach((st) => {
         const icon = L.divIcon({
           className: 'weather-gauge-icon',
-          html: `<div style="background:rgba(14, 165, 233, 0.95);color:#fff;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:6px;border:1px solid #fff;box-shadow:0 2px 6px rgba(14,165,233,0.45);display:flex;align-items:center;gap:4px;white-space:nowrap;">
+          html: `<div style="background:rgba(14, 165, 233, 0.95);color:currentColor;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:6px;border:1px solid currentColor;box-shadow:0 2px 6px rgba(14,165,233,0.45);display:flex;align-items:center;gap:4px;white-space:nowrap;">
             <span>🌧️ ${st.precipitationMm} mm | RH ${st.humidityPercent}%</span>
           </div>`,
           iconSize: [115, 22],
@@ -637,14 +637,14 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([st.lat + 0.003, st.lng - 0.003], { icon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:220px;">
-            <h4 style="margin:0 0 4px 0;font-weight:bold;color:#0284c7;">${st.name} — Rain & Moisture</h4>
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:220px;">
+            <h4 style="margin:0 0 4px 0;font-weight:bold;color:currentColor;">${st.name} — Rain & Moisture</h4>
             <p style="margin:0 0 2px 0;">Current Precipitation: <strong>${st.precipitationMm} mm</strong></p>
             <p style="margin:0 0 2px 0;">Rain Intensity: <strong>${st.rainRateMmHr} mm/hr</strong></p>
             <p style="margin:0 0 2px 0;">Surface Runoff: <strong>${st.runoffMm} mm</strong></p>
             <p style="margin:0 0 2px 0;">Soil Moisture (0-7cm): <strong>${Math.round(st.soilMoistureM3M3 * 100)}%</strong></p>
             <p style="margin:0 0 2px 0;">Relative Humidity: <strong>${st.humidityPercent}%</strong> • Cloud Cover: <strong>${st.cloudCoverPercent}%</strong></p>
-            <p style="margin:0;font-size:10px;color:#64748b;">Real-Time Open-Meteo / IMD Feed</p>
+            <p style="margin:0;font-size:10px;color:currentColor;">Real-Time Open-Meteo / IMD Feed</p>
           </div>
         `);
         groups.rainfall.addLayer(marker);
@@ -658,7 +658,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const badgeBg = isElevated ? 'rgba(220, 38, 38, 0.95)' : 'rgba(13, 148, 136, 0.95)';
         const icon = L.divIcon({
           className: 'water-gauge-icon',
-          html: `<div style="background:${badgeBg};color:#fff;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:6px;border:1.5px solid #fff;box-shadow:0 2px 8px rgba(13,148,136,0.45);display:flex;align-items:center;gap:4px;white-space:nowrap;">
+          html: `<div style="background:${badgeBg};color:currentColor;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:6px;border:1.5px solid currentColor;box-shadow:0 2px 8px rgba(13,148,136,0.45);display:flex;align-items:center;gap:4px;white-space:nowrap;">
             <span>🌊 ${st.waterLevelM}m</span>
             <span style="opacity:0.9;">| ${st.riverDischargeM3s} m³/s</span>
           </div>`,
@@ -668,19 +668,19 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([st.lat, st.lng], { icon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:250px;">
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:250px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-              <strong style="color:#0f766e;font-size:13px;">${st.name}</strong>
-              <span style="background:#ccfbf1;color:#115e59;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:bold;">WATER LIVE</span>
+              <strong style="color:currentColor;font-size:13px;">${st.name}</strong>
+              <span style="background:currentColor;color:currentColor;font-size:9px;padding:1px 5px;border-radius:4px;font-weight:bold;">WATER LIVE</span>
             </div>
-            <div style="background:#f0fdfa;padding:6px;border-radius:6px;border:1px solid #99f6e4;margin-bottom:5px;font-size:11px;">
+            <div style="background:currentColor;padding:6px;border-radius:6px;border:1px solid currentColor;margin-bottom:5px;font-size:11px;">
               <div>Current Water Level: <strong>${st.waterLevelM} m</strong> (Normal: ${st.normalWaterLevelM}m)</div>
               <div>Warning / Danger Marks: <strong>${st.warningWaterLevelM} m / ${st.dangerWaterLevelM} m</strong></div>
               <div>River / Channel Discharge: <strong>${st.riverDischargeM3s} m³/s</strong></div>
               <div>Drainage Flow Status: <strong>${st.drainageFlowStatus.replace('_', ' ')}</strong></div>
               <div>Surface Runoff & Soil Sat: <strong>${st.runoffMm} mm • ${Math.round(st.soilMoistureM3M3 * 100)}%</strong></div>
             </div>
-            <div style="background:#f8fafc;padding:6px;border-radius:6px;border:1px solid #e2e8f0;font-size:11px;">
+            <div style="background:currentColor;padding:6px;border-radius:6px;border:1px solid currentColor;font-size:11px;">
               <div><strong>Coastal & Marine Water Details:</strong></div>
               <div>Tide Level: <strong>${st.tideHeightM} m (${st.tideState.replace('_', ' ')})</strong></div>
               <div>Sea Wave Height & Dir: <strong>${st.waveHeightM} m @ ${st.waveDirectionDeg}° (Period: ${st.wavePeriodSec}s)</strong></div>
@@ -696,7 +696,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
     // G. EVACUATION ROUTES
     if (activeLayers.evacuationRoutes) {
       routes.forEach((route) => {
-        const routeColor = route.status === 'CLEAR' ? '#10b981' : route.status === 'CAUTION' ? '#f59e0b' : '#ef4444';
+        const routeColor = route.status === 'CLEAR' ? 'currentColor' : route.status === 'CAUTION' ? 'currentColor' : 'currentColor';
 
         const polyline = L.polyline(route.waypoints, {
           color: routeColor,
@@ -724,7 +724,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const pctOccupied = Math.round((shelter.occupancy / shelter.capacity) * 100);
         const shelterIcon = L.divIcon({
           className: 'shelter-marker-icon',
-          html: `<div style="background:#0284c7;color:#fff;border:2px solid #fff;font-size:12px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.6);">
+          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:12px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.6);">
             🏕️
           </div>`,
           iconSize: [32, 32],
@@ -733,9 +733,9 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([shelter.location.lat, shelter.location.lng], { icon: shelterIcon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:200px;">
-            <h4 style="margin:0 0 4px 0;font-weight:bold;color:#0369a1;">${shelter.name}</h4>
-            <p style="margin:0 0 3px 0;font-size:11px;color:#475569;">${shelter.location.address}</p>
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:200px;">
+            <h4 style="margin:0 0 4px 0;font-weight:bold;color:currentColor;">${shelter.name}</h4>
+            <p style="margin:0 0 3px 0;font-size:11px;color:currentColor;">${shelter.location.address}</p>
             <p style="margin:0 0 2px 0;">Occupancy: <strong>${shelter.occupancy} / ${shelter.capacity} (${pctOccupied}%)</strong></p>
             <p style="margin:0;font-size:11px;">Status: <strong>${shelter.status}</strong></p>
           </div>
@@ -754,7 +754,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       hospitals.forEach((hosp) => {
         const icon = L.divIcon({
           className: 'hospital-marker-icon',
-          html: `<div style="background:#dc2626;color:#fff;border:2px solid #fff;font-size:12px;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.6);">
+          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:12px;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.6);">
             🏥
           </div>`,
           iconSize: [30, 30],
@@ -763,8 +763,8 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([hosp.location.lat, hosp.location.lng], { icon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:190px;">
-            <h4 style="margin:0 0 4px 0;font-weight:bold;color:#b91c1c;">${hosp.name}</h4>
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:190px;">
+            <h4 style="margin:0 0 4px 0;font-weight:bold;color:currentColor;">${hosp.name}</h4>
             <p style="margin:0 0 2px 0;">Available Emergency Beds: <strong>${hosp.availableBeds} / ${hosp.emergencyCapacity}</strong></p>
             <p style="margin:0;font-size:11px;">Emergency Contact: <strong>${hosp.contactPhone}</strong></p>
           </div>
@@ -779,7 +779,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const depthEmoji = rep.depthCategory === 'OVERHEAD' ? '🚨' : rep.depthCategory === 'WAIST' ? '⚠️' : '🌊';
         const icon = L.divIcon({
           className: 'report-marker-icon',
-          html: `<div style="background:#d97706;color:#fff;border:2px solid #fff;font-size:11px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.5);">
+          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:11px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.5);">
             ${depthEmoji}
           </div>`,
           iconSize: [28, 28],
@@ -788,10 +788,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([rep.location.lat, rep.location.lng], { icon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:210px;">
-            <span style="font-weight:bold;color:#d97706;">Citizen Field Report</span>
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:210px;">
+            <span style="font-weight:bold;color:currentColor;">Citizen Field Report</span>
             <p style="margin:2px 0;">Depth: <strong>${rep.waterDepthM}m (${rep.depthCategory})</strong></p>
-            <p style="margin:0 0 2px 0;font-size:11px;color:#334155;">"${rep.description}"</p>
+            <p style="margin:0 0 2px 0;font-size:11px;color:currentColor;">"${rep.description}"</p>
           </div>
         `);
         groups.citizenReports.addLayer(marker);
@@ -801,10 +801,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
     // K. DEVICES
     if (activeLayers.devices) {
       devices.forEach((dev) => {
-        const dotColor = dev.batteryStatus === 'GREEN' ? '#22c55e' : dev.batteryStatus === 'YELLOW' ? '#eab308' : '#ef4444';
+        const dotColor = dev.batteryStatus === 'GREEN' ? 'currentColor' : dev.batteryStatus === 'YELLOW' ? 'currentColor' : 'currentColor';
         const icon = L.divIcon({
           className: 'device-dot-icon',
-          html: `<div style="background:${dotColor};width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;box-shadow:0 0 6px ${dotColor};"></div>`,
+          html: `<div style="background:${dotColor};width:10px;height:10px;border-radius:50%;border:1.5px solid currentColor;box-shadow:0 0 6px ${dotColor};"></div>`,
           iconSize: [10, 10],
           iconAnchor: [5, 5],
         });
@@ -823,10 +823,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
           className: 'drone-marker-icon',
           html: `<div style="position:relative;width:34px;height:34px;display:flex;align-items:center;justify-content:center;">
             <div style="position:absolute;inset:0;border-radius:50%;background:${isOnline ? 'rgba(56,189,248,0.35)' : 'rgba(148,163,184,0.2)'};animation:${isOnline ? 'ping 2s cubic-bezier(0,0,0.2,1) infinite' : 'none'};"></div>
-            <div style="width:30px;height:30px;border-radius:50%;background:#0f172a;border:2px solid #38bdf8;box-shadow:0 0 10px rgba(56,189,248,0.7);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;">
+            <div style="width:30px;height:30px;border-radius:50%;background:currentColor;border:2px solid currentColor;box-shadow:0 0 10px rgba(56,189,248,0.7);display:flex;align-items:center;justify-content:center;font-size:14px;color:currentColor;">
               🚁
             </div>
-            <div style="position:absolute;bottom:-4px;right:-4px;background:#10b981;width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;"></div>
+            <div style="position:absolute;bottom:-4px;right:-4px;background:currentColor;width:10px;height:10px;border-radius:50%;border:1.5px solid currentColor;"></div>
           </div>`,
           iconSize: [34, 34],
           iconAnchor: [17, 17],
@@ -834,20 +834,20 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const marker = L.marker([drone.lat, drone.lng], { icon: droneIcon });
         marker.bindPopup(`
-          <div style="color:#0f172a;font-family:sans-serif;font-size:12px;min-width:220px;">
+          <div style="color:currentColor;font-family:sans-serif;font-size:12px;min-width:220px;">
             <div style="display:flex;align-items:center;justify-content:between;margin-bottom:4px;">
-              <strong style="color:#0284c7;font-size:13px;">${drone.callsign}</strong>
-              <span style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;font-size:9px;padding:1px 4px;border-radius:4px;font-weight:bold;margin-left:auto;">${drone.status}</span>
+              <strong style="color:currentColor;font-size:13px;">${drone.callsign}</strong>
+              <span style="background:currentColor;color:currentColor;border:1px solid currentColor;font-size:9px;padding:1px 4px;border-radius:4px;font-weight:bold;margin-left:auto;">${drone.status}</span>
             </div>
-            <p style="margin:0 0 3px 0;font-size:11px;color:#475569;">${drone.locationName}</p>
-            <div style="background:#f8fafc;padding:5px;border-radius:6px;border:1px solid #e2e8f0;margin:4px 0;font-size:11px;">
+            <p style="margin:0 0 3px 0;font-size:11px;color:currentColor;">${drone.locationName}</p>
+            <div style="background:currentColor;padding:5px;border-radius:6px;border:1px solid currentColor;margin:4px 0;font-size:11px;">
               <div>Altitude: <strong>${drone.altitudeM} m (AGL)</strong></div>
-              <div>Water Depth Measured: <strong style="color:#0891b2;">${drone.waterDepthMeasuredM} m</strong></div>
+              <div>Water Depth Measured: <strong style="color:currentColor;">${drone.waterDepthMeasuredM} m</strong></div>
               <div>Battery: <strong>${drone.batteryPercent}%</strong> | Speed: <strong>${drone.speedKmh} km/h</strong></div>
             </div>
             <button
               onclick="window.dispatchEvent(new CustomEvent('pehra:open-drone-recon', { detail: { droneId: '${drone.id}' } }))"
-              style="width:100%;margin-top:6px;background:#2563eb;color:#fff;border:none;padding:5px 8px;border-radius:6px;font-size:11px;font-weight:bold;cursor:pointer;"
+              style="width:100%;margin-top:6px;background:currentColor;color:currentColor;border:none;padding:5px 8px;border-radius:6px;font-size:11px;font-weight:bold;cursor:pointer;"
             >
               Open Live Aerial Flood Recon →
             </button>
