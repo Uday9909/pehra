@@ -57,10 +57,10 @@ export const ROLES_CONFIG: Record<string, RoleDetail> = {
     clearanceLevel: 'Resident Access (Tier 0)',
     clearanceTier: 0,
     colorScheme: {
-      bg: 'bg-emerald-50',
-      border: 'border-emerald-200',
-      text: 'text-emerald-800',
-      badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      bg: 'bg-pehra-panel',
+      border: 'border-pehra-border-subtle',
+      text: 'text-pehra-text',
+      badgeBg: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
       accent: 'emerald',
     },
     loginMethod: {
@@ -123,10 +123,10 @@ export const ROLES_CONFIG: Record<string, RoleDetail> = {
     clearanceLevel: 'Field Tactical Operations (Tier 1)',
     clearanceTier: 1,
     colorScheme: {
-      bg: 'bg-blue-50',
-      border: 'border-blue-200',
-      text: 'text-blue-800',
-      badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
+      bg: 'bg-pehra-panel',
+      border: 'border-pehra-border-subtle',
+      text: 'text-pehra-text',
+      badgeBg: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
       accent: 'blue',
     },
     loginMethod: {
@@ -188,10 +188,10 @@ export const ROLES_CONFIG: Record<string, RoleDetail> = {
     clearanceLevel: 'Municipal Command (Tier 2)',
     clearanceTier: 2,
     colorScheme: {
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      text: 'text-amber-800',
-      badgeBg: 'bg-amber-50 text-amber-700 border-amber-200',
+      bg: 'bg-pehra-panel',
+      border: 'border-pehra-border-subtle',
+      text: 'text-pehra-text',
+      badgeBg: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
       accent: 'amber',
     },
     loginMethod: {
@@ -250,10 +250,10 @@ export const ROLES_CONFIG: Record<string, RoleDetail> = {
     clearanceLevel: 'Apex State Crisis Command (Tier 2)',
     clearanceTier: 2,
     colorScheme: {
-      bg: 'bg-rose-50',
-      border: 'border-rose-200',
-      text: 'text-rose-800',
-      badgeBg: 'bg-rose-50 text-rose-700 border-rose-200',
+      bg: 'bg-pehra-panel',
+      border: 'border-pehra-border-subtle',
+      text: 'text-pehra-text',
+      badgeBg: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
       accent: 'rose',
     },
     loginMethod: {

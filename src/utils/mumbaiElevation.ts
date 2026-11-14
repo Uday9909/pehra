@@ -299,7 +299,7 @@ export const MUMBAI_CONTOUR_ISOLINES: ContourIsoline[] = [
   // 5m Sea Inundation Critical Isoline around Mithi Basin / Kurla / Sion
   {
     elevationM: 5,
-    color: '#06b6d4',
+    color: 'currentColor',
     weight: 2,
     label: '5m Flood Critical Contour',
     points: [
@@ -319,7 +319,7 @@ export const MUMBAI_CONTOUR_ISOLINES: ContourIsoline[] = [
   // 15m Foothills Contour
   {
     elevationM: 15,
-    color: '#10b981',
+    color: 'currentColor',
     weight: 2,
     label: '15m Upland Margin',
     points: [
@@ -338,7 +338,7 @@ export const MUMBAI_CONTOUR_ISOLINES: ContourIsoline[] = [
   // 50m Powai / Malabar Ridge Contour
   {
     elevationM: 50,
-    color: '#eab308',
+    color: 'currentColor',
     weight: 2.5,
     label: '50m Escarpment Contour',
     points: [
@@ -354,7 +354,7 @@ export const MUMBAI_CONTOUR_ISOLINES: ContourIsoline[] = [
   // 150m Salsette Mountain Core (SGNP)
   {
     elevationM: 150,
-    color: '#f97316',
+    color: 'currentColor',
     weight: 2.5,
     label: '150m Montane Ridge',
     points: [
@@ -371,7 +371,7 @@ export const MUMBAI_CONTOUR_ISOLINES: ContourIsoline[] = [
   // 300m Kanheri Peak Apex
   {
     elevationM: 300,
-    color: '#ef4444',
+    color: 'currentColor',
     weight: 3,
     label: '300m Kanheri Apex',
     points: [
@@ -385,7 +385,7 @@ export const MUMBAI_CONTOUR_ISOLINES: ContourIsoline[] = [
   // Trombay Hill 100m Contour
   {
     elevationM: 100,
-    color: '#a855f7',
+    color: 'currentColor',
     weight: 2.5,
     label: '100m Trombay Hill',
     points: [

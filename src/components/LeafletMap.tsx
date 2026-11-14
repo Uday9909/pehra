@@ -233,7 +233,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const probeIcon = L.divIcon({
           className: 'probe-marker-icon',
-          html: `<div style="background:currentColor;color:currentColor;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(2,132,199,0.8);font-size:14px;font-weight:bold;">
+          html: `<div style="background:currentColor;color:currentColor;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px currentColor;font-size:14px;font-weight:bold;">
             📍
           </div>`,
           iconSize: [30, 30],
@@ -503,10 +503,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
 
         const icon = L.divIcon({
           className: 'topo-landmark-icon',
-          html: `<div style="background:${badgeColor};color:currentColor;font-size:11px;font-weight:bold;padding:2px 6px;border-radius:12px;border:1.5px solid currentColor;box-shadow:0 2px 6px rgba(0,0,0,0.5);display:flex;align-items:center;gap:3px;white-space:nowrap;">
+          html: `<div style="background:${badgeColor};color:currentColor;font-size:11px;font-weight:bold;padding:2px 6px;border-radius:12px;border:1.5px solid currentColor;box-shadow:0 2px 6px currentColor;display:flex;align-items:center;gap:3px;white-space:nowrap;">
             <span>${iconEmoji}</span>
             <span>${lm.name.split(' ')[0]}</span>
-            <span style="background:rgba(0,0,0,0.3);padding:1px 4px;border-radius:8px;font-size:9px;font-family:monospace;">${lm.elevationM}m</span>
+            <span style="background:currentColor;padding:1px 4px;border-radius:8px;font-size:9px;font-family:monospace;">${lm.elevationM}m</span>
           </div>`,
           iconSize: [110, 24],
           iconAnchor: [55, 12],
@@ -588,7 +588,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const trendArrow = st.pressureTrend === 'RISING' ? '▲' : st.pressureTrend === 'FALLING' ? '▼' : '●';
         const pressureIcon = L.divIcon({
           className: 'air-pressure-wind-icon',
-          html: `<div style="background:rgba(30,58,138,0.94);color:currentColor;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:8px;border:1.5px solid currentColor;box-shadow:0 2px 8px rgba(37,99,235,0.45);display:flex;align-items:center;gap:5px;white-space:nowrap;">
+          html: `<div style="background:currentColor;color:currentColor;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:8px;border:1.5px solid currentColor;box-shadow:0 2px 8px currentColor;display:flex;align-items:center;gap:5px;white-space:nowrap;">
             <span style="display:inline-block;transform:rotate(${(st.windDirectionDeg + 180) % 360}deg);font-size:12px;color:currentColor;">➤</span>
             <span>${st.seaLevelPressureHpa} hPa ${trendArrow}</span>
             <span style="color:currentColor;">| ${st.windSpeedKmh} km/h ${st.windCardinal} (${st.windDirectionDeg}°)</span>
@@ -628,7 +628,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       liveTelemetry.stations.forEach((st) => {
         const icon = L.divIcon({
           className: 'weather-gauge-icon',
-          html: `<div style="background:rgba(14, 165, 233, 0.95);color:currentColor;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:6px;border:1px solid currentColor;box-shadow:0 2px 6px rgba(14,165,233,0.45);display:flex;align-items:center;gap:4px;white-space:nowrap;">
+          html: `<div style="background:currentColor;color:currentColor;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:6px;border:1px solid currentColor;box-shadow:0 2px 6px currentColor;display:flex;align-items:center;gap:4px;white-space:nowrap;">
             <span>🌧️ ${st.precipitationMm} mm | RH ${st.humidityPercent}%</span>
           </div>`,
           iconSize: [115, 22],
@@ -655,10 +655,10 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
     if (activeLayers.waterLevels && liveTelemetry?.stations) {
       liveTelemetry.stations.forEach((st) => {
         const isElevated = st.waterLevelM >= st.warningWaterLevelM;
-        const badgeBg = isElevated ? 'rgba(220, 38, 38, 0.95)' : 'rgba(13, 148, 136, 0.95)';
+        const badgeBg = isElevated ? 'currentColor' : 'currentColor';
         const icon = L.divIcon({
           className: 'water-gauge-icon',
-          html: `<div style="background:${badgeBg};color:currentColor;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:6px;border:1.5px solid currentColor;box-shadow:0 2px 8px rgba(13,148,136,0.45);display:flex;align-items:center;gap:4px;white-space:nowrap;">
+          html: `<div style="background:${badgeBg};color:currentColor;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:6px;border:1.5px solid currentColor;box-shadow:0 2px 8px currentColor;display:flex;align-items:center;gap:4px;white-space:nowrap;">
             <span>🌊 ${st.waterLevelM}m</span>
             <span style="opacity:0.9;">| ${st.riverDischargeM3s} m³/s</span>
           </div>`,
@@ -724,7 +724,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const pctOccupied = Math.round((shelter.occupancy / shelter.capacity) * 100);
         const shelterIcon = L.divIcon({
           className: 'shelter-marker-icon',
-          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:12px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.6);">
+          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:12px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px currentColor;">
             🏕️
           </div>`,
           iconSize: [32, 32],
@@ -754,7 +754,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
       hospitals.forEach((hosp) => {
         const icon = L.divIcon({
           className: 'hospital-marker-icon',
-          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:12px;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.6);">
+          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:12px;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px currentColor;">
             🏥
           </div>`,
           iconSize: [30, 30],
@@ -779,7 +779,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const depthEmoji = rep.depthCategory === 'OVERHEAD' ? '🚨' : rep.depthCategory === 'WAIST' ? '⚠️' : '🌊';
         const icon = L.divIcon({
           className: 'report-marker-icon',
-          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:11px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.5);">
+          html: `<div style="background:currentColor;color:currentColor;border:2px solid currentColor;font-size:11px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px currentColor;">
             ${depthEmoji}
           </div>`,
           iconSize: [28, 28],
@@ -822,8 +822,8 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({
         const droneIcon = L.divIcon({
           className: 'drone-marker-icon',
           html: `<div style="position:relative;width:34px;height:34px;display:flex;align-items:center;justify-content:center;">
-            <div style="position:absolute;inset:0;border-radius:50%;background:${isOnline ? 'rgba(56,189,248,0.35)' : 'rgba(148,163,184,0.2)'};animation:${isOnline ? 'ping 2s cubic-bezier(0,0,0.2,1) infinite' : 'none'};"></div>
-            <div style="width:30px;height:30px;border-radius:50%;background:currentColor;border:2px solid currentColor;box-shadow:0 0 10px rgba(56,189,248,0.7);display:flex;align-items:center;justify-content:center;font-size:14px;color:currentColor;">
+            <div style="position:absolute;inset:0;border-radius:50%;background:${isOnline ? 'currentColor' : 'currentColor'};animation:${isOnline ? 'ping 2s cubic-bezier(0,0,0.2,1) infinite' : 'none'};"></div>
+            <div style="width:30px;height:30px;border-radius:50%;background:currentColor;border:2px solid currentColor;box-shadow:0 0 10px currentColor;display:flex;align-items:center;justify-content:center;font-size:14px;color:currentColor;">
               🚁
             </div>
             <div style="position:absolute;bottom:-4px;right:-4px;background:currentColor;width:10px;height:10px;border-radius:50%;border:1.5px solid currentColor;"></div>

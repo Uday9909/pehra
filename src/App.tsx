@@ -491,7 +491,7 @@ export default function App() {
 
           <div className="flex items-center gap-4 text-[11px]">
             <span>
-              MCGM Disaster Cell: <strong className="text-rose-600 font-semibold">1916</strong>
+              MCGM Disaster Cell: <strong className="text-pehra-severity-critical font-semibold">1916</strong>
             </span>
             <span>
               Police: <strong className="text-pehra-text font-semibold">112</strong>
