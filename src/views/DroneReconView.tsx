@@ -128,20 +128,20 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Top Banner & Drone Fleet Selector */}
-      <div className="rounded-2xl border border-[#E5EAF0] bg-white p-4 sm:p-5 shadow-xs">
+      <div className="rounded-none border border-pehra-border-subtle bg-white p-4 sm:p-5 shadow-none">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-200 shrink-0">
+            <span className="flex h-10 w-10 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle shrink-0">
               <Plane className="h-5 w-5" />
             </span>
             <div>
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-mono font-semibold text-blue-700 border border-blue-200">
+                <span className="rounded-none bg-pehra-panel px-2.5 py-0.5 text-pehra-text font-mono font-semibold text-pehra-text border border-pehra-border-subtle">
                   UAV AERIAL RECONNAISSANCE GRID
                 </span>
-                <span className="text-xs text-slate-500 font-medium">MCGM & NDRF Tactical Fleet</span>
+                <span className="text-xs text-pehra-text font-medium">MCGM & NDRF Tactical Fleet</span>
               </div>
-              <h1 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight mt-0.5">
+              <h1 className="text-lg sm:text-xl font-bold text-pehra-text tracking-tight mt-0.5">
                 Live Drone Flood Inundation & Reconnaissance Hub
               </h1>
             </div>
@@ -161,22 +161,22 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                     setSelectedHazard(null);
                   }}
                   id={`drone-tab-${drone.id}`}
-                  className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all shrink-0 border ${
+                  className={`flex items-center gap-2.5 px-3 py-2 rounded-none text-xs font-medium transition-all shrink-0 border ${
                     isSelected
-                      ? 'bg-blue-50 text-blue-900 border-blue-300 shadow-xs'
-                      : 'bg-[#F8FAFC] text-slate-700 border-slate-200 hover:bg-slate-100'
+                      ? 'bg-pehra-panel text-pehra-text border-pehra-border-subtle shadow-none'
+                      : 'bg-pehra-panel text-pehra-text border-pehra-border-subtle hover:bg-pehra-panel'
                   }`}
                 >
                   <span
-                    className={`h-2 w-2 rounded-full ${
-                      isOnline ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'
+                    className={`h-2 w-2 rounded-none ${
+                      isOnline ? 'bg-pehra-panel ' : 'bg-pehra-panel'
                     }`}
                   />
                   <div className="text-left">
                     <div className="font-bold leading-none">{drone.callsign.split(' ')[0]}</div>
-                    <div className="text-[10px] text-slate-500 truncate max-w-[90px]">{drone.locationName.split('—')[0]}</div>
+                    <div className="text-pehra-text text-pehra-text truncate max-w-[90px]">{drone.locationName.split('—')[0]}</div>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400 ml-1">{drone.batteryPercent}%</span>
+                  <span className="text-pehra-text font-mono text-pehra-text ml-1">{drone.batteryPercent}%</span>
                 </button>
               );
             })}
@@ -186,12 +186,12 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
       {/* Snapshot Alert Toast */}
       {snapshotSuccessToast && (
-        <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-3 text-xs text-emerald-800 flex items-center justify-between shadow-xs animate-in fade-in">
+        <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-3 text-xs text-pehra-text flex items-center justify-between shadow-none animate-in fade-in">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+            <CheckCircle2 className="h-4 w-4 text-pehra-text" />
             <span className="font-semibold">{snapshotSuccessToast}</span>
           </div>
-          <span className="text-[10px] text-emerald-600">Saved to Mission Recon Gallery</span>
+          <span className="text-pehra-text text-pehra-text">Saved to Mission Recon Gallery</span>
         </div>
       )}
 
@@ -200,7 +200,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
         {/* Left: Aerial Place Rendering Canvas & HUD (8 cols) */}
         <div className="lg:col-span-8 flex flex-col space-y-2">
           {/* Visual Canvas Container */}
-          <div className="relative w-full aspect-16/10 sm:aspect-16/9 rounded-2xl bg-slate-950 overflow-hidden border border-slate-800 shadow-lg select-none">
+          <div className="relative w-full aspect-16/10 sm:aspect-16/9 rounded-none bg-pehra-panel overflow-hidden border border-pehra-border-subtle shadow-none select-none">
             {/* 1. Live Rendered Place / Flood Scene Simulation */}
             <div
               className="absolute inset-0 transition-transform duration-200"
@@ -222,12 +222,12 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                       fill="none"
                       stroke={
                         activeMode === 'THERMAL_FLIR'
-                          ? '#312e81'
+                          ? 'currentColor'
                           : activeMode === 'FLOOD_MASK'
-                          ? '#06b6d4'
+                          ? 'currentColor'
                           : activeMode === 'NIGHT_VISION'
-                          ? '#15803d'
-                          : '#0284c7'
+                          ? 'currentColor'
+                          : 'currentColor'
                       }
                       strokeWidth="1.5"
                       opacity="0.6"
@@ -236,21 +236,21 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
                   {/* Thermal Color Gradients */}
                   <linearGradient id="thermalRiverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#1e1b4b" />
-                    <stop offset="50%" stopColor="#312e81" />
-                    <stop offset="100%" stopColor="#172554" />
+                    <stop offset="0%" stopColor="currentColor" />
+                    <stop offset="50%" stopColor="currentColor" />
+                    <stop offset="100%" stopColor="currentColor" />
                   </linearGradient>
 
                   <linearGradient id="floodMaskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#0891b2" stopOpacity="0.85" />
-                    <stop offset="50%" stopColor="#06b6d4" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.85" />
+                    <stop offset="0%" stopColor="currentColor" stopOpacity="0.85" />
+                    <stop offset="50%" stopColor="currentColor" stopOpacity="0.75" />
+                    <stop offset="100%" stopColor="currentColor" stopOpacity="0.85" />
                   </linearGradient>
 
                   <linearGradient id="rgbWaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#334155" />
-                    <stop offset="40%" stopColor="#475569" />
-                    <stop offset="100%" stopColor="#1e293b" />
+                    <stop offset="0%" stopColor="currentColor" />
+                    <stop offset="40%" stopColor="currentColor" />
+                    <stop offset="100%" stopColor="currentColor" />
                   </linearGradient>
                 </defs>
 
@@ -260,23 +260,23 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                   height="650"
                   fill={
                     activeMode === 'THERMAL_FLIR'
-                      ? '#4c0519'
+                      ? 'currentColor'
                       : activeMode === 'NIGHT_VISION'
-                      ? '#052e16'
-                      : '#1e293b'
+                      ? 'currentColor'
+                      : 'currentColor'
                   }
                 />
 
                 {/* Urban Road Grid */}
                 <path
                   d="M0 280 L1000 280 M0 360 L1000 360 M400 0 L400 650 M650 0 L650 650"
-                  stroke={activeMode === 'THERMAL_FLIR' ? '#831843' : activeMode === 'NIGHT_VISION' ? '#14532d' : '#334155'}
+                  stroke={activeMode === 'THERMAL_FLIR' ? 'currentColor' : activeMode === 'NIGHT_VISION' ? 'currentColor' : 'currentColor'}
                   strokeWidth="45"
                   fill="none"
                 />
 
                 {/* Residential Blocks / Buildings */}
-                <g fill={activeMode === 'THERMAL_FLIR' ? '#ea580c' : activeMode === 'NIGHT_VISION' ? '#22c55e' : '#475569'} opacity="0.9">
+                <g fill={activeMode === 'THERMAL_FLIR' ? 'currentColor' : activeMode === 'NIGHT_VISION' ? 'currentColor' : 'currentColor'} opacity="0.9">
                   {/* Block A */}
                   <rect x="60" y="60" width="130" height="90" rx="4" />
                   <rect x="220" y="60" width="140" height="90" rx="4" />
@@ -287,7 +287,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                   <rect x="440" y="170" width="170" height="80" rx="4" />
 
                   {/* Block C (Trapped Rooftop location) */}
-                  <rect x="360" y="240" width="90" height="70" rx="4" fill={activeMode === 'THERMAL_FLIR' ? '#fed7aa' : '#cbd5e1'} />
+                  <rect x="360" y="240" width="90" height="70" rx="4" fill={activeMode === 'THERMAL_FLIR' ? 'currentColor' : 'currentColor'} />
 
                   {/* Block D */}
                   <rect x="710" y="80" width="230" height="150" rx="4" />
@@ -301,7 +301,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Railway Tracks / Bridge S-Curve */}
                 <path
                   d="M100 0 Q300 200, 500 320 T950 480"
-                  stroke={activeMode === 'THERMAL_FLIR' ? '#9a3412' : '#64748b'}
+                  stroke={activeMode === 'THERMAL_FLIR' ? 'currentColor' : 'currentColor'}
                   strokeWidth="12"
                   strokeDasharray="4 6"
                   fill="none"
@@ -316,7 +316,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                       : activeMode === 'FLOOD_MASK'
                       ? 'url(#floodMaskGrad)'
                       : activeMode === 'NIGHT_VISION'
-                      ? '#166534'
+                      ? 'currentColor'
                       : 'url(#rgbWaterGrad)'
                   }
                 />
@@ -329,12 +329,12 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                   ry="90"
                   fill={
                     activeMode === 'FLOOD_MASK'
-                      ? '#22d3ee'
+                      ? 'currentColor'
                       : activeMode === 'THERMAL_FLIR'
-                      ? '#1e1b4b'
+                      ? 'currentColor'
                       : activeMode === 'NIGHT_VISION'
-                      ? '#15803d'
-                      : '#38bdf8'
+                      ? 'currentColor'
+                      : 'currentColor'
                   }
                   opacity="0.8"
                 />
@@ -344,13 +344,13 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
                 {/* Depth Measurement Contours (In Flood Mask Mode) */}
                 {activeMode === 'FLOOD_MASK' && (
-                  <g stroke="#ffffff" strokeWidth="1" strokeDasharray="3 3" opacity="0.7">
+                  <g stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.7">
                     <ellipse cx="400" cy="320" rx="130" ry="70" fill="none" />
-                    <text x="390" y="325" fill="#fff" fontSize="11" fontFamily="monospace" fontWeight="bold">
+                    <text x="390" y="325" fill="currentColor" fontSize="11" fontFamily="monospace" fontWeight="bold">
                       1.45m
                     </text>
                     <ellipse cx="400" cy="320" rx="70" ry="35" fill="none" strokeWidth="1.5" />
-                    <text x="390" y="300" fill="#fff" fontSize="10" fontFamily="monospace">
+                    <text x="390" y="300" fill="currentColor" fontSize="10" fontFamily="monospace">
                       1.8m (DEEP)
                     </text>
                   </g>
@@ -359,10 +359,10 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Hotspot Markers for Human Body Heat (Thermal FLIR Mode) */}
                 {activeMode === 'THERMAL_FLIR' && (
                   <g>
-                    <circle cx="395" cy="270" r="8" fill="#ffffff" filter="blur(1px)" />
-                    <circle cx="410" cy="265" r="7" fill="#ffffff" filter="blur(1px)" />
-                    <circle cx="425" cy="272" r="7" fill="#ffffff" filter="blur(1px)" />
-                    <text x="380" y="250" fill="#fed7aa" fontSize="12" fontWeight="bold" fontFamily="monospace">
+                    <circle cx="395" cy="270" r="8" fill="currentColor" filter="blur(1px)" />
+                    <circle cx="410" cy="265" r="7" fill="currentColor" filter="blur(1px)" />
+                    <circle cx="425" cy="272" r="7" fill="currentColor" filter="blur(1px)" />
+                    <text x="380" y="250" fill="currentColor" fontSize="12" fontWeight="bold" fontFamily="monospace">
                       36.8°C [3 PERSONS]
                     </text>
                   </g>
@@ -384,21 +384,21 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                       width: `${hz.coords.width}%`,
                       height: `${hz.coords.height}%`,
                     }}
-                    className={`absolute rounded-lg border-2 cursor-pointer transition-all duration-150 flex flex-col justify-between p-1.5 ${
+                    className={`absolute rounded-none border-2 cursor-pointer transition-all duration-150 flex flex-col justify-between p-1.5 ${
                       isSelected
-                        ? 'border-rose-400 bg-rose-500/25 ring-2 ring-rose-400'
-                        : 'border-amber-400 bg-amber-500/15 hover:border-amber-300 hover:bg-amber-500/25'
+                        ? 'border-pehra-border-subtle bg-pehra-panel ring-2 ring-pehra-focus'
+                        : 'border-pehra-border-subtle bg-pehra-panel hover:border-pehra-border-subtle hover:bg-pehra-panel'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold font-mono px-1.5 py-0.5 rounded bg-black/80 text-white flex items-center gap-1">
-                        <AlertTriangle className="h-2.5 w-2.5 text-amber-400" />
+                      <span className="text-pehra-text font-bold font-mono px-1.5 py-0.5 rounded bg-black/80 text-white flex items-center gap-1">
+                        <AlertTriangle className="h-2.5 w-2.5 text-pehra-text" />
                         {hz.type} ({(hz.confidence * 100).toFixed(0)}%)
                       </span>
-                      <span className="h-2 w-2 rounded-full bg-rose-500 animate-ping" />
+                      <span className="h-2 w-2 rounded-none bg-pehra-panel " />
                     </div>
 
-                    <div className="text-[9px] font-semibold text-white bg-black/75 px-1 py-0.5 rounded truncate">
+                    <div className="text-pehra-text font-semibold text-white bg-black/75 px-1 py-0.5 rounded truncate">
                       {hz.label}
                     </div>
                   </div>
@@ -409,23 +409,23 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
             {/* 3. Drone Flight HUD Overlays */}
             <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-3 sm:p-4 text-white font-mono">
               {/* Top HUD: Status Bar */}
-              <div className="flex items-center justify-between text-xs bg-black/50 backdrop-blur-xs p-2 rounded-xl border border-white/10">
+              <div className="flex items-center justify-between text-xs bg-black/50 -xs p-2 rounded-none border border-white/10">
                 <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="h-2.5 w-2.5 rounded-none bg-pehra-panel " />
                   <span className="font-bold text-white tracking-wider">{activeDrone.callsign}</span>
                   <span className="hidden sm:inline text-white/60">• {activeDrone.model.split('(')[0]}</span>
                 </div>
 
-                <div className="flex items-center gap-3 text-[11px]">
-                  <span className="text-emerald-400 font-bold flex items-center gap-1">
+                <div className="flex items-center gap-3 text-pehra-text">
+                  <span className="text-pehra-text font-bold flex items-center gap-1">
                     <Wifi className="h-3 w-3" />
                     {activeDrone.signalStrengthDbm} dBm (5G Mesh)
                   </span>
                   <span className="flex items-center gap-1 font-bold">
-                    <Battery className="h-3.5 w-3.5 text-emerald-400" />
+                    <Battery className="h-3.5 w-3.5 text-pehra-text" />
                     {activeDrone.batteryPercent}%
                   </span>
-                  <span className="bg-rose-600/90 text-white font-bold px-2 py-0.5 rounded text-[10px] animate-pulse">
+                  <span className="bg-pehra-panel text-white font-bold px-2 py-0.5 rounded text-pehra-text ">
                     LIVE
                   </span>
                 </div>
@@ -434,39 +434,39 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
               {/* Center Crosshair & Flight Reticle */}
               <div className="relative flex-1 flex items-center justify-center">
                 {/* Crosshair lines */}
-                <div className="w-16 h-16 border border-white/40 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-cyan-400" />
+                <div className="w-16 h-16 border border-white/40 rounded-none flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-none bg-pehra-panel" />
                 </div>
                 <div className="absolute w-28 h-px bg-white/30" />
                 <div className="absolute h-28 w-px bg-white/30" />
 
                 {/* Pitch Ladder Indicators */}
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-1 text-[10px] text-white/70">
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-1 text-pehra-text text-white/70">
                   <span>+20°</span>
                   <span>+10°</span>
-                  <span className="text-cyan-400 font-bold">-- 0° [HORIZON] --</span>
+                  <span className="text-pehra-text font-bold">-- 0° [HORIZON] --</span>
                   <span>-10°</span>
                   <span>-20°</span>
-                  <span className="text-amber-400 font-bold">-60° [NADIR TILT]</span>
+                  <span className="text-pehra-text font-bold">-60° [NADIR TILT]</span>
                 </div>
 
                 {/* Left: Altitude & Speed Ladder */}
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 space-y-2 text-[11px] text-white/80">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 space-y-2 text-pehra-text text-white/80">
                   <div className="bg-black/60 px-2 py-1 rounded border border-white/10">
-                    <div className="text-[9px] text-white/60">ALTITUDE</div>
-                    <div className="text-sm font-bold text-cyan-400">{activeDrone.altitudeM} m AGL</div>
+                    <div className="text-pehra-text text-white/60">ALTITUDE</div>
+                    <div className="text-sm font-bold text-pehra-text">{activeDrone.altitudeM} m AGL</div>
                   </div>
                   <div className="bg-black/60 px-2 py-1 rounded border border-white/10">
-                    <div className="text-[9px] text-white/60">GROUND SPEED</div>
-                    <div className="text-sm font-bold text-emerald-400">{activeDrone.speedKmh} km/h</div>
+                    <div className="text-pehra-text text-white/60">GROUND SPEED</div>
+                    <div className="text-sm font-bold text-pehra-text">{activeDrone.speedKmh} km/h</div>
                   </div>
                 </div>
               </div>
 
               {/* Bottom HUD: Coordinates & Water Inundation Readout */}
-              <div className="flex flex-wrap items-center justify-between gap-2 text-xs bg-black/60 backdrop-blur-xs p-2 rounded-xl border border-white/10">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs bg-black/60 -xs p-2 rounded-none border border-white/10">
                 <div className="flex items-center gap-3">
-                  <span className="text-cyan-300">
+                  <span className="text-pehra-text">
                     GPS: {activeDrone.lat.toFixed(4)}°N, {activeDrone.lng.toFixed(4)}°E
                   </span>
                   <span className="hidden sm:inline text-white/50">|</span>
@@ -476,11 +476,11 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5 text-cyan-400 font-bold">
+                  <div className="flex items-center gap-1.5 text-pehra-text font-bold">
                     <span>WATER DEPTH:</span>
-                    <span className="text-sm text-yellow-300">{activeDrone.waterDepthMeasuredM} m</span>
+                    <span className="text-sm text-pehra-text">{activeDrone.waterDepthMeasuredM} m</span>
                   </div>
-                  <div className="text-white/70 text-[11px]">
+                  <div className="text-white/70 text-pehra-text">
                     FLOOD AREA: <strong className="text-white">{activeDrone.floodCoverageKm2} km²</strong>
                   </div>
                 </div>
@@ -489,16 +489,16 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
           </div>
 
           {/* Vision Modes & Quick Snapshot Control Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#E5EAF0] bg-white p-2.5 shadow-xs">
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-none border border-pehra-border-subtle bg-white p-2.5 shadow-none">
             {/* Vision Mode Filters */}
             <div className="flex items-center gap-1 text-xs">
-              <span className="text-[11px] font-bold text-slate-500 mr-1 hidden sm:inline">Camera Mode:</span>
+              <span className="text-pehra-text font-bold text-pehra-text mr-1 hidden sm:inline">Camera Mode:</span>
               <button
                 onClick={() => setActiveMode('FLOOD_MASK')}
-                className={`px-2.5 py-1.5 rounded-lg font-medium transition-colors ${
+                className={`px-2.5 py-1.5 rounded-none font-medium transition-colors ${
                   activeMode === 'FLOOD_MASK'
-                    ? 'bg-cyan-600 text-white font-bold shadow-xs'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-pehra-panel text-white font-bold shadow-none'
+                    : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
                 }`}
               >
                 🌊 Flood Mask CV
@@ -506,10 +506,10 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
               <button
                 onClick={() => setActiveMode('THERMAL_FLIR')}
-                className={`px-2.5 py-1.5 rounded-lg font-medium transition-colors ${
+                className={`px-2.5 py-1.5 rounded-none font-medium transition-colors ${
                   activeMode === 'THERMAL_FLIR'
-                    ? 'bg-indigo-700 text-white font-bold shadow-xs'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-pehra-panel text-white font-bold shadow-none'
+                    : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
                 }`}
               >
                 🔥 Thermal FLIR
@@ -517,10 +517,10 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
               <button
                 onClick={() => setActiveMode('RGB_4K')}
-                className={`px-2.5 py-1.5 rounded-lg font-medium transition-colors ${
+                className={`px-2.5 py-1.5 rounded-none font-medium transition-colors ${
                   activeMode === 'RGB_4K'
-                    ? 'bg-blue-600 text-white font-bold shadow-xs'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-pehra-panel text-white font-bold shadow-none'
+                    : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
                 }`}
               >
                 📷 Optical 4K
@@ -528,10 +528,10 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
               <button
                 onClick={() => setActiveMode('NIGHT_VISION')}
-                className={`px-2.5 py-1.5 rounded-lg font-medium transition-colors ${
+                className={`px-2.5 py-1.5 rounded-none font-medium transition-colors ${
                   activeMode === 'NIGHT_VISION'
-                    ? 'bg-emerald-700 text-white font-bold shadow-xs'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-pehra-panel text-white font-bold shadow-none'
+                    : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
                 }`}
               >
                 🌙 Night NVG
@@ -542,7 +542,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={handleResetGimbal}
-                className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-medium"
+                className="px-2.5 py-1.5 rounded-none border border-pehra-border-subtle text-pehra-text hover:bg-pehra-panel text-xs font-medium"
                 title="Reset camera pan & tilt"
               >
                 Center Gimbal
@@ -551,7 +551,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
               <button
                 onClick={handleSnapPhoto}
                 id="snap-recon-photo-btn"
-                className="flex items-center gap-1.5 rounded-xl bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-blue-700 active:scale-95 transition-all"
+                className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-1.5 text-xs font-bold text-white shadow-none hover:bg-pehra-panel active:scale-95 transition-all"
               >
                 <Camera className="h-3.5 w-3.5" />
                 <span>Snap Live Recon Photo</span>
@@ -564,37 +564,37 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
         <div className="lg:col-span-4 flex flex-col space-y-4">
           {/* A. Selected Hazard Inspector Drawer (if user clicked a bounding box) */}
           {selectedHazard ? (
-            <div className="rounded-2xl border border-rose-200 bg-rose-50/70 p-4 shadow-xs space-y-3">
+            <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-4 shadow-none space-y-3">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-600 text-white font-bold text-xs">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-none bg-pehra-panel text-white font-bold text-xs">
                     !
                   </span>
                   <div>
-                    <span className="text-[10px] font-mono font-bold uppercase text-rose-700 tracking-wider">
+                    <span className="text-pehra-text font-mono font-bold uppercase text-pehra-text tracking-wider">
                       TARGET DETECTED ({selectedHazard.type})
                     </span>
-                    <h3 className="text-sm font-bold text-slate-900 leading-snug">{selectedHazard.label}</h3>
+                    <h3 className="text-sm font-bold text-pehra-text leading-snug">{selectedHazard.label}</h3>
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedHazard(null)}
-                  className="text-slate-400 hover:text-slate-700 text-xs font-bold"
+                  className="text-pehra-text hover:text-pehra-text text-xs font-bold"
                 >
                   ✕
                 </button>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="bg-white p-2 rounded-xl border border-rose-100">
-                  <span className="text-[10px] text-slate-400 block font-medium">GPS PIN</span>
-                  <strong className="text-slate-800 font-mono text-[11px]">
+                <div className="bg-white p-2 rounded-none border border-pehra-border-subtle">
+                  <span className="text-pehra-text text-pehra-text block font-medium">GPS PIN</span>
+                  <strong className="text-pehra-text font-mono text-pehra-text">
                     {selectedHazard.lat.toFixed(4)}°N, {selectedHazard.lng.toFixed(4)}°E
                   </strong>
                 </div>
-                <div className="bg-white p-2 rounded-xl border border-rose-100">
-                  <span className="text-[10px] text-slate-400 block font-medium">ESTIMATED DEPTH</span>
-                  <strong className="text-rose-600 font-mono">{activeDrone.waterDepthMeasuredM} m</strong>
+                <div className="bg-white p-2 rounded-none border border-pehra-border-subtle">
+                  <span className="text-pehra-text text-pehra-text block font-medium">ESTIMATED DEPTH</span>
+                  <strong className="text-pehra-text font-mono">{activeDrone.waterDepthMeasuredM} m</strong>
                 </div>
               </div>
 
@@ -607,7 +607,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                     onNavigate('responder-portal');
                   }
                 }}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 text-xs font-bold shadow-xs transition-colors"
+                className="w-full flex items-center justify-center gap-2 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white px-3 py-2 text-xs font-bold shadow-none transition-colors"
               >
                 <LifeBuoy className="h-4 w-4" />
                 <span>{selectedHazard.actionText}</span>
@@ -615,59 +615,59 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
             </div>
           ) : (
             /* Active Drone Telemetry Stats Card */
-            <div className="rounded-2xl border border-[#E5EAF0] bg-white p-4 shadow-xs space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <div className="rounded-none border border-pehra-border-subtle bg-white p-4 shadow-none space-y-3">
+              <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-2.5">
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-slate-400 font-semibold">Active Unit Telemetry</span>
-                  <h3 className="text-sm font-bold text-slate-900">{activeDrone.locationName}</h3>
+                  <span className="text-pehra-text font-mono uppercase text-pehra-text font-semibold">Active Unit Telemetry</span>
+                  <h3 className="text-sm font-bold text-pehra-text">{activeDrone.locationName}</h3>
                 </div>
-                <span className="rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold">
+                <span className="rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle px-2 py-0.5 text-pehra-text font-bold">
                   {activeDrone.status}
                 </span>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 text-xs">
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <span className="text-[10px] text-slate-500 block">Flight Altitude</span>
-                  <strong className="text-slate-900 font-mono text-sm">{activeDrone.altitudeM} m</strong>
+                <div className="bg-pehra-panel p-2.5 rounded-none border border-pehra-border-subtle">
+                  <span className="text-pehra-text text-pehra-text block">Flight Altitude</span>
+                  <strong className="text-pehra-text font-mono text-sm">{activeDrone.altitudeM} m</strong>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <span className="text-[10px] text-slate-500 block">Airspeed</span>
-                  <strong className="text-slate-900 font-mono text-sm">{activeDrone.speedKmh} km/h</strong>
+                <div className="bg-pehra-panel p-2.5 rounded-none border border-pehra-border-subtle">
+                  <span className="text-pehra-text text-pehra-text block">Airspeed</span>
+                  <strong className="text-pehra-text font-mono text-sm">{activeDrone.speedKmh} km/h</strong>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <span className="text-[10px] text-slate-500 block">Flood Surface Area</span>
-                  <strong className="text-cyan-700 font-mono text-sm">{activeDrone.floodCoverageKm2} km²</strong>
+                <div className="bg-pehra-panel p-2.5 rounded-none border border-pehra-border-subtle">
+                  <span className="text-pehra-text text-pehra-text block">Flood Surface Area</span>
+                  <strong className="text-pehra-text font-mono text-sm">{activeDrone.floodCoverageKm2} km²</strong>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <span className="text-[10px] text-slate-500 block">Water Column Depth</span>
-                  <strong className="text-amber-700 font-mono text-sm">{activeDrone.waterDepthMeasuredM} m</strong>
+                <div className="bg-pehra-panel p-2.5 rounded-none border border-pehra-border-subtle">
+                  <span className="text-pehra-text text-pehra-text block">Water Column Depth</span>
+                  <strong className="text-pehra-text font-mono text-sm">{activeDrone.waterDepthMeasuredM} m</strong>
                 </div>
               </div>
 
-              <div className="text-[11px] text-slate-500 pt-1">
-                Pilot Station: <strong className="text-slate-700">{activeDrone.pilotStation}</strong>
+              <div className="text-pehra-text text-pehra-text pt-1">
+                Pilot Station: <strong className="text-pehra-text">{activeDrone.pilotStation}</strong>
               </div>
             </div>
           )}
 
           {/* B. Camera PTZ Gimbal & Zoom Controls */}
-          <div className="rounded-2xl border border-[#E5EAF0] bg-white p-4 shadow-xs space-y-3">
+          <div className="rounded-none border border-pehra-border-subtle bg-white p-4 shadow-none space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                <Crosshair className="h-4 w-4 text-blue-600" />
+              <span className="text-xs font-bold text-pehra-text flex items-center gap-1.5">
+                <Crosshair className="h-4 w-4 text-pehra-text" />
                 Gimbal Pan / Tilt / Zoom
               </span>
-              <span className="text-[10px] font-mono text-slate-500">Zoom: {zoomLevel.toFixed(1)}x</span>
+              <span className="text-pehra-text font-mono text-pehra-text">Zoom: {zoomLevel.toFixed(1)}x</span>
             </div>
 
             {/* Virtual Joystick / D-Pad */}
             <div className="flex items-center justify-center py-2">
-              <div className="relative w-32 h-32 rounded-full border-2 border-slate-200 bg-slate-50 flex items-center justify-center shadow-inner">
+              <div className="relative w-32 h-32 rounded-none border-2 border-pehra-border-subtle bg-pehra-panel flex items-center justify-center shadow-none">
                 {/* Up */}
                 <button
                   onClick={() => handlePan(0, 15)}
-                  className="absolute top-1 left-1/2 -translate-x-1/2 p-2 rounded-full hover:bg-blue-100 text-slate-600 active:scale-90 transition-all"
+                  className="absolute top-1 left-1/2 -translate-x-1/2 p-2 rounded-none hover:bg-pehra-panel text-pehra-text active:scale-90 transition-all"
                   title="Tilt Up"
                 >
                   <ChevronUp className="h-4 w-4" />
@@ -675,7 +675,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Down */}
                 <button
                   onClick={() => handlePan(0, -15)}
-                  className="absolute bottom-1 left-1/2 -translate-x-1/2 p-2 rounded-full hover:bg-blue-100 text-slate-600 active:scale-90 transition-all"
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 p-2 rounded-none hover:bg-pehra-panel text-pehra-text active:scale-90 transition-all"
                   title="Tilt Down"
                 >
                   <ChevronDown className="h-4 w-4" />
@@ -683,7 +683,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Left */}
                 <button
                   onClick={() => handlePan(15, 0)}
-                  className="absolute left-1 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-blue-100 text-slate-600 active:scale-90 transition-all rotate-[-90deg]"
+                  className="absolute left-1 top-1/2 -translate-y-1/2 p-2 rounded-none hover:bg-pehra-panel text-pehra-text active:scale-90 transition-all rotate-[-90deg]"
                   title="Pan Left"
                 >
                   <ChevronUp className="h-4 w-4" />
@@ -691,7 +691,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Right */}
                 <button
                   onClick={() => handlePan(-15, 0)}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-blue-100 text-slate-600 active:scale-90 transition-all rotate-[90deg]"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 p-2 rounded-none hover:bg-pehra-panel text-pehra-text active:scale-90 transition-all rotate-[90deg]"
                   title="Pan Right"
                 >
                   <ChevronUp className="h-4 w-4" />
@@ -699,7 +699,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Center Hub */}
                 <button
                   onClick={handleResetGimbal}
-                  className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shadow-xs hover:bg-blue-700"
+                  className="w-8 h-8 rounded-none bg-pehra-panel text-white flex items-center justify-center text-pehra-text font-bold shadow-none hover:bg-pehra-panel"
                 >
                   RST
                 </button>
@@ -708,7 +708,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
             {/* Zoom Slider */}
             <div className="flex items-center gap-2 text-xs">
-              <ZoomOut className="h-3.5 w-3.5 text-slate-400" />
+              <ZoomOut className="h-3.5 w-3.5 text-pehra-text" />
               <input
                 type="range"
                 min="1.0"
@@ -716,9 +716,9 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 step="0.2"
                 value={zoomLevel}
                 onChange={(e) => setZoomLevel(parseFloat(e.target.value))}
-                className="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
+                className="w-full accent-blue-600 h-1.5 bg-pehra-panel rounded-none cursor-pointer"
               />
-              <ZoomIn className="h-3.5 w-3.5 text-slate-400" />
+              <ZoomIn className="h-3.5 w-3.5 text-pehra-text" />
             </div>
           </div>
 
@@ -726,9 +726,9 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
           {onNavigate && (
             <button
               onClick={() => onNavigate('map')}
-              className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 px-3 py-2.5 text-xs font-semibold shadow-xs transition-colors"
+              className="w-full flex items-center justify-center gap-2 rounded-none border border-pehra-border-subtle bg-white hover:bg-pehra-panel text-pehra-text px-3 py-2.5 text-xs font-semibold shadow-none transition-colors"
             >
-              <MapPin className="h-4 w-4 text-emerald-600" />
+              <MapPin className="h-4 w-4 text-pehra-text" />
               <span>View Drone Patrol on GIS Map</span>
             </button>
           )}
@@ -736,18 +736,18 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
       </div>
 
       {/* Mission Aerial Recon Photo Gallery */}
-      <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 shadow-xs space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+      <div className="rounded-none border border-pehra-border-subtle bg-white p-5 shadow-none space-y-4">
+        <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
           <div className="flex items-center gap-2">
-            <Camera className="h-4.5 w-4.5 text-slate-700" />
+            <Camera className="h-4.5 w-4.5 text-pehra-text" />
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Mission Aerial Recon Photo Gallery</h3>
-              <p className="text-[11px] text-slate-500">
+              <h3 className="text-sm font-bold text-pehra-text">Mission Aerial Recon Photo Gallery</h3>
+              <p className="text-pehra-text text-pehra-text">
                 High-resolution orthomosaic frames captured during current flood monitoring sorties
               </p>
             </div>
           </div>
-          <span className="text-xs font-mono font-bold text-slate-400">
+          <span className="text-xs font-mono font-bold text-pehra-text">
             {snapshots.length} Captured Frames
           </span>
         </div>
@@ -757,30 +757,30 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
             <div
               key={snap.id}
               onClick={() => setInspectingSnapshot(snap)}
-              className="group rounded-xl border border-slate-200 bg-slate-50 p-3 hover:bg-white hover:border-blue-300 hover:shadow-xs transition-all cursor-pointer space-y-2.5"
+              className="group rounded-none border border-pehra-border-subtle bg-pehra-panel p-3 hover:bg-white hover:border-pehra-border-subtle hover:shadow-none transition-all cursor-pointer space-y-2.5"
             >
-              <div className="flex items-center justify-between text-[11px]">
-                <span className="font-bold text-slate-800">{snap.callsign}</span>
-                <span className="text-[10px] font-mono text-slate-400">{snap.timestamp}</span>
+              <div className="flex items-center justify-between text-pehra-text">
+                <span className="font-bold text-pehra-text">{snap.callsign}</span>
+                <span className="text-pehra-text font-mono text-pehra-text">{snap.timestamp}</span>
               </div>
 
               {/* Thumbnail Representation */}
-              <div className="relative aspect-16/9 rounded-lg bg-slate-900 overflow-hidden flex items-center justify-center text-white">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+              <div className="relative aspect-16/9 rounded-none bg-pehra-panel overflow-hidden flex items-center justify-center text-white">
+                <div className="absolute inset-0 bg-pehra-panel from-black/80 via-transparent to-transparent z-10" />
                 <span className="text-xl">🌊</span>
-                <span className="absolute bottom-2 left-2 z-20 text-[10px] font-mono text-cyan-300 font-bold">
+                <span className="absolute bottom-2 left-2 z-20 text-pehra-text font-mono text-pehra-text font-bold">
                   {snap.mode} • Depth: {snap.waterDepthM}m
                 </span>
               </div>
 
               <div>
-                <h4 className="text-xs font-semibold text-slate-900 truncate">{snap.locationName}</h4>
-                <p className="text-[11px] text-slate-500 line-clamp-2 mt-0.5 leading-snug">{snap.notes}</p>
+                <h4 className="text-xs font-semibold text-pehra-text truncate">{snap.locationName}</h4>
+                <p className="text-pehra-text text-pehra-text line-clamp-2 mt-0.5 leading-snug">{snap.notes}</p>
               </div>
 
-              <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-200/60 font-mono">
+              <div className="flex items-center justify-between text-pehra-text text-pehra-text pt-1 border-t border-pehra-border-subtle font-mono">
                 <span>{snap.lat}°N, {snap.lng}°E</span>
-                <span className="text-blue-600 font-medium group-hover:underline">Inspect Details →</span>
+                <span className="text-pehra-text font-medium group-hover:underline">Inspect Details →</span>
               </div>
             </div>
           ))}
@@ -789,51 +789,51 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
       {/* Snapshot Detailed Modal Inspector */}
       {inspectingSnapshot && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="relative w-full max-w-xl rounded-2xl bg-white p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 -xs">
+          <div className="relative w-full max-w-xl rounded-none bg-white p-5 sm:p-6 shadow-none border border-pehra-border-subtle space-y-4">
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-[10px] font-mono font-bold text-blue-600 uppercase">
+                <span className="text-pehra-text font-mono font-bold text-pehra-text uppercase">
                   AERIAL RECON FRAME • {inspectingSnapshot.id}
                 </span>
-                <h3 className="text-base font-bold text-slate-900 mt-0.5">{inspectingSnapshot.locationName}</h3>
+                <h3 className="text-base font-bold text-pehra-text mt-0.5">{inspectingSnapshot.locationName}</h3>
               </div>
               <button
                 onClick={() => setInspectingSnapshot(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                className="p-1 rounded-none text-pehra-text hover:text-pehra-text hover:bg-pehra-panel"
               >
                 ✕
               </button>
             </div>
 
-            <div className="aspect-16/9 rounded-xl bg-slate-900 flex items-center justify-center text-white relative overflow-hidden">
+            <div className="aspect-16/9 rounded-none bg-pehra-panel flex items-center justify-center text-white relative overflow-hidden">
               <span className="text-3xl">🚁</span>
-              <div className="absolute bottom-3 left-3 bg-black/75 px-2.5 py-1 rounded text-xs font-mono text-cyan-300">
+              <div className="absolute bottom-3 left-3 bg-black/75 px-2.5 py-1 rounded text-xs font-mono text-pehra-text">
                 Mode: {inspectingSnapshot.mode} | Measured Water Depth: {inspectingSnapshot.waterDepthM} m
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="bg-slate-50 p-2.5 rounded-xl">
-                <span className="text-slate-400 text-[10px] block">Coordinates</span>
-                <strong className="text-slate-800 font-mono">
+              <div className="bg-pehra-panel p-2.5 rounded-none">
+                <span className="text-pehra-text text-pehra-text block">Coordinates</span>
+                <strong className="text-pehra-text font-mono">
                   {inspectingSnapshot.lat}°N, {inspectingSnapshot.lng}°E
                 </strong>
               </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl">
-                <span className="text-slate-400 text-[10px] block">Captured At</span>
-                <strong className="text-slate-800 font-mono">{inspectingSnapshot.timestamp}</strong>
+              <div className="bg-pehra-panel p-2.5 rounded-none">
+                <span className="text-pehra-text text-pehra-text block">Captured At</span>
+                <strong className="text-pehra-text font-mono">{inspectingSnapshot.timestamp}</strong>
               </div>
             </div>
 
-            <p className="text-xs text-slate-600 bg-blue-50/50 p-3 rounded-xl border border-blue-100">
+            <p className="text-xs text-pehra-text bg-pehra-panel p-3 rounded-none border border-pehra-border-subtle">
               {inspectingSnapshot.notes}
             </p>
 
             <div className="flex justify-end gap-2 pt-2">
               <button
                 onClick={() => setInspectingSnapshot(null)}
-                className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-100"
+                className="px-4 py-2 rounded-none border border-pehra-border-subtle text-xs font-semibold text-pehra-text hover:bg-pehra-panel"
               >
                 Close
               </button>
