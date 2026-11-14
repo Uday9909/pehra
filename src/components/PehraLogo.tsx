@@ -32,9 +32,9 @@ export const PehraLogo: React.FC<PehraLogoProps> = ({
           {/* Location pin outer contour with stylized wave curves at bottom */}
           <path
             d="M12 2C8.13401 2 5 5.13401 5 9C5 13.5 12 21 12 21C12 21 19 13.5 19 9C19 5.13401 15.866 2 12 2Z"
-            fill="currentColor"
+            fill="var(--pehra-text)"
             fillOpacity="0.2"
-            stroke="currentColor"
+            stroke="var(--pehra-text)"
             strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -42,22 +42,22 @@ export const PehraLogo: React.FC<PehraLogoProps> = ({
           {/* Wave ripple lines inside pin */}
           <path
             d="M8 12C9 10.8 11 10.8 12 12C13 13.2 15 13.2 16 12"
-            stroke="currentColor"
+            stroke="var(--pehra-text)"
             strokeWidth="1.6"
             strokeLinecap="round"
           />
           <path
             d="M9 14.5C10 13.8 11.5 13.8 12.5 14.5C13.5 15.2 15 15.2 16 14.5"
-            stroke="currentColor"
+            stroke="var(--pehra-text)"
             strokeWidth="1.4"
             strokeLinecap="round"
             strokeOpacity="0.8"
           />
           {/* Warning beacon signal dot at center top */}
-          <circle cx="12" cy="7" r="1.8" fill="currentColor" />
+          <circle cx="12" cy="7" r="1.8" fill="var(--pehra-text)" />
           <path
             d="M9.5 5C10.2 4.4 11.1 4 12 4C12.9 4 13.8 4.4 14.5 5"
-            stroke="currentColor"
+            stroke="var(--pehra-text)"
             strokeWidth="1.2"
             strokeLinecap="round"
             strokeOpacity="0.9"

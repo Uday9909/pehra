@@ -222,12 +222,12 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                       fill="none"
                       stroke={
                         activeMode === 'THERMAL_FLIR'
-                          ? 'currentColor'
+                          ? 'var(--pehra-data-predicted)'
                           : activeMode === 'FLOOD_MASK'
-                          ? 'currentColor'
+                          ? 'var(--pehra-data-live)'
                           : activeMode === 'NIGHT_VISION'
-                          ? 'currentColor'
-                          : 'currentColor'
+                          ? 'var(--pehra-data-simulated)'
+                          : 'var(--pehra-data-live)'
                       }
                       strokeWidth="1.5"
                       opacity="0.6"
@@ -236,21 +236,21 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
                   {/* Thermal Color Gradients */}
                   <linearGradient id="thermalRiverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="currentColor" />
-                    <stop offset="50%" stopColor="currentColor" />
-                    <stop offset="100%" stopColor="currentColor" />
+                    <stop offset="0%" stopColor="var(--pehra-severity-critical)" />
+                    <stop offset="50%" stopColor="var(--pehra-severity-warning)" />
+                    <stop offset="100%" stopColor="var(--pehra-severity-watch)" />
                   </linearGradient>
 
                   <linearGradient id="floodMaskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="currentColor" stopOpacity="0.85" />
-                    <stop offset="50%" stopColor="currentColor" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="currentColor" stopOpacity="0.85" />
+                    <stop offset="0%" stopColor="var(--pehra-data-predicted)" stopOpacity="0.85" />
+                    <stop offset="50%" stopColor="var(--pehra-severity-warning)" stopOpacity="0.75" />
+                    <stop offset="100%" stopColor="var(--pehra-severity-critical)" stopOpacity="0.85" />
                   </linearGradient>
 
                   <linearGradient id="rgbWaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="currentColor" />
-                    <stop offset="40%" stopColor="currentColor" />
-                    <stop offset="100%" stopColor="currentColor" />
+                    <stop offset="0%" stopColor="var(--pehra-data-live)" />
+                    <stop offset="40%" stopColor="var(--pehra-data-simulated)" />
+                    <stop offset="100%" stopColor="var(--pehra-data-predicted)" />
                   </linearGradient>
                 </defs>
 
@@ -260,23 +260,23 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                   height="650"
                   fill={
                     activeMode === 'THERMAL_FLIR'
-                      ? 'currentColor'
+                      ? 'var(--pehra-data-predicted)'
                       : activeMode === 'NIGHT_VISION'
-                      ? 'currentColor'
-                      : 'currentColor'
+                      ? 'var(--pehra-data-live)'
+                      : 'var(--pehra-data-simulated)'
                   }
                 />
 
                 {/* Urban Road Grid */}
                 <path
                   d="M0 280 L1000 280 M0 360 L1000 360 M400 0 L400 650 M650 0 L650 650"
-                  stroke={activeMode === 'THERMAL_FLIR' ? 'currentColor' : activeMode === 'NIGHT_VISION' ? 'currentColor' : 'currentColor'}
+                  stroke={activeMode === 'THERMAL_FLIR' ? 'var(--pehra-severity-critical)' : activeMode === 'NIGHT_VISION' ? 'var(--pehra-data-live)' : 'var(--pehra-text-2)'}
                   strokeWidth="45"
                   fill="none"
                 />
 
                 {/* Residential Blocks / Buildings */}
-                <g fill={activeMode === 'THERMAL_FLIR' ? 'currentColor' : activeMode === 'NIGHT_VISION' ? 'currentColor' : 'currentColor'} opacity="0.9">
+                <g fill={activeMode === 'THERMAL_FLIR' ? 'var(--pehra-severity-warning)' : activeMode === 'NIGHT_VISION' ? 'var(--pehra-data-simulated)' : 'var(--pehra-text-2)'} opacity="0.9">
                   {/* Block A */}
                   <rect x="60" y="60" width="130" height="90" rx="4" />
                   <rect x="220" y="60" width="140" height="90" rx="4" />
@@ -287,7 +287,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                   <rect x="440" y="170" width="170" height="80" rx="4" />
 
                   {/* Block C (Trapped Rooftop location) */}
-                  <rect x="360" y="240" width="90" height="70" rx="4" fill={activeMode === 'THERMAL_FLIR' ? 'currentColor' : 'currentColor'} />
+                  <rect x="360" y="240" width="90" height="70" rx="4" fill={activeMode === 'THERMAL_FLIR' ? 'var(--pehra-severity-critical)' : 'var(--pehra-data-live)'} />
 
                   {/* Block D */}
                   <rect x="710" y="80" width="230" height="150" rx="4" />
@@ -301,7 +301,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Railway Tracks / Bridge S-Curve */}
                 <path
                   d="M100 0 Q300 200, 500 320 T950 480"
-                  stroke={activeMode === 'THERMAL_FLIR' ? 'currentColor' : 'currentColor'}
+                  stroke={activeMode === 'THERMAL_FLIR' ? 'var(--pehra-severity-warning)' : 'var(--pehra-text-muted)'}
                   strokeWidth="12"
                   strokeDasharray="4 6"
                   fill="none"
@@ -316,7 +316,7 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                       : activeMode === 'FLOOD_MASK'
                       ? 'url(#floodMaskGrad)'
                       : activeMode === 'NIGHT_VISION'
-                      ? 'currentColor'
+                      ? 'var(--pehra-severity-critical)'
                       : 'url(#rgbWaterGrad)'
                   }
                 />
@@ -329,12 +329,12 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                   ry="90"
                   fill={
                     activeMode === 'FLOOD_MASK'
-                      ? 'currentColor'
+                      ? 'var(--pehra-data-predicted)'
                       : activeMode === 'THERMAL_FLIR'
-                      ? 'currentColor'
+                      ? 'var(--pehra-data-live)'
                       : activeMode === 'NIGHT_VISION'
-                      ? 'currentColor'
-                      : 'currentColor'
+                      ? 'var(--pehra-data-simulated)'
+                      : 'var(--pehra-text-2)'
                   }
                   opacity="0.8"
                 />
@@ -344,13 +344,13 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
 
                 {/* Depth Measurement Contours (In Flood Mask Mode) */}
                 {activeMode === 'FLOOD_MASK' && (
-                  <g stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.7">
+                  <g stroke="var(--pehra-severity-warning)" strokeWidth="1" strokeDasharray="3 3" opacity="0.7">
                     <ellipse cx="400" cy="320" rx="130" ry="70" fill="none" />
-                    <text x="390" y="325" fill="currentColor" fontSize="11" fontFamily="monospace" fontWeight="bold">
+                    <text x="390" y="325" fill="var(--pehra-text)" fontSize="11" fontFamily="monospace" fontWeight="bold">
                       1.45m
                     </text>
                     <ellipse cx="400" cy="320" rx="70" ry="35" fill="none" strokeWidth="1.5" />
-                    <text x="390" y="300" fill="currentColor" fontSize="10" fontFamily="monospace">
+                    <text x="390" y="300" fill="var(--pehra-text-2)" fontSize="10" fontFamily="monospace">
                       1.8m (DEEP)
                     </text>
                   </g>
@@ -359,10 +359,10 @@ export const DroneReconView: React.FC<DroneReconViewProps> = ({
                 {/* Hotspot Markers for Human Body Heat (Thermal FLIR Mode) */}
                 {activeMode === 'THERMAL_FLIR' && (
                   <g>
-                    <circle cx="395" cy="270" r="8" fill="currentColor" filter="blur(1px)" />
-                    <circle cx="410" cy="265" r="7" fill="currentColor" filter="blur(1px)" />
-                    <circle cx="425" cy="272" r="7" fill="currentColor" filter="blur(1px)" />
-                    <text x="380" y="250" fill="currentColor" fontSize="12" fontWeight="bold" fontFamily="monospace">
+                    <circle cx="395" cy="270" r="8" fill="var(--pehra-severity-critical)" filter="blur(1px)" />
+                    <circle cx="410" cy="265" r="7" fill="var(--pehra-severity-warning)" filter="blur(1px)" />
+                    <circle cx="425" cy="272" r="7" fill="var(--pehra-severity-critical)" filter="blur(1px)" />
+                    <text x="380" y="250" fill="var(--pehra-text)" fontSize="12" fontWeight="bold" fontFamily="monospace">
                       36.8°C [3 PERSONS]
                     </text>
                   </g>

@@ -185,10 +185,10 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {[
-                      { id: 'LOW', label: 'Minor Ponding', desc: 'Passable for cars', color: 'currentColor' },
-                      { id: 'MODERATE', label: 'Curb Overflow', desc: 'Slow vehicle traffic', color: 'currentColor' },
-                      { id: 'HIGH', label: 'Knee-Deep Water', desc: 'Subway blocked, pedestrians stuck', color: 'currentColor' },
-                      { id: 'CRITICAL', label: 'Severe Submersion', desc: 'Immediate rescue required', color: 'currentColor' },
+                      { id: 'LOW', label: 'Minor Ponding', desc: 'Passable for cars', color: 'var(--pehra-severity-advisory)' },
+                      { id: 'MODERATE', label: 'Curb Overflow', desc: 'Slow vehicle traffic', color: 'var(--pehra-severity-watch)' },
+                      { id: 'HIGH', label: 'Knee-Deep Water', desc: 'Subway blocked, pedestrians stuck', color: 'var(--pehra-severity-warning)' },
+                      { id: 'CRITICAL', label: 'Severe Submersion', desc: 'Immediate rescue required', color: 'var(--pehra-severity-critical)' },
                     ].map((item) => (
                       <button
                         key={item.id}
@@ -202,7 +202,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                       >
                         <div className="flex items-center gap-1.5">
                           <span
-                            className="h-2 w-2 rounded-none"
+                            className="h-2 w-2 rounded-full"
                             style={{ backgroundColor: item.color }}
                           />
                           <span className="text-xs font-semibold text-pehra-text">{item.label}</span>
