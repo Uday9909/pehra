@@ -43,7 +43,9 @@ import {
 import { Village, Incident, Alert, Shelter, Hospital, DataSource, FloodReport, Observation } from '../types/index.ts';
 import { Language, TRANSLATIONS } from '../utils/i18n.ts';
 import { useBatteryStatus } from '../hooks/useBatteryStatus.ts';
-import { DataBadge, EmptyState, Panel, PanelHeader, StatValue } from '../components/ui/index.tsx';
+import { Panel, PanelHeader } from '../components/ui/index.tsx';
+import { RiskSummarySection } from './dashboard/RiskSummarySection.tsx';
+import { TelemetrySection } from './dashboard/TelemetrySection.tsx';
 
 interface PehraModernDashboardProps {
   villages: Village[];
@@ -552,38 +554,9 @@ export const PehraModernDashboard: React.FC<PehraModernDashboardProps> = ({
         })}
       </div>
 
-      <Panel>
-        <PanelHeader title={t.situationTitle} badge={<DataBadge source="seeded-store" />} />
-        <div className="grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-4">
-          <StatValue label={t.currentRisk} value={villages[0]?.riskLevel || 'Not provided'} unit="risk level" asOf="seeded store" badge={<DataBadge source="seeded-store" />} />
-          <StatValue label={t.areasMonitored} value={villages.length} unit="villages" asOf="seeded store" badge={<DataBadge source="seeded-store" />} />
-          <StatValue label={t.activeIncidents} value={incidents.filter((incident) => incident.status === 'ACTIVE').length} unit="incidents" asOf="seeded store" badge={<DataBadge source="seeded-store" />} />
-          <StatValue label={t.populationAffected} value={villages.reduce((total, village) => total + village.exposurePopulation, 0).toLocaleString('en-IN')} unit="people exposed" asOf="seeded store" badge={<DataBadge source="seeded-store" />} />
-        </div>
-      </Panel>
+      <RiskSummarySection villages={villages} incidents={incidents} language={language} />
 
-      <Panel>
-        <PanelHeader title="Telemetry" badge={<DataBadge source="mumbai-flood-adapter" />} />
-        <div className="grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-4">
-          {observations.length > 0 ? observations.slice(0, 4).map((observation) => (
-            <StatValue
-              key={observation.id}
-              label={observation.location.name || observation.sourceType}
-              value={observation.value}
-              unit={observation.unit}
-              asOf={observation.observedAt}
-              badge={<DataBadge source="mumbai-flood-adapter" />}
-            />
-          )) : <EmptyState title="No telemetry returned" description="No seeded water-level observations are available." />}
-          <StatValue
-            label="Current rainfall, Kurla area"
-            value={openMeteo?.precipitationMm ?? 'Not provided'}
-            unit={openMeteo?.precipitationMm !== null && openMeteo?.precipitationMm !== undefined ? 'mm' : ''}
-            asOf={openMeteo?.observedAt || 'Not provided'}
-            badge={openMeteo?.precipitationMm !== null && openMeteo?.precipitationMm !== undefined ? <DataBadge source="open-meteo" freshnessSeconds={openMeteo.lastSuccessAt ? (Date.now() - Date.parse(openMeteo.lastSuccessAt)) / 1000 : undefined} staleAfterSeconds={900} /> : <DataBadge source="open-meteo" />}
-          />
-        </div>
-      </Panel>
+      <TelemetrySection observations={observations} openMeteo={openMeteo} />
 
       {/* 5. 2-COLUMN MAIN CONTENT & RIGHT PANELS */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
