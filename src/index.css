@@ -1,0 +1,312 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-pehra-bg: var(--pehra-bg);
+  --color-pehra-panel: var(--pehra-panel);
+  --color-pehra-raised: var(--pehra-raised);
+  --color-pehra-border: var(--pehra-border);
+  --color-pehra-border-subtle: var(--pehra-border-subtle);
+  --color-pehra-border-control: var(--pehra-border-control);
+  --color-pehra-border-strong: var(--pehra-border-strong);
+  --color-pehra-text: var(--pehra-text);
+  --color-pehra-text-2: var(--pehra-text-2);
+  --color-pehra-text-muted: var(--pehra-text-muted);
+  --color-pehra-focus: var(--pehra-focus);
+  --color-pehra-action: var(--pehra-action);
+  --color-pehra-severity-normal: var(--pehra-severity-normal);
+  --color-pehra-severity-advisory: var(--pehra-severity-advisory);
+  --color-pehra-severity-watch: var(--pehra-severity-watch);
+  --color-pehra-severity-warning: var(--pehra-severity-warning);
+  --color-pehra-severity-critical: var(--pehra-severity-critical);
+  --color-pehra-data-live: var(--pehra-data-live);
+  --color-pehra-data-simulated: var(--pehra-data-simulated);
+  --color-pehra-data-predicted: var(--pehra-data-predicted);
+  --color-pehra-data-cached: var(--pehra-data-cached);
+  --color-pehra-data-stale: var(--pehra-data-stale);
+  --color-pehra-data-confirmed: var(--pehra-data-confirmed);
+  --color-pehra-data-ai: var(--pehra-data-ai);
+  --font-sans: "IBM Plex Sans", "Noto Sans Devanagari", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-panel: 2px;
+  --radius-citizen: 8px;
+}
+
+:root,
+[data-theme="operator"] {
+  color-scheme: dark;
+  --pehra-bg: #0E1114;
+  --pehra-panel: #151A1F;
+  --pehra-raised: #1C2228;
+  --pehra-border-subtle: #2A323A;
+  --pehra-border-control: #64717D;
+  --pehra-border-strong: #7A8791;
+  --pehra-border: var(--pehra-border-subtle);
+  --pehra-text: #E6EAEE;
+  --pehra-text-2: #A3ADB7;
+  --pehra-text-muted: #8A949E;
+  --pehra-focus: #FFFFFF;
+  --pehra-action: #E6EAEE;
+  --pehra-action-text: #0E1114;
+  --pehra-severity-normal: #A3ADB7;
+  --pehra-severity-advisory: #69B3D8;
+  --pehra-severity-watch: #E8C34D;
+  --pehra-severity-warning: #F28A3A;
+  --pehra-severity-critical: #F05A60;
+  --pehra-data-live: #2FBF9B;
+  --pehra-data-simulated: #B48CF2;
+  --pehra-data-predicted: #4DA3FF;
+  --pehra-data-cached: #8A949E;
+  --pehra-data-stale: #D7A83D;
+  --pehra-data-confirmed: #F0F3F6;
+  --pehra-data-ai: #C38BDA;
+  --pehra-data-confirmed-text: #151A1F;
+}
+
+[data-theme="citizen"] {
+  color-scheme: light;
+  --pehra-bg: #F3EFE6;
+  --pehra-panel: #FBF9F4;
+  --pehra-raised: #FFFFFF;
+  --pehra-border-subtle: #D6D0C2;
+  --pehra-border-control: #8E8779;
+  --pehra-border-strong: #756E60;
+  --pehra-border: var(--pehra-border-subtle);
+  --pehra-text: #1B1F23;
+  --pehra-text-2: #4A525A;
+  --pehra-text-muted: #59636B;
+  --pehra-focus: #1D5F8F;
+  --pehra-action: #1F2A33;
+  --pehra-action-text: #FFFFFF;
+  /* Darkened light-theme severity colors are used for text and UI parts. */
+  --pehra-severity-normal: #59636B;
+  --pehra-severity-advisory: #286A91;
+  --pehra-severity-watch: #7A5A00;
+  --pehra-severity-warning: #A84A00;
+  --pehra-severity-critical: #B4232A;
+  --pehra-data-live: #087A63;
+  --pehra-data-simulated: #6949A0;
+  --pehra-data-predicted: #1C67A6;
+  --pehra-data-cached: #59636B;
+  --pehra-data-stale: #856100;
+  --pehra-data-confirmed: #E3E8EC;
+  --pehra-data-ai: #7A3F88;
+  --pehra-data-confirmed-text: #1B1F23;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--pehra-border);
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    margin: 0;
+    background: var(--pehra-bg);
+    color: var(--pehra-text);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--pehra-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* Foundation utilities used by later phases. */
+.pehra-panel {
+  background: var(--pehra-panel);
+border: 1px solid var(--pehra-border-subtle);
+  border-radius: var(--radius-panel);
+}
+
+.pehra-raised {
+  background: var(--pehra-raised);
+  border: 1px solid var(--pehra-border-subtle);
+  border-radius: var(--radius-panel);
+}
+
+.pehra-eyebrow {
+  color: var(--pehra-text-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.pehra-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.shell-control-button,
+.shell-icon-button {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--pehra-border-control);
+  background: var(--pehra-raised);
+  color: var(--pehra-text);
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.shell-icon-button {
+  width: 32px;
+  padding: 4px;
+}
+
+.shell-control-button:hover,
+.shell-icon-button:hover,
+.shell-nav-item:hover {
+  background: var(--pehra-raised);
+}
+
+.shell-control-button:focus-visible,
+.shell-icon-button:focus-visible,
+.shell-nav-item:focus-visible {
+  outline: 2px solid var(--pehra-focus);
+  outline-offset: 2px;
+}
+
+.shell-nav-item {
+  display: flex;
+  min-height: 36px;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  border-left: 2px solid transparent;
+  color: var(--pehra-text-2);
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.shell-nav-item-active {
+  border-left-color: var(--pehra-focus);
+  background: var(--pehra-raised);
+  color: var(--pehra-text);
+  font-weight: 600;
+}
+
+.custom-scrollbar {
+  scrollbar-color: var(--pehra-border-control) var(--pehra-bg);
+  scrollbar-width: thin;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--pehra-bg);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--pehra-border-control);
+}
+
+.pehra-skip-link {
+  position: fixed;
+  top: 4px;
+  left: 4px;
+  z-index: 100;
+  transform: translateY(-150%);
+  background: var(--pehra-action);
+  color: var(--pehra-action-text);
+  padding: 8px 12px;
+  border-radius: var(--radius-panel);
+}
+
+.pehra-skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Native scrollbars remain visible and usable in dense operator workspaces. */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pehra-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pehra-border-strong);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pehra-text-muted);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Map popup defaults are tokenized here until the map surfaces are redesigned. */
+.leaflet-popup-content-wrapper {
+  background: var(--pehra-panel) !important;
+  color: var(--pehra-text) !important;
+  border: 1px solid var(--pehra-border-strong) !important;
+  border-radius: var(--radius-panel) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--pehra-panel) !important;
+  border: 1px solid var(--pehra-border-strong) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root,
+  [data-theme="operator"] {
+    --pehra-border: #53606B;
+    --pehra-text-2: #C2CAD1;
+    --pehra-text-muted: #ADB7C0;
+  }
+
+  [data-theme="citizen"] {
+    --pehra-border: #8E8779;
+    --pehra-text-2: #30383F;
+    --pehra-text-muted: #3E474F;
+  }
+}
