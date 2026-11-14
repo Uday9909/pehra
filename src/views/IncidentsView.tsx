@@ -28,7 +28,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Active Flood Incidents & DEM Spread Engine</h1>
+          <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Active Flood Incidents & DEM Spread Engine</h1>
           <p className="text-xs text-pehra-text mt-1">
             Tracking multi-stage flood progression, cellular downhill propagation, and inter-agency dispatch timelines
           </p>
@@ -36,7 +36,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
 
         <button
           onClick={() => onNavigate('map')}
-          className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-1.5 text-xs font-bold text-pehra-text hover:bg-pehra-panel"
+          className="flex items-center gap-1.5 bg-pehra-action px-3.5 py-1.5 text-xs font-bold text-pehra-action-text hover:opacity-90"
         >
           <span>View on Map</span>
           <ArrowRight className="h-4 w-4" />
@@ -58,8 +58,8 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                 onClick={() => setSelectedIncidentId(inc.id)}
                 className={`cursor-pointer rounded-none border p-4 transition-all ${
                   isSelected
-                    ? 'border-pehra-border-subtle bg-pehra-panel shadow-none shadow-none'
-                    : 'border-pehra-border-subtle bg-pehra-panel hover:bg-pehra-panel'
+                    ? 'border-pehra-border-control bg-pehra-raised'
+                    : 'border-pehra-border-subtle bg-pehra-panel hover:border-pehra-border-control'
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
@@ -67,11 +67,11 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                     <span className="text-pehra-text font-mono font-semibold text-pehra-text uppercase">
                       {inc.incidentType}
                     </span>
-                    <h3 className="font-bold text-white text-sm mt-0.5">{inc.title}</h3>
+                    <h3 className="font-bold text-pehra-text text-sm mt-0.5">{inc.title}</h3>
                   </div>
                   <span
-                    className={`rounded px-1.5 py-0.5 text-pehra-text font-bold ${
-                      isCritical ? 'bg-pehra-panel text-white' : 'bg-pehra-panel text-white'
+                    className={`rounded px-1.5 py-0.5  font-bold ${
+                      isCritical ? 'bg-pehra-severity-critical text-pehra-bg' : inc.severity === 'HIGH' ? 'bg-pehra-severity-warning text-pehra-bg' : 'bg-pehra-severity-watch text-pehra-bg'
                     }`}
                   >
                     {inc.severity}
@@ -83,7 +83,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                     <Clock className="h-3 w-3" />
                     <span>{new Date(inc.startedAt).toLocaleTimeString()}</span>
                   </span>
-                  <span>Affected: <strong className="text-white">{inc.estimatedAffectedPeople.toLocaleString()}</strong></span>
+                  <span>Affected: <strong className="text-pehra-text">{inc.estimatedAffectedPeople.toLocaleString()}</strong></span>
                 </div>
               </div>
             );
@@ -99,12 +99,12 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="rounded bg-pehra-panel px-2 py-0.5 text-pehra-text font-bold text-white uppercase">
+                      <span className="border border-pehra-border-subtle bg-pehra-raised px-2 py-0.5 font-bold uppercase text-pehra-text-2">
                         {currentIncident.status}
                       </span>
                       <span className="text-xs text-pehra-text font-mono">ID: {currentIncident.id}</span>
                     </div>
-                    <h2 className="text-xl font-bold text-white mt-1">{currentIncident.title}</h2>
+                    <h2 className="text-xl font-bold text-pehra-text mt-1">{currentIncident.title}</h2>
                   </div>
 
                   <div className="text-right">
@@ -118,7 +118,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                   <span className="text-pehra-text font-semibold block mb-1">Assigned Operational Teams:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {currentIncident.assignedTeams.map((team, i) => (
-                      <span key={i} className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text">
+                      <span key={i} className="border border-pehra-border-subtle bg-pehra-raised px-2 py-0.5 text-pehra-text-2">
                         🛡️ {team}
                       </span>
                     ))}
@@ -130,7 +130,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Layers className="h-4 w-4 text-pehra-text" />
-                      <h3 className="font-bold text-white text-sm">Model B: Hydrodynamic DEM Flood Spread Propagation</h3>
+                      <h3 className="font-bold text-pehra-text text-sm">Model B: Hydrodynamic DEM Flood Spread Propagation</h3>
                     </div>
                     <span className="text-pehra-text font-mono text-pehra-text">Downhill Cell Expansion Matrix</span>
                   </div>
@@ -146,10 +146,10 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                           <th className="p-2.5">Verification Source</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-800/60">
+                      <tbody className="divide-y divide-pehra-border-subtle">
                         {currentIncident.spreadEvents.map((evt) => (
                           <tr key={evt.id} className="hover:bg-pehra-panel">
-                            <td className="p-2.5 font-medium text-white">
+                            <td className="p-2.5 font-medium text-pehra-text">
                               <div>{evt.cellName}</div>
                               <span className="text-pehra-text font-mono text-pehra-text">{evt.cellId}</span>
                             </td>
@@ -164,10 +164,10 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                             <td className="p-2.5 font-mono text-pehra-text">{(evt.confidence * 100).toFixed(0)}%</td>
                             <td className="p-2.5">
                               <span
-                                className={`rounded px-1.5 py-0.5 text-pehra-text font-mono font-bold ${
+                                className={`rounded px-1.5 py-0.5  font-mono font-bold ${
                                   evt.source === 'SENSOR'
-                                    ? 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle'
-                                    : 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle'
+                                    ? 'border border-pehra-data-live text-pehra-data-live'
+                                    : 'border border-pehra-data-predicted text-pehra-data-predicted'
                                 }`}
                               >
                                 {evt.source}
@@ -184,7 +184,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                 <div className="space-y-3 pt-2">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-pehra-text" />
-                    <h3 className="font-bold text-white text-sm">Chronological Event Timeline</h3>
+                    <h3 className="font-bold text-pehra-text text-sm">Chronological Event Timeline</h3>
                   </div>
 
                   <div className="relative border-l border-pehra-border-subtle pl-4 ml-2 space-y-4 text-xs">
@@ -194,7 +194,7 @@ export const IncidentsView: React.FC<IncidentsViewProps> = ({ incidents, onNavig
                         <div className="text-pehra-text font-mono text-pehra-text">
                           {new Date(item.timestamp).toLocaleTimeString()} • {item.source}
                         </div>
-                        <h4 className="font-bold text-white mt-0.5">{item.title}</h4>
+                        <h4 className="font-bold text-pehra-text mt-0.5">{item.title}</h4>
                         <p className="text-pehra-text mt-0.5">{item.description}</p>
                       </div>
                     ))}

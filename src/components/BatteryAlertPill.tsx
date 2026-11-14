@@ -148,7 +148,7 @@ export const BatteryAlertPill: React.FC<BatteryAlertPillProps> = ({
       {popoverOpen && (
         <div
           id="battery-alert-popover"
-          className="absolute right-0 top-full mt-2 w-80 rounded-none border border-pehra-border-subtle bg-white p-4 shadow-none z-50 animate-in fade-in zoom-in-95 duration-150 text-pehra-text"
+          className="absolute right-0 top-full mt-2 w-80 rounded-none border border-pehra-border-subtle bg-pehra-raised p-4 shadow-none z-50 animate-in fade-in zoom-in-95 duration-150 text-pehra-text"
         >
           {/* Header */}
           <div className="flex items-start justify-between border-b border-pehra-border-subtle pb-3">
@@ -177,7 +177,7 @@ export const BatteryAlertPill: React.FC<BatteryAlertPillProps> = ({
                     {level}%
                   </span>
                 </div>
-                <p className="text-pehra-text text-pehra-text">
+                <p className="text-pehra-text-2">
                   {isCharging
                     ? 'Connected to power source'
                     : isCriticalLevel
@@ -229,7 +229,7 @@ export const BatteryAlertPill: React.FC<BatteryAlertPillProps> = ({
               />
             </div>
 
-            <div className="flex items-center justify-between text-pehra-text text-pehra-text pt-0.5">
+            <div className="flex items-center justify-between text-pehra-text-2 pt-0.5">
               <span>Est. Runtime: ~{Math.round((level / 100) * 6.5 * 10) / 10} hrs</span>
               <span className="font-semibold text-pehra-text">
                 {isCharging ? '⚡ AC Charging' : 'Discharging'}
@@ -242,7 +242,7 @@ export const BatteryAlertPill: React.FC<BatteryAlertPillProps> = ({
             <div className="text-pehra-text font-bold uppercase tracking-wider text-pehra-text">
               Emergency Field Advisory
             </div>
-            <ul className="space-y-1 text-pehra-text text-pehra-text leading-snug">
+            <ul className="space-y-1 text-pehra-text-2 leading-snug">
               <li className="flex items-start gap-1.5">
                 <span className="text-pehra-text font-bold">•</span>
                 <span>Critical flood maps & safe shelters remain cached offline.</span>

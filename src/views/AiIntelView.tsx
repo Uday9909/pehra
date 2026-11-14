@@ -43,7 +43,7 @@ export const AiIntelView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white tracking-tight">Grounded Disaster Intelligence</h1>
+            <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Grounded Disaster Intelligence</h1>
             <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text font-mono text-pehra-text">
               GEMINI 3.8-FLASH + GOOGLE SEARCH GROUNDING
             </span>
@@ -70,13 +70,13 @@ export const AiIntelView: React.FC = () => {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Ask for grounded disaster intelligence or local advisory updates..."
-              className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel py-2.5 pl-10 pr-4 text-xs text-white placeholder:text-pehra-text-muted focus:outline-none focus:border-pehra-border-subtle"
+              className="w-full border border-pehra-border-control bg-pehra-raised py-2.5 pl-10 pr-4 text-xs text-pehra-text placeholder:text-pehra-text-muted focus:border-pehra-focus focus:outline-none"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center justify-center gap-2 rounded-none bg-pehra-panel px-5 py-2.5 text-xs font-bold text-pehra-text hover:bg-pehra-panel shadow-none transition-all"
+            className="flex items-center justify-center gap-2 bg-pehra-action px-5 py-2.5 text-xs font-bold text-pehra-action-text transition-opacity hover:opacity-90"
           >
             <Sparkles className="h-4 w-4" />
             <span>{loading ? 'Synthesizing...' : 'Query Intel'}</span>
@@ -93,7 +93,7 @@ export const AiIntelView: React.FC = () => {
                   setQuery(p);
                   handleFetchIntel(p);
                 }}
-                className="rounded-none border border-pehra-border-subtle bg-pehra-panel px-2.5 py-1.5 text-left text-pehra-text text-pehra-text hover:border-pehra-border-subtle hover:text-white transition-all"
+                className="rounded-none border border-pehra-border-subtle bg-pehra-panel px-2.5 py-1.5 text-left text-pehra-text-2 hover:border-pehra-border-subtle hover:text-pehra-text transition-all"
               >
                 {p}
               </button>
@@ -111,10 +111,10 @@ export const AiIntelView: React.FC = () => {
                 <span
                   className={`rounded px-2.5 py-0.5 text-xs font-bold uppercase ${
                     intel.alertLevel === 'RED'
-                      ? 'bg-pehra-panel text-white'
+                      ? 'bg-pehra-severity-critical text-pehra-bg'
                       : intel.alertLevel === 'ORANGE'
-                      ? 'bg-pehra-panel text-white'
-                      : 'bg-pehra-panel text-pehra-text'
+                      ? 'bg-pehra-severity-warning text-pehra-bg'
+                      : 'border border-pehra-border-subtle bg-pehra-raised text-pehra-text-2'
                   }`}
                 >
                   IMD ALERT LEVEL: {intel.alertLevel}
@@ -124,7 +124,7 @@ export const AiIntelView: React.FC = () => {
                   <span>Synthesized: {new Date(intel.timestamp).toLocaleTimeString()}</span>
                 </span>
               </div>
-              <h2 className="mt-2 text-xl font-bold text-white tracking-tight">Executive Situation Summary</h2>
+              <h2 className="mt-2 text-xl font-bold text-pehra-text tracking-tight">Executive Situation Summary</h2>
             </div>
 
             <div className="rounded-none bg-pehra-panel px-3 py-1.5 border border-pehra-border-subtle text-pehra-text font-mono text-pehra-text">
@@ -138,14 +138,14 @@ export const AiIntelView: React.FC = () => {
 
           {/* Actionable Advisories */}
           <div className="space-y-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-pehra-text flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-pehra-text" />
               <span>Verified Operational Advisories:</span>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {intel.actionableAdvisories.map((adv: string, i: number) => (
                 <div key={i} className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3 text-xs text-pehra-text flex items-start gap-2">
-                  <span className="h-4 w-4 rounded-none bg-pehra-panel border border-pehra-border-subtle flex items-center justify-center text-pehra-text font-bold text-pehra-text shrink-0 mt-0.5">
+                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center border border-pehra-border-control bg-pehra-raised font-mono font-bold text-pehra-text-2">
                     {i + 1}
                   </span>
                   <span>{adv}</span>

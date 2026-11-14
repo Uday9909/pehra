@@ -76,7 +76,7 @@ export const ReplayView: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Historical Incident Replay & Validation</h1>
+          <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Historical Incident Replay & Validation</h1>
           <p className="text-xs text-pehra-text mt-1">
             Reconstruct historic deluge timelines frame-by-frame to benchmark Model A/B early warning lead times
           </p>
@@ -90,7 +90,7 @@ export const ReplayView: React.FC = () => {
               setSelectedIncidentId(e.target.value);
               handleReset();
             }}
-            className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-xs font-semibold text-white focus:outline-none focus:border-pehra-border-subtle"
+            className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-xs font-semibold text-pehra-text focus:outline-none focus:border-pehra-border-subtle"
           >
             {incidents.map((inc) => (
               <option key={inc.id} value={inc.id}>
@@ -109,7 +109,7 @@ export const ReplayView: React.FC = () => {
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="flex h-10 w-10 items-center justify-center rounded-none bg-pehra-panel text-pehra-text hover:bg-pehra-panel shadow-none font-bold transition-all"
+                  className="flex h-10 w-10 items-center justify-center bg-pehra-action font-bold text-pehra-action-text transition-opacity hover:opacity-90"
                 >
                   {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 fill-current ml-0.5" />}
                 </button>
@@ -149,7 +149,7 @@ export const ReplayView: React.FC = () => {
                     key={s.label}
                     onClick={() => setPlaybackSpeed(s.ms)}
                     className={`rounded px-2.5 py-1 font-mono font-bold transition-all ${
-                      playbackSpeed === s.ms ? 'bg-pehra-panel text-pehra-text' : 'bg-pehra-panel text-pehra-text hover:text-white'
+                      playbackSpeed === s.ms ? 'bg-pehra-action text-pehra-action-text' : 'bg-pehra-raised text-pehra-text-2 hover:text-pehra-text'
                     }`}
                   >
                     {s.label}
@@ -169,7 +169,7 @@ export const ReplayView: React.FC = () => {
                   setIsPlaying(false);
                   setCurrentFrameIndex(parseInt(e.target.value));
                 }}
-                className="w-full accent-cyan-400"
+                className="w-full accent-pehra-action"
               />
               <div className="flex justify-between text-pehra-text font-mono text-pehra-text">
                 <span>Start: {new Date(frames[0].timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
@@ -188,8 +188,8 @@ export const ReplayView: React.FC = () => {
                 <span>Rainfall Intensity</span>
                 <Droplets className="h-4 w-4 text-pehra-text" />
               </div>
-              <div className="mt-2 text-2xl font-bold font-mono text-white">{currentFrame.rainfallMm} mm/hr</div>
-              <div className="mt-1 text-pehra-text text-pehra-text">Cumulative: {currentFrame.rainfallMm * 2} mm</div>
+              <div className="mt-2 text-2xl font-bold font-mono text-pehra-text">{currentFrame.rainfallMm} mm/hr</div>
+              <div className="mt-1 text-pehra-text-2">Cumulative: {currentFrame.rainfallMm * 2} mm</div>
             </div>
 
             <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-4">
@@ -198,7 +198,7 @@ export const ReplayView: React.FC = () => {
                 <Wind className="h-4 w-4 text-pehra-text" />
               </div>
               <div className="mt-2 text-2xl font-bold font-mono text-pehra-text">{currentFrame.tideLevelM} m</div>
-              <div className="mt-1 text-pehra-text text-pehra-text">
+              <div className="mt-1 text-pehra-text-2">
                 {currentFrame.tideLevelM > 4.2 ? '⚠️ High Tide Sluice Lock' : 'Normal Ebb'}
               </div>
             </div>
@@ -209,7 +209,7 @@ export const ReplayView: React.FC = () => {
                 <Activity className="h-4 w-4 text-pehra-text" />
               </div>
               <div className="mt-2 text-2xl font-bold font-mono text-pehra-text">{currentFrame.waterLevelKurlaM} m</div>
-              <div className="mt-1 text-pehra-text text-pehra-text">
+              <div className="mt-1 text-pehra-text-2">
                 {currentFrame.waterLevelKurlaM > 1.0 ? '🚨 Evacuation Required' : 'Minor street ponding'}
               </div>
             </div>
@@ -223,16 +223,16 @@ export const ReplayView: React.FC = () => {
                 <span
                   className={`rounded px-2 py-0.5 text-xs font-bold ${
                     currentFrame.activeAlertStage === 'CONFIRMED'
-                      ? 'bg-pehra-panel text-white'
+                      ? 'bg-pehra-severity-critical text-pehra-bg'
                       : currentFrame.activeAlertStage === 'WARNING'
-                      ? 'bg-pehra-panel text-pehra-text'
-                      : 'bg-pehra-panel text-white'
+                      ? 'bg-pehra-severity-warning text-pehra-bg'
+                      : 'bg-pehra-severity-watch text-pehra-bg'
                   }`}
                 >
                   STAGE {currentFrame.activeAlertStage}
                 </span>
               </div>
-              <div className="mt-1 text-pehra-text text-pehra-text">Lead Time: 2.1 hrs prior to breach</div>
+              <div className="mt-1 text-pehra-text-2">Lead Time: 2.1 hrs prior to breach</div>
             </div>
           </div>
 
@@ -248,11 +248,11 @@ export const ReplayView: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-2">
               <div className="rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle">
                 <span className="text-pehra-text block text-pehra-text">Predicted Peak Depth:</span>
-                <span className="font-mono font-bold text-white">2.40 m</span>
+                <span className="font-mono font-bold text-pehra-text">2.40 m</span>
               </div>
               <div className="rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle">
                 <span className="text-pehra-text block text-pehra-text">Actual Recorded Depth:</span>
-                <span className="font-mono font-bold text-white">2.45 m</span>
+                <span className="font-mono font-bold text-pehra-text">2.45 m</span>
               </div>
               <div className="rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle">
                 <span className="text-pehra-text block text-pehra-text">Model Error Margin:</span>

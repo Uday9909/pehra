@@ -86,7 +86,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Citizen Waterlogging Reports & Verification</h1>
+          <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Citizen Waterlogging Reports & Verification</h1>
           <p className="text-xs text-pehra-text mt-1">
             Crowdsourced on-ground field observations weighted and triangulated into Model A/B early warning engines
           </p>
@@ -99,7 +99,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
               key={status}
               onClick={() => setFilterStatus(status)}
               className={`rounded px-3 py-1 font-medium transition-all ${
-                filterStatus === status ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-white'
+                filterStatus === status ? 'bg-pehra-action font-bold text-pehra-action-text' : 'text-pehra-text-2 hover:bg-pehra-raised hover:text-pehra-text'
               }`}
             >
               {status}
@@ -113,7 +113,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
         <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-5 space-y-4">
           <div className="flex items-center gap-2 border-b border-pehra-border-subtle pb-3">
             <ClipboardList className="h-5 w-5 text-pehra-text" />
-            <h2 className="text-base font-bold text-white">Report Local Flooding</h2>
+            <h2 className="text-base font-bold text-pehra-text">Report Local Flooding</h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4 text-xs">
@@ -133,7 +133,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                     className={`rounded-none p-2 text-left border transition-all ${
                       depthCategory === item.id
                         ? 'bg-pehra-panel border-pehra-border-subtle text-pehra-text font-bold'
-                        : 'bg-pehra-panel border-pehra-border-subtle text-pehra-text hover:text-white'
+                        : 'bg-pehra-panel border-pehra-border-subtle text-pehra-text hover:text-pehra-text'
                     }`}
                   >
                     <div className="text-base mb-0.5">{item.icon}</div>
@@ -150,7 +150,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="e.g. Near Gandhi Market, Kings Circle, Sion"
-                className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-white focus:outline-none focus:border-pehra-border-subtle"
+                className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-pehra-text focus:outline-none focus:border-pehra-border-subtle"
                 required
               />
             </div>
@@ -162,7 +162,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe current road conditions, stranded vehicles, manhole overflows, or rising water rate..."
                 rows={3}
-                className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-white focus:outline-none focus:border-pehra-border-subtle"
+                className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-pehra-text focus:outline-none focus:border-pehra-border-subtle"
                 required
               />
             </div>
@@ -175,7 +175,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                   value={reporterName}
                   onChange={(e) => setReporterName(e.target.value)}
                   placeholder="Citizen / Volunteer"
-                  className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-white focus:outline-none focus:border-pehra-border-subtle"
+                  className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-pehra-text focus:outline-none focus:border-pehra-border-subtle"
                 />
               </div>
 
@@ -186,7 +186,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                   value={reporterPhone}
                   onChange={(e) => setReporterPhone(e.target.value)}
                   placeholder="+91 98..."
-                  className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-white focus:outline-none focus:border-pehra-border-subtle"
+                  className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel p-2 text-pehra-text focus:outline-none focus:border-pehra-border-subtle"
                 />
               </div>
             </div>
@@ -194,14 +194,14 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
             {/* Photo upload attachment mockup */}
             <div className="rounded-none border border-dashed border-pehra-border-subtle bg-pehra-panel p-3 text-center cursor-pointer hover:border-pehra-border-subtle">
               <Upload className="mx-auto h-5 w-5 text-pehra-text mb-1" />
-              <span className="text-pehra-text text-pehra-text block">Tap or drop photo of flood depth</span>
-              <span className="text-pehra-text text-pehra-text">(Geo-tagged EXIF will auto-validate location)</span>
+              <span className="text-pehra-text-2 block">Tap or drop photo of flood depth</span>
+              <span className="text-pehra-text-2">(Geo-tagged EXIF will auto-validate location)</span>
             </div>
 
             <button
               type="submit"
               disabled={submitting}
-              className="w-full flex items-center justify-center gap-2 rounded-none bg-pehra-panel py-2.5 font-bold text-pehra-text hover:bg-pehra-panel shadow-none transition-all"
+              className="flex w-full items-center justify-center gap-2 bg-pehra-action py-2.5 font-bold text-pehra-action-text transition-opacity hover:opacity-90"
             >
               <Send className="h-4 w-4" />
               <span>{submitting ? 'Transmitting...' : 'Submit Field Report'}</span>
@@ -215,7 +215,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
             <span className="text-xs font-bold uppercase tracking-wider text-pehra-text">
               Live Field Reports Stream ({filteredReports.length})
             </span>
-            <span className="text-pehra-text text-pehra-text">
+            <span className="text-pehra-text-2">
               Role Mode: <strong className="text-pehra-text">{activeRole}</strong>
             </span>
           </div>
@@ -231,19 +231,19 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                     <div>
                       <div className="flex items-center gap-2">
                         <span
-                          className={`rounded px-2 py-0.5 text-pehra-text font-bold ${
+                          className={`rounded px-2 py-0.5  font-bold ${
                             isVerified
-                              ? 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle'
+                              ? 'border border-pehra-data-live text-pehra-data-live'
                               : isRejected
-                              ? 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle'
-                              : 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle'
+                              ? 'border border-pehra-severity-critical text-pehra-severity-critical'
+                              : 'border border-pehra-severity-watch text-pehra-severity-watch'
                           }`}
                         >
                           {report.status}
                         </span>
-                        <span className="font-bold text-white text-sm">{report.location.address}</span>
+                        <span className="font-bold text-pehra-text text-sm">{report.location.address}</span>
                       </div>
-                      <div className="text-pehra-text text-pehra-text mt-0.5 flex items-center gap-2">
+                      <div className="text-pehra-text-2 mt-0.5 flex items-center gap-2">
                         <span>Reported by {report.reporterName}</span>
                         <span>•</span>
                         <span className="flex items-center gap-1">
@@ -254,7 +254,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                     </div>
 
                     <div className="text-right shrink-0">
-                      <span className="text-pehra-text text-pehra-text block">Water Depth</span>
+                      <span className="text-pehra-text-2 block">Water Depth</span>
                       <span className="text-base font-bold font-mono text-pehra-text">
                         {report.waterDepthM} m ({report.depthCategory})
                       </span>
@@ -268,7 +268,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                   {/* Verification Actions for Responders / Authority */}
                   {isVerifier && report.status !== 'VERIFIED' && (
                     <div className="flex items-center justify-between border-t border-pehra-border-subtle pt-2.5 text-xs">
-                      <span className="text-pehra-text text-pehra-text">Officer Verification Protocol:</span>
+                      <span className="text-pehra-text-2">Officer Verification Protocol:</span>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
@@ -277,7 +277,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                               notes: 'Discarded as duplicate / false alarm.',
                             })
                           }
-                          className="flex items-center gap-1 rounded bg-pehra-panel px-2.5 py-1 text-pehra-text hover:bg-pehra-panel"
+                          className="flex items-center gap-1 border border-pehra-severity-critical px-2.5 py-1 text-pehra-severity-critical hover:bg-pehra-raised"
                         >
                           <XCircle className="h-3.5 w-3.5 text-pehra-text" />
                           <span>Reject</span>
@@ -291,7 +291,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
                               triangulatedDepthM: report.waterDepthM,
                             })
                           }
-                          className="flex items-center gap-1 rounded bg-pehra-panel px-3 py-1 font-bold text-white hover:bg-pehra-panel shadow-none"
+                          className="flex items-center gap-1 bg-pehra-data-live px-3 py-1 font-bold text-pehra-bg hover:opacity-90"
                         >
                           <CheckCircle2 className="h-3.5 w-3.5" />
                           <span>Verify & Inject into Model</span>

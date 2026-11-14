@@ -98,7 +98,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Authority Apex Header */}
-      <div className="rounded-none border border-pehra-border-subtle bg-white p-5 sm:p-6 shadow-none">
+      <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 sm:p-6 shadow-none">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <span className="flex h-11 w-11 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle shrink-0">
@@ -123,13 +123,13 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => onNavigate('rbac-hub')}
-              className="rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-panel transition-colors"
+              className="rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-raised transition-colors"
             >
               Switch Role
             </button>
             <button
               onClick={() => onNavigate('alerts')}
-              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3 py-2 text-xs font-semibold text-white hover:bg-pehra-panel shadow-none transition-colors"
+              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-raised shadow-none transition-colors"
             >
               <BellRing className="h-3.5 w-3.5" />
               <span>Public Alert Feed</span>
@@ -142,7 +142,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
             <div className="text-pehra-text font-medium">Arabian Sea Tide</div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">4.45 m (Peak)</div>
-            <div className="text-pehra-text text-pehra-text">Tidal Backflow Locking Nullahs</div>
+            <div className="text-pehra-text-2">Tidal Backflow Locking Nullahs</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
@@ -150,19 +150,19 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">
               {alerts.filter((a) => a.status === 'ACTIVE').length} Sounding
             </div>
-            <div className="text-pehra-text text-pehra-text">PA System & Cell Broadcast</div>
+            <div className="text-pehra-text-2">PA System & Cell Broadcast</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
             <div className="text-pehra-text font-medium">Sluice Discharge</div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">990 m³/sec</div>
-            <div className="text-pehra-text text-pehra-text">Love Grove & Worli Pumping</div>
+            <div className="text-pehra-text-2">Love Grove & Worli Pumping</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
             <div className="text-pehra-text font-medium">EOC Shift Commander</div>
             <div className="mt-1 text-sm font-bold font-mono text-pehra-text">DESK-01 (ACTIVE)</div>
-            <div className="text-pehra-text text-pehra-text">Token: MCGM-DM-2026-X9</div>
+            <div className="text-pehra-text-2">Token: MCGM-DM-2026-X9</div>
           </div>
         </div>
       </div>
@@ -184,8 +184,8 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
           onClick={() => setActiveTab('BROADCAST')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'BROADCAST'
-              ? 'bg-pehra-panel text-white shadow-none'
-              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
+              ? 'bg-pehra-panel text-pehra-text shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-raised'
           }`}
         >
           <BellRing className="h-3.5 w-3.5" />
@@ -196,8 +196,8 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
           onClick={() => setActiveTab('SLUICE_GATES')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'SLUICE_GATES'
-              ? 'bg-pehra-panel text-white shadow-none'
-              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
+              ? 'bg-pehra-panel text-pehra-text shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-raised'
           }`}
         >
           <Waves className="h-3.5 w-3.5" />
@@ -208,8 +208,8 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
           onClick={() => setActiveTab('WARD_ORDERS')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'WARD_ORDERS'
-              ? 'bg-pehra-panel text-white shadow-none'
-              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
+              ? 'bg-pehra-panel text-pehra-text shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-raised'
           }`}
         >
           <FileCheck className="h-3.5 w-3.5" />
@@ -221,7 +221,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
       {activeTab === 'BROADCAST' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Creator Form */}
-          <div className="lg:col-span-2 rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+          <div className="lg:col-span-2 rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
             <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
               <div>
                 <h3 className="font-bold text-pehra-text text-sm flex items-center gap-2">
@@ -244,7 +244,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                   <select
                     value={newVillageId}
                     onChange={(e) => setNewVillageId(e.target.value)}
-                    className="box-border min-w-0 w-full max-w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text focus:bg-white focus:outline-none focus:border-pehra-border-subtle"
+                    className="box-border min-w-0 w-full max-w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text focus:bg-pehra-raised focus:outline-none focus:border-pehra-focus"
                   >
                     {villages.map((v) => (
                       <option key={v.id} value={v.id}>
@@ -259,7 +259,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                   <select
                     value={newStage}
                     onChange={(e) => setNewStage(e.target.value as any)}
-                    className="box-border min-w-0 w-full max-w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text focus:bg-white focus:outline-none focus:border-pehra-border-subtle"
+                    className="box-border min-w-0 w-full max-w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text focus:bg-pehra-raised focus:outline-none focus:border-pehra-focus"
                   >
                     <option value="WATCH">WATCH (T-3 hours to expected overflow)</option>
                     <option value="WARNING">WARNING (T-1 hour: High runoff approaching)</option>
@@ -274,7 +274,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                   type="text"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="box-border min-w-0 w-full max-w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text font-semibold focus:bg-white focus:outline-none focus:border-pehra-border-subtle"
+                  className="box-border min-w-0 w-full max-w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text font-semibold focus:bg-pehra-raised focus:outline-none focus:border-pehra-focus"
                   required
                 />
               </div>
@@ -285,20 +285,20 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                   rows={3}
                   value={newReason}
                   onChange={(e) => setNewReason(e.target.value)}
-                  className="box-border w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text focus:bg-white focus:outline-none focus:border-pehra-border-subtle"
+                  className="box-border w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-2 text-pehra-text focus:bg-pehra-raised focus:outline-none focus:border-pehra-focus"
                   required
                 />
               </div>
 
               <div className="pt-2 flex items-center justify-between">
-                <div className="text-pehra-text text-pehra-text">
+                <div className="text-pehra-text-2">
                   Signed with digital token: <strong className="text-pehra-text font-mono">MCGM-DM-2026-X9</strong>
                 </div>
 
                 <button
                   type="submit"
                   disabled={publishingAlert}
-                  className="py-2.5 px-6 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white font-bold text-xs shadow-none transition-colors flex items-center gap-1.5"
+                  className="py-2.5 px-6 rounded-none bg-pehra-panel hover:bg-pehra-raised text-pehra-text font-bold text-xs shadow-none transition-colors flex items-center gap-1.5"
                 >
                   <Radio className="h-4 w-4" />
                   <span>{publishingAlert ? 'Broadcasting...' : 'Authenticate & Sound Siren'}</span>
@@ -308,7 +308,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
           </div>
 
           {/* Guidelines Sidebar */}
-          <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+          <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
             <h3 className="font-bold text-pehra-text text-sm">MCGM Standard Operating Protocol</h3>
             <div className="space-y-3 text-xs text-pehra-text leading-relaxed">
               <div className="p-3 rounded-none border border-pehra-border-subtle bg-pehra-panel space-y-1">
@@ -347,7 +347,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
             {gatesState.map((g) => (
               <div
                 key={g.id}
-                className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none"
+                className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none"
               >
                 <div className="flex items-start justify-between">
                   <div>
@@ -368,18 +368,18 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel">
-                    <span className="text-pehra-text text-pehra-text block">Current Discharge</span>
+                    <span className="text-pehra-text-2 block">Current Discharge</span>
                     <span className="text-base font-bold font-mono text-pehra-text">{g.flowM3s} m³/s</span>
                   </div>
 
                   <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel">
-                    <span className="text-pehra-text text-pehra-text block">Ocean Side Gauge</span>
+                    <span className="text-pehra-text-2 block">Ocean Side Gauge</span>
                     <span className="text-base font-bold font-mono text-pehra-text">{g.oceanLevelM} m MSL</span>
                   </div>
                 </div>
 
                 <div className="pt-2 border-t border-pehra-border-subtle flex items-center justify-between">
-                  <span className="text-pehra-text text-pehra-text">
+                  <span className="text-pehra-text-2">
                     {g.status.includes('LOCKED')
                       ? 'Closed to prevent sea backflow'
                       : 'Actively flushing inland stormwater'}
@@ -387,7 +387,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
 
                   <button
                     onClick={() => handleToggleGate(g.id)}
-                    className="py-1.5 px-3 rounded-none bg-pehra-panel hover:bg-pehra-panel text-pehra-text text-xs font-semibold transition-colors border border-pehra-border-subtle"
+                    className="py-1.5 px-3 rounded-none bg-pehra-panel hover:bg-pehra-raised text-pehra-text text-xs font-semibold transition-colors border border-pehra-border-subtle"
                   >
                     Toggle Actuator State
                   </button>
@@ -400,7 +400,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
 
       {/* TAB 3: WARD ORDERS */}
       {activeTab === 'WARD_ORDERS' && (
-        <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+        <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
           <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
             <h3 className="font-bold text-pehra-text text-base">Ward Emergency Directives Overview</h3>
             <span className="text-xs text-pehra-text">{villages.length} Municipal Surveillance Zones</span>
@@ -419,10 +419,10 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {villages.map((v) => (
-                  <tr key={v.id} className="hover:bg-pehra-panel transition-colors">
+                  <tr key={v.id} className="hover:bg-pehra-raised transition-colors">
                     <td className="py-3 px-3">
                       <div className="font-semibold text-pehra-text">{v.name}</div>
-                      <div className="text-pehra-text text-pehra-text">{v.ward}</div>
+                      <div className="text-pehra-text-2">{v.ward}</div>
                     </td>
 
                     <td className="py-3 px-2">
@@ -448,7 +448,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                           setNewVillageId(v.id);
                           setActiveTab('BROADCAST');
                         }}
-                        className="py-1 px-2.5 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white text-pehra-text font-semibold transition-colors"
+                        className="py-1 px-2.5 rounded-none bg-pehra-panel hover:bg-pehra-raised text-pehra-text text-pehra-text font-semibold transition-colors"
                       >
                         Issue Ward Siren
                       </button>

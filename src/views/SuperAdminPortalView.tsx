@@ -76,7 +76,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
   return (
     <div className="space-y-6">
       {/* Super Admin Apex Banner */}
-      <div className="rounded-none border border-pehra-border-subtle bg-white p-5 sm:p-6 shadow-none">
+      <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 sm:p-6 shadow-none">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <span className="flex h-11 w-11 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle shrink-0">
@@ -101,14 +101,14 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => onNavigate('drone-recon')}
-              className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-panel transition-colors shadow-none"
+              className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-raised transition-colors shadow-none"
             >
               <Plane className="h-3.5 w-3.5" />
               <span>Drone Fleet Recon</span>
             </button>
             <button
               onClick={() => onNavigate('map')}
-              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-2 text-xs font-semibold text-white hover:bg-pehra-panel shadow-none transition-colors"
+              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-raised shadow-none transition-colors"
             >
               <span>Command GIS Map</span>
             </button>
@@ -120,19 +120,19 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
             <div className="text-pehra-text font-medium">Disaster Response Fund</div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">₹{sdrfAllocatedCr} Cr</div>
-            <div className="text-pehra-text text-pehra-text">Authorized Liquidity</div>
+            <div className="text-pehra-text-2">Authorized Liquidity</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
             <div className="text-pehra-text font-medium">Tri-Services Liaison</div>
             <div className="mt-1 text-sm font-bold font-mono text-pehra-text">ARMED FORCES READY</div>
-            <div className="text-pehra-text text-pehra-text">Navy, Army, Coast Guard</div>
+            <div className="text-pehra-text-2">Navy, Army, Coast Guard</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
             <div className="text-pehra-text font-medium">Statutory Proclamations</div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">2 In Effect</div>
-            <div className="text-pehra-text text-pehra-text">Sec 144 & Rail Power Isolation</div>
+            <div className="text-pehra-text-2">Sec 144 & Rail Power Isolation</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
@@ -140,7 +140,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
             <div className="mt-1 text-sm font-bold font-mono text-pehra-text">
               {masterOverrideActive ? 'ENGAGED' : 'STANDBY (NORMAL)'}
             </div>
-            <div className="text-pehra-text text-pehra-text">Direct Municipal Control</div>
+            <div className="text-pehra-text-2">Direct Municipal Control</div>
           </div>
         </div>
       </div>
@@ -159,7 +159,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
       {/* Grid of Apex Capabilities */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* SDRF Fund Disbursement */}
-        <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+        <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
           <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
             <div className="flex items-center gap-2">
               <DollarSign className="h-5 w-5 text-pehra-text" />
@@ -191,7 +191,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
 
           <button
             onClick={handleAllocateSdrf}
-            className="w-full py-2.5 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white font-semibold text-xs shadow-none transition-colors flex items-center justify-center gap-1.5"
+            className="w-full py-2.5 rounded-none bg-pehra-panel hover:bg-pehra-raised text-pehra-text font-semibold text-xs shadow-none transition-colors flex items-center justify-center gap-1.5"
           >
             <DollarSign className="h-4 w-4" />
             <span>Authorize +₹50 Cr Supplementary Relief Tranche</span>
@@ -199,7 +199,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
         </div>
 
         {/* Armed Forces & Naval Airlift Sorties */}
-        <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+        <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
           <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
             <div className="flex items-center gap-2">
               <Plane className="h-5 w-5 text-pehra-text" />
@@ -220,7 +220,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
                 <span className="text-pehra-text">Indian Navy Helo Sorties</span>
                 <span className="font-mono text-pehra-text">{armedForcesStatus.navySorties}</span>
               </div>
-              <p className="text-pehra-text text-pehra-text">Air-dropping food packets and infant milk to isolated terrace clusters.</p>
+              <p className="text-pehra-text-2">Air-dropping food packets and infant milk to isolated terrace clusters.</p>
             </div>
 
             <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel space-y-1">
@@ -228,13 +228,13 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
                 <span className="text-pehra-text">Coast Guard Hovercraft</span>
                 <span className="font-mono text-pehra-text">{armedForcesStatus.coastGuardHovercraft}</span>
               </div>
-              <p className="text-pehra-text text-pehra-text">Shallow draft patrols navigating tidal mangroves along Mahim bay.</p>
+              <p className="text-pehra-text-2">Shallow draft patrols navigating tidal mangroves along Mahim bay.</p>
             </div>
           </div>
 
           <button
             onClick={handleToggleNavySortie}
-            className="w-full py-2.5 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white font-semibold text-xs shadow-none transition-colors flex items-center justify-center gap-1.5"
+            className="w-full py-2.5 rounded-none bg-pehra-panel hover:bg-pehra-raised text-pehra-text font-semibold text-xs shadow-none transition-colors flex items-center justify-center gap-1.5"
           >
             <Plane className="h-4 w-4" />
             <span>Toggle Naval Reconnaissance & Airlift</span>
@@ -258,14 +258,14 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
               Enables centralized State Command Center to directly bypass local ward clearances and command municipal water pumps, electricity grids, and traffic signal shutdowns.
             </p>
 
-            <div className="mt-4 p-3 rounded-none border border-pehra-border-subtle bg-white text-xs space-y-2">
+            <div className="mt-4 p-3 rounded-none border border-pehra-border-subtle bg-pehra-raised text-xs space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-pehra-text font-medium">State Direct Control:</span>
                 <span className={`font-mono font-bold ${masterOverrideActive ? 'text-pehra-text' : 'text-pehra-text'}`}>
                   {masterOverrideActive ? 'OVERRIDE ENGAGED' : 'NORMAL DISPERSED'}
                 </span>
               </div>
-              <div className="text-pehra-text text-pehra-text">
+              <div className="text-pehra-text-2">
                 Security token: <strong className="text-pehra-text font-mono">MAHA-DM-CHIEFSEC-001</strong>
               </div>
             </div>
@@ -275,8 +275,8 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
             onClick={handleToggleOverride}
             className={`w-full py-3 rounded-none font-bold text-xs shadow-none transition-all flex items-center justify-center gap-2 ${
               masterOverrideActive
-                ? 'bg-pehra-panel hover:bg-pehra-panel text-white'
-                : 'bg-pehra-panel hover:bg-pehra-panel text-white'
+                ? 'bg-pehra-panel hover:bg-pehra-raised text-pehra-text'
+                : 'bg-pehra-panel hover:bg-pehra-raised text-pehra-text'
             }`}
           >
             {masterOverrideActive ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
@@ -288,7 +288,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
       </div>
 
       {/* Statutory Proclamations List */}
-      <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+      <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
         <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
           <div className="flex items-center gap-2">
             <FileCheck2 className="h-5 w-5 text-pehra-text" />
@@ -316,7 +316,7 @@ export const SuperAdminPortalView: React.FC<SuperAdminPortalViewProps> = ({ onNa
                 </span>
               </div>
 
-              <p className="text-pehra-text text-pehra-text">Jurisdiction / Affected Sectors: {proc.sectors}</p>
+              <p className="text-pehra-text-2">Jurisdiction / Affected Sectors: {proc.sectors}</p>
               <div className="text-pehra-text font-mono text-pehra-text">Issued: {proc.issuedAt}</div>
             </div>
           ))}

@@ -84,7 +84,7 @@ export const SimulationView: React.FC = () => {
           <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
             <div className="flex items-center gap-2">
               <Cpu className="h-5 w-5 text-pehra-text" />
-              <h2 className="text-base font-bold text-white">Scenario Parameters</h2>
+              <h2 className="text-base font-bold text-pehra-text">Scenario Parameters</h2>
             </div>
           </div>
 
@@ -98,8 +98,8 @@ export const SimulationView: React.FC = () => {
                   onClick={() => handleApplyPreset(p)}
                   className={`w-full text-left rounded-none p-2 text-xs font-medium border transition-all ${
                     scenario === p.name
-                      ? 'bg-pehra-panel border-pehra-border-subtle text-pehra-text'
-                      : 'bg-pehra-panel border-pehra-border-subtle text-pehra-text hover:text-pehra-text'
+                      ? 'border-pehra-border-control bg-pehra-raised font-semibold text-pehra-text'
+                      : 'border-pehra-border-subtle bg-pehra-panel text-pehra-text-2 hover:border-pehra-border-control hover:text-pehra-text'
                   }`}
                 >
                   {p.name}
@@ -122,9 +122,9 @@ export const SimulationView: React.FC = () => {
                 step="5"
                 value={rainfallMmHr}
                 onChange={(e) => setRainfallMmHr(parseInt(e.target.value))}
-                className="w-full accent-cyan-400"
+                className="w-full accent-pehra-action"
               />
-              <div className="flex justify-between text-pehra-text text-pehra-text">
+              <div className="flex justify-between text-pehra-text-2">
                 <span>10 mm/hr (Light)</span>
                 <span>65 (Heavy)</span>
                 <span>150 (Extreme Cloudburst)</span>
@@ -143,7 +143,7 @@ export const SimulationView: React.FC = () => {
                 step="1"
                 value={durationHours}
                 onChange={(e) => setDurationHours(parseInt(e.target.value))}
-                className="w-full accent-cyan-400"
+                className="w-full accent-pehra-action"
               />
             </div>
 
@@ -159,9 +159,9 @@ export const SimulationView: React.FC = () => {
                 step="0.1"
                 value={tideLevelM}
                 onChange={(e) => setTideLevelM(parseFloat(e.target.value))}
-                className="w-full accent-cyan-400"
+                className="w-full accent-pehra-action"
               />
-              <div className="flex justify-between text-pehra-text text-pehra-text">
+              <div className="flex justify-between text-pehra-text-2">
                 <span>1.5m (Low Tide)</span>
                 <span>4.0m (High Tide)</span>
                 <span>5.0m+ (Surge Lockout)</span>
@@ -172,7 +172,7 @@ export const SimulationView: React.FC = () => {
           <button
             onClick={handleRunSimulation}
             disabled={simulating}
-            className="w-full flex items-center justify-center gap-2 rounded-none bg-pehra-panel py-2.5 font-bold text-pehra-text hover:bg-pehra-panel shadow-none shadow-none transition-all"
+            className="flex w-full items-center justify-center gap-2 bg-pehra-action py-2.5 font-bold text-pehra-action-text transition-opacity hover:opacity-90"
           >
             <Play className="h-4 w-4 fill-current" />
             <span>{simulating ? 'Executing Hydrodynamic Model...' : 'Execute Simulation Run'}</span>
@@ -184,10 +184,10 @@ export const SimulationView: React.FC = () => {
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-5 space-y-5">
             <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
               <div>
-                <h3 className="text-base font-bold text-white">Projected Impact Analysis</h3>
+                <h3 className="text-base font-bold text-pehra-text">Projected Impact Analysis</h3>
                 <span className="text-xs text-pehra-text">Scenario: {scenario}</span>
               </div>
-              <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-xs font-mono font-bold text-pehra-text">
+              <span className="border border-pehra-severity-warning px-2 py-0.5 font-mono text-xs font-bold text-pehra-severity-warning">
                 HIGH SEVERITY
               </span>
             </div>
@@ -195,35 +195,35 @@ export const SimulationView: React.FC = () => {
             {/* Impact Metric Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
               <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
-                <span className="text-pehra-text text-pehra-text block">Estimated Inundation</span>
+                <span className="text-pehra-text-2 block">Estimated Inundation</span>
                 <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? `${results.summary.maxPredictedDepthM} m` : '2.35 m'}
                 </span>
-                <span className="text-pehra-text text-pehra-text block mt-0.5">Low-lying depressions</span>
+                <span className="text-pehra-text-2 block mt-0.5">Low-lying depressions</span>
               </div>
 
               <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
-                <span className="text-pehra-text text-pehra-text block">Exposed Population</span>
-                <span className="text-xl font-bold font-mono text-white">
+                <span className="text-pehra-text-2 block">Exposed Population</span>
+                <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? results.summary.affectedPopulation.toLocaleString() : '84,000'}
                 </span>
-                <span className="text-pehra-text text-pehra-text block mt-0.5">Wards L, F/N, H/E</span>
+                <span className="text-pehra-text-2 block mt-0.5">Wards L, F/N, H/E</span>
               </div>
 
               <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
-                <span className="text-pehra-text text-pehra-text block">Submerged Subways</span>
+                <span className="text-pehra-text-2 block">Submerged Subways</span>
                 <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? results.summary.subwaysFlooded.length : 3}
                 </span>
-                <span className="text-pehra-text text-pehra-text block mt-0.5">Milan, Andheri, Sion</span>
+                <span className="text-pehra-text-2 block mt-0.5">Milan, Andheri, Sion</span>
               </div>
 
               <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
-                <span className="text-pehra-text text-pehra-text block">Required Shelter Beds</span>
+                <span className="text-pehra-text-2 block">Required Shelter Beds</span>
                 <span className="text-xl font-bold font-mono text-pehra-text">
                   {results ? results.summary.sheltersRequired : 6} Facilities
                 </span>
-                <span className="text-pehra-text text-pehra-text block mt-0.5">~3,200 emergency beds</span>
+                <span className="text-pehra-text-2 block mt-0.5">~3,200 emergency beds</span>
               </div>
             </div>
 
@@ -234,7 +234,7 @@ export const SimulationView: React.FC = () => {
                 {['Milan Subway (Vile Parle)', 'Andheri Subway', 'Gandhi Market Highway Dip'].map((subway, i) => (
                   <div key={i} className="rounded border border-pehra-border-subtle bg-pehra-panel p-2 text-pehra-text">
                     <span className="font-bold block">⚠️ {subway}</span>
-                    <span className="text-pehra-text text-pehra-text">Predicted Depth: &gt;1.8m (Impassable)</span>
+                    <span className="text-pehra-text-2">Predicted Depth: &gt;1.8m (Impassable)</span>
                   </div>
                 ))}
               </div>
@@ -251,7 +251,7 @@ export const SimulationView: React.FC = () => {
                   { hour: 4, text: 'Peak inundation reached; Milan subway completely impassable; evacuation mandatory.' },
                 ]).map((t: any, idx: number) => (
                   <div key={idx} className="flex items-start gap-3 rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle">
-                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 font-mono font-bold text-pehra-text text-pehra-text">
+                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 font-mono font-bold text-pehra-text-2">
                       T+{t.hour}h
                     </span>
                     <span className="text-pehra-text">{t.text}</span>

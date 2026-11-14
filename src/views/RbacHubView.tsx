@@ -95,7 +95,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 sm:p-6 shadow-xs">
+      <div className="rounded-2xl border border-[#E5EAF0] bg-pehra-raised p-5 sm:p-6 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] border border-blue-200 shrink-0">
@@ -120,7 +120,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={onOpenLogin}
-              className="flex items-center gap-1.5 rounded-xl bg-[#2563EB] px-3.5 py-2 text-xs font-semibold text-white hover:bg-blue-700 shadow-xs transition-colors"
+              className="flex items-center gap-1.5 rounded-xl bg-[#2563EB] px-3.5 py-2 text-xs font-semibold text-pehra-text hover:bg-blue-700 shadow-xs transition-colors"
             >
               <KeyRound className="h-3.5 w-3.5" />
               <span>Sign In / Change Login Method</span>
@@ -173,7 +173,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
                 onClick={() => setSelectedInspectionRole(roleKey)}
                 className={`flex items-center justify-between p-2.5 rounded-xl transition-all text-left ${
                   isInspected
-                    ? 'bg-white text-slate-900 shadow-xs font-semibold border border-[#E5EAF0]'
+                    ? 'bg-pehra-raised text-slate-900 shadow-xs font-semibold border border-[#E5EAF0]'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                 }`}
               >
@@ -193,7 +193,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
         </div>
 
         {/* Detailed Inspected Persona Spotlight Card */}
-        <div className="rounded-2xl border border-[#E5EAF0] bg-white p-6 shadow-xs space-y-5">
+        <div className="rounded-2xl border border-[#E5EAF0] bg-pehra-raised p-6 shadow-xs space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div className="flex items-start gap-3">
               <span className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${inspectedRoleDetail.colorScheme.badgeBg}`}>
@@ -227,7 +227,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
 
               <button
                 onClick={() => handleSwitchAndVisit(selectedInspectionRole, inspectedRoleDetail.portalTab)}
-                className="px-4 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1.5 shadow-xs"
+                className="px-4 py-2 rounded-xl bg-[#2563EB] text-pehra-text text-xs font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1.5 shadow-xs"
               >
                 <span>Visit {inspectedRoleDetail.portalName}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -442,7 +442,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
             return (
               <div
                 key={roleKey}
-                className={`rounded-2xl border p-5 flex flex-col justify-between transition-all bg-white shadow-xs ${
+                className={`rounded-2xl border p-5 flex flex-col justify-between transition-all bg-pehra-raised shadow-xs ${
                   isCurrent
                     ? 'border-[#2563EB] ring-1 ring-[#2563EB]/30'
                     : 'border-[#E5EAF0] hover:border-slate-300'
@@ -498,7 +498,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
 
                   <button
                     onClick={() => handleSwitchAndVisit(roleKey, role.portalTab)}
-                    className="py-1.5 px-3 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-semibold transition-colors flex items-center gap-1 shadow-xs"
+                    className="py-1.5 px-3 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-pehra-text text-xs font-semibold transition-colors flex items-center gap-1 shadow-xs"
                     title={`Visit ${role.portalName}`}
                   >
                     <span>Visit Portal</span>
@@ -512,7 +512,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
       </div>
 
       {/* Interactive Permission Guard Sandbox */}
-      <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 space-y-4 shadow-xs">
+      <div className="rounded-2xl border border-[#E5EAF0] bg-pehra-raised p-5 space-y-4 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div>
             <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
@@ -531,7 +531,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
           <button
             onClick={() => handleTestPermission('Submit Field Flood Photo', 'CITIZEN', 0)}
-            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-white transition-all shadow-xs"
+            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-pehra-raised transition-all shadow-xs"
           >
             <div className="font-semibold text-slate-900">1. Submit Flood Photo</div>
             <div className="text-[11px] text-slate-400 mt-0.5">Tier 0 (Citizen & Above)</div>
@@ -539,7 +539,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
 
           <button
             onClick={() => handleTestPermission('Deploy Dewatering Pump / Boat', 'RESPONDER', 1)}
-            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-white transition-all shadow-xs"
+            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-pehra-raised transition-all shadow-xs"
           >
             <div className="font-semibold text-slate-900">2. Deploy Rescue Boat</div>
             <div className="text-[11px] text-slate-400 mt-0.5">Tier 1 (Responder & Above)</div>
@@ -547,7 +547,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
 
           <button
             onClick={() => handleTestPermission('Broadcast Official Warning Siren', 'AUTHORITY', 2)}
-            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-white transition-all shadow-xs"
+            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-pehra-raised transition-all shadow-xs"
           >
             <div className="font-semibold text-slate-900">3. Broadcast Red Alert</div>
             <div className="text-[11px] text-slate-400 mt-0.5">Tier 2 (Authority & Above)</div>
@@ -555,7 +555,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
 
           <button
             onClick={() => handleTestPermission('Sanction ₹50 Cr SDRF Treasury Funds', 'SUPER_ADMIN', 4)}
-            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-white transition-all shadow-xs"
+            className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3 text-left hover:border-slate-300 hover:bg-pehra-raised transition-all shadow-xs"
           >
             <div className="font-semibold text-slate-900">4. Sanction SDRF Funds</div>
             <div className="text-[11px] text-slate-400 mt-0.5">Tier 4 (Super Admin Only)</div>
@@ -586,7 +586,7 @@ export const RbacHubView: React.FC<RbacHubViewProps> = ({
       </div>
 
       {/* Permissions Comparison Matrix */}
-      <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 space-y-4 shadow-xs">
+      <div className="rounded-2xl border border-[#E5EAF0] bg-pehra-raised p-5 space-y-4 shadow-xs">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div>
             <h3 className="font-bold text-slate-900 text-sm">Comprehensive Capabilities & Permissions Matrix</h3>

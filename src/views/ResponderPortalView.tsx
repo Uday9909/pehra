@@ -61,7 +61,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Responder Tactical Banner */}
-      <div className="rounded-none border border-pehra-border-subtle bg-white p-5 sm:p-6 shadow-none">
+      <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 sm:p-6 shadow-none">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <span className="flex h-11 w-11 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle shrink-0">
@@ -86,14 +86,14 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => onNavigate('drone-recon')}
-              className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-panel transition-colors shadow-none"
+              className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-raised transition-colors shadow-none"
             >
               <Plane className="h-3.5 w-3.5" />
               <span>Live Drone Recon</span>
             </button>
             <button
               onClick={() => onNavigate('map')}
-              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-2 text-xs font-semibold text-white hover:bg-pehra-panel shadow-none transition-all"
+              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-raised shadow-none transition-all"
             >
               <Compass className="h-3.5 w-3.5" />
               <span>Tactical Map</span>
@@ -109,7 +109,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
               <Anchor className="h-3.5 w-3.5 text-pehra-text" />
             </div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">{deployedBoatsCount} Units</div>
-            <div className="text-pehra-text text-pehra-text mt-0.5">2 Mithi, 1 Sion, 1 Poisar</div>
+            <div className="text-pehra-text-2 mt-0.5">2 Mithi, 1 Sion, 1 Poisar</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
@@ -118,7 +118,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
               <Droplets className="h-3.5 w-3.5 text-pehra-text" />
             </div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">{activePumpsCount} Deployed</div>
-            <div className="text-pehra-text text-pehra-text mt-0.5">Discharging @ 18,400 L/min</div>
+            <div className="text-pehra-text-2 mt-0.5">Discharging @ 18,400 L/min</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
@@ -127,7 +127,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
               <HospitalIcon className="h-3.5 w-3.5 text-pehra-text" />
             </div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">42 Beds</div>
-            <div className="text-pehra-text text-pehra-text mt-0.5">Across KEM, Sion, Bhabha</div>
+            <div className="text-pehra-text-2 mt-0.5">Across KEM, Sion, Bhabha</div>
           </div>
 
           <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
@@ -136,7 +136,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
               <Radio className="h-3.5 w-3.5 text-pehra-text" />
             </div>
             <div className="mt-1 text-xl font-bold font-mono text-pehra-text">TAC-CH-04</div>
-            <div className="text-pehra-text text-pehra-text mt-0.5">Repeater: Sion Fort Tower</div>
+            <div className="text-pehra-text-2 mt-0.5">Repeater: Sion Fort Tower</div>
           </div>
         </div>
       </div>
@@ -158,8 +158,8 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           onClick={() => setActiveTab('DISPATCH')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'DISPATCH'
-              ? 'bg-pehra-panel text-white shadow-none'
-              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
+              ? 'bg-pehra-panel text-pehra-text shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-raised'
           }`}
         >
           <Activity className="h-3.5 w-3.5" />
@@ -170,8 +170,8 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           onClick={() => setActiveTab('EQUIPMENT')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'EQUIPMENT'
-              ? 'bg-pehra-panel text-white shadow-none'
-              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
+              ? 'bg-pehra-panel text-pehra-text shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-raised'
           }`}
         >
           <Truck className="h-3.5 w-3.5" />
@@ -182,8 +182,8 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           onClick={() => setActiveTab('HOSPITALS')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'HOSPITALS'
-              ? 'bg-pehra-panel text-white shadow-none'
-              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
+              ? 'bg-pehra-panel text-pehra-text shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-raised'
           }`}
         >
           <HospitalIcon className="h-3.5 w-3.5" />
@@ -200,7 +200,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
               return (
                 <div
                   key={inc.id}
-                  className={`rounded-none border p-5 flex flex-col justify-between transition-all bg-white shadow-none ${
+                  className={`rounded-none border p-5 flex flex-col justify-between transition-all bg-pehra-raised shadow-none ${
                     inc.severity === 'CRITICAL'
                       ? 'border-pehra-border-subtle'
                       : inc.severity === 'HIGH'
@@ -256,7 +256,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
                     ) : (
                       <button
                         onClick={() => handleAcknowledge(inc.id, inc.title)}
-                        className="py-1.5 px-3 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white text-xs font-semibold transition-colors shadow-none"
+                        className="py-1.5 px-3 rounded-none bg-pehra-panel hover:bg-pehra-raised text-pehra-text text-xs font-semibold transition-colors shadow-none"
                       >
                         Acknowledge & Deploy
                       </button>
@@ -265,14 +265,14 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => onNavigate('map')}
-                        className="p-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel text-pehra-text hover:bg-pehra-panel text-xs"
+                        className="p-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel text-pehra-text hover:bg-pehra-raised text-xs"
                         title="View on Map"
                       >
                         <Compass className="h-4 w-4" />
                       </button>
                       <a
                         href="tel:101"
-                        className="flex items-center gap-1 rounded-none border border-pehra-border-subtle bg-pehra-panel px-2.5 py-1.5 text-xs font-semibold text-pehra-text hover:bg-pehra-panel"
+                        className="flex items-center gap-1 rounded-none border border-pehra-border-subtle bg-pehra-panel px-2.5 py-1.5 text-xs font-semibold text-pehra-text hover:bg-pehra-raised"
                         title="Emergency Dispatch Link"
                       >
                         <PhoneCall className="h-3 w-3" />
@@ -292,7 +292,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Rescue Boats Card */}
-            <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+            <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
               <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
                 <div className="flex items-center gap-2">
                   <Anchor className="h-5 w-5 text-pehra-text" />
@@ -324,14 +324,14 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
 
               <button
                 onClick={handleDeployBoat}
-                className="w-full py-2.5 rounded-none bg-pehra-panel text-white font-semibold text-xs hover:bg-pehra-panel shadow-none transition-colors"
+                className="w-full py-2.5 rounded-none bg-pehra-panel text-pehra-text font-semibold text-xs hover:bg-pehra-raised shadow-none transition-colors"
               >
                 + Deploy Reserve Boat Unit #0{deployedBoatsCount + 1}
               </button>
             </div>
 
             {/* Dewatering Pumps Card */}
-            <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+            <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none">
               <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
                 <div className="flex items-center gap-2">
                   <Droplets className="h-5 w-5 text-pehra-text" />
@@ -363,7 +363,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
 
               <button
                 onClick={handleDeployPump}
-                className="w-full py-2.5 rounded-none bg-pehra-panel text-white font-semibold text-xs hover:bg-pehra-panel shadow-none transition-colors"
+                className="w-full py-2.5 rounded-none bg-pehra-panel text-pehra-text font-semibold text-xs hover:bg-pehra-raised shadow-none transition-colors"
               >
                 + Dispatch Mobile Pump Tender to Next Bottleneck
               </button>
@@ -378,7 +378,7 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           {hospitals.map((hsp) => (
             <div
               key={hsp.id}
-              className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none"
+              className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-5 space-y-4 shadow-none"
             >
               <div className="flex items-start justify-between">
                 <div>
@@ -392,20 +392,20 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel">
-                  <span className="text-pehra-text text-pehra-text block">Emergency Intake</span>
+                  <span className="text-pehra-text-2 block">Emergency Intake</span>
                   <span className="text-sm font-bold font-mono text-pehra-text">
                     {hsp.availableBeds} Beds Free
                   </span>
                 </div>
 
                 <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel">
-                  <span className="text-pehra-text text-pehra-text block">Power & Generator</span>
+                  <span className="text-pehra-text-2 block">Power & Generator</span>
                   <span className="text-sm font-bold text-pehra-text font-mono">100% SECURE</span>
                 </div>
               </div>
 
               <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel text-xs">
-                <span className="text-pehra-text text-pehra-text block">Hospital Helpline:</span>
+                <span className="text-pehra-text-2 block">Hospital Helpline:</span>
                 <a href={`tel:${hsp.contactPhone}`} className="font-mono text-pehra-text font-semibold block mt-0.5">
                   📞 {hsp.contactPhone}
                 </a>

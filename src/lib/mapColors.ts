@@ -10,7 +10,13 @@ export type MapColorKey =
   | 'water'
   | 'route'
   | 'shelter'
-  | 'hospital';
+  | 'hospital'
+  | 'text'
+  | 'textMuted'
+  | 'panel'
+  | 'border'
+  | 'onAccent'
+  | 'bg';
 
 const variableNames: Record<MapColorKey, string> = {
   normal: '--pehra-severity-normal',
@@ -25,6 +31,12 @@ const variableNames: Record<MapColorKey, string> = {
   route: '--pehra-data-predicted',
   shelter: '--pehra-severity-advisory',
   hospital: '--pehra-severity-critical',
+  text: '--pehra-text',
+  textMuted: '--pehra-text-2',
+  panel: '--pehra-panel',
+  border: '--pehra-border-subtle',
+  onAccent: '--pehra-bg',
+  bg: '--pehra-bg',
 };
 
 export function getMapColors(): Record<MapColorKey, string> {

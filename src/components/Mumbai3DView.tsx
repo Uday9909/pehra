@@ -440,7 +440,7 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative h-full w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-950 select-none flex flex-col"
+      className="relative h-full w-full overflow-hidden rounded-xl border border-pehra-raised bg-pehra-bg select-none flex flex-col"
     >
       {/* Three.js Canvas */}
       <canvas
@@ -456,25 +456,25 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
 
       {/* Top Floating 3D Title Bar */}
       <div className="absolute top-3 left-3 z-10 flex items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-cyan-800/80 bg-slate-900/90 px-3 py-1.5 backdrop-blur-md shadow-xl">
+        <div className="flex items-center gap-2 rounded-lg border border-cyan-800/80 bg-pehra-panel/90 px-3 py-1.5 backdrop-blur-md shadow-xl">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pehra-data-live opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-pehra-action"></span>
           </span>
-          <span className="font-bold text-xs tracking-wider text-cyan-300 uppercase">
+          <span className="font-bold text-xs tracking-wider text-pehra-data-live uppercase">
             Mumbai 3D Digital Elevation Model (DEM)
           </span>
-          <span className="rounded bg-cyan-950 px-1.5 py-0.5 font-mono text-[10px] text-cyan-400 border border-cyan-800">
+          <span className="rounded bg-cyan-950 px-1.5 py-0.5 font-mono text-[10px] text-pehra-data-live border border-cyan-800">
             WebGL 3D
           </span>
         </div>
 
         {/* Camera Preset Selector */}
-        <div className="hidden sm:flex items-center gap-1 rounded-lg border border-slate-800 bg-slate-900/90 p-1 backdrop-blur-md shadow-xl text-xs">
+        <div className="hidden sm:flex items-center gap-1 rounded-lg border border-pehra-raised bg-pehra-panel/90 p-1 backdrop-blur-md shadow-xl text-xs">
           <button
             onClick={() => setPreset('oblique')}
             className={`rounded px-2 py-1 font-medium transition-colors ${
-              cameraPreset === 'oblique' ? 'bg-cyan-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white'
+              cameraPreset === 'oblique' ? 'bg-pehra-action text-pehra-bg font-bold' : 'text-pehra-text-2 hover:text-pehra-text'
             }`}
           >
             Oblique 3D
@@ -482,7 +482,7 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
           <button
             onClick={() => setPreset('mithi')}
             className={`rounded px-2 py-1 font-medium transition-colors ${
-              cameraPreset === 'mithi' ? 'bg-cyan-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white'
+              cameraPreset === 'mithi' ? 'bg-pehra-action text-pehra-bg font-bold' : 'text-pehra-text-2 hover:text-pehra-text'
             }`}
           >
             Mithi Valley
@@ -490,7 +490,7 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
           <button
             onClick={() => setPreset('south_north')}
             className={`rounded px-2 py-1 font-medium transition-colors ${
-              cameraPreset === 'south_north' ? 'bg-cyan-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white'
+              cameraPreset === 'south_north' ? 'bg-pehra-action text-pehra-bg font-bold' : 'text-pehra-text-2 hover:text-pehra-text'
             }`}
           >
             South→North
@@ -498,7 +498,7 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
           <button
             onClick={() => setPreset('topdown')}
             className={`rounded px-2 py-1 font-medium transition-colors ${
-              cameraPreset === 'topdown' ? 'bg-cyan-500 text-slate-950 font-bold' : 'text-slate-300 hover:text-white'
+              cameraPreset === 'topdown' ? 'bg-pehra-action text-pehra-bg font-bold' : 'text-pehra-text-2 hover:text-pehra-text'
             }`}
           >
             Top-Down Relief
@@ -510,8 +510,8 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
       <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
         <button
           onClick={() => setAutoRotate(!autoRotate)}
-          className={`flex items-center gap-1.5 rounded-lg border border-slate-800 px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md shadow-lg transition-colors ${
-            autoRotate ? 'bg-cyan-500/20 text-cyan-300 border-cyan-600' : 'bg-slate-900/90 text-slate-300 hover:text-white'
+          className={`flex items-center gap-1.5 rounded-lg border border-pehra-raised px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md shadow-lg transition-colors ${
+            autoRotate ? 'bg-pehra-action/20 text-pehra-data-live border-cyan-600' : 'bg-pehra-panel/90 text-pehra-text-2 hover:text-pehra-text'
           }`}
           title="Toggle 360° Cinematic Orbit"
         >
@@ -521,8 +521,8 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
 
         <button
           onClick={() => setWireframeMode(!wireframeMode)}
-          className={`flex items-center gap-1.5 rounded-lg border border-slate-800 px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md shadow-lg transition-colors ${
-            wireframeMode ? 'bg-amber-500/20 text-amber-300 border-amber-600' : 'bg-slate-900/90 text-slate-300 hover:text-white'
+          className={`flex items-center gap-1.5 rounded-lg border border-pehra-raised px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md shadow-lg transition-colors ${
+            wireframeMode ? 'bg-pehra-severity-warning/20 text-pehra-severity-warning border-amber-600' : 'bg-pehra-panel/90 text-pehra-text-2 hover:text-pehra-text'
           }`}
           title="Toggle Topographic Wireframe Mesh"
         >
@@ -532,13 +532,13 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
       </div>
 
       {/* Interactive 3D Water Inundation Simulation Slider */}
-      <div className="absolute bottom-4 left-4 z-10 w-80 max-w-[calc(100%-2rem)] rounded-xl border border-cyan-800/80 bg-slate-900/95 p-3.5 backdrop-blur-md shadow-2xl">
+      <div className="absolute bottom-4 left-4 z-10 w-80 max-w-[calc(100%-2rem)] rounded-xl border border-cyan-800/80 bg-pehra-panel/95 p-3.5 backdrop-blur-md shadow-2xl">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <Droplets className="h-4 w-4 text-cyan-400" />
-            <span className="font-bold text-xs text-white">3D Flood Inundation Simulator</span>
+            <Droplets className="h-4 w-4 text-pehra-data-live" />
+            <span className="font-bold text-xs text-pehra-text">3D Flood Inundation Simulator</span>
           </div>
-          <span className="font-mono text-sm font-bold text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-700">
+          <span className="font-mono text-sm font-bold text-pehra-data-live bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-700">
             {waterLevelM.toFixed(1)} m MSL
           </span>
         </div>
@@ -550,18 +550,18 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
           step="0.1"
           value={waterLevelM}
           onChange={(e) => setWaterLevelM(parseFloat(e.target.value))}
-          className="w-full accent-cyan-400 cursor-pointer h-2 bg-slate-800 rounded-lg"
+          className="w-full accent-pehra-action cursor-pointer h-2 bg-pehra-raised rounded-lg"
         />
 
-        <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+        <div className="flex justify-between text-[10px] text-pehra-text-2 font-mono mt-1">
           <span>0.5m (Low Tide)</span>
           <span>2.5m (Mean Inundation)</span>
           <span>4.5m (Spring Surge)</span>
           <span>6.0m (Deluge)</span>
         </div>
 
-        <div className="mt-2.5 flex items-center gap-2 rounded bg-slate-950/70 p-2 border border-slate-800/80 text-[11px] text-slate-300">
-          <Info className="h-3.5 w-3.5 shrink-0 text-cyan-400" />
+        <div className="mt-2.5 flex items-center gap-2 rounded bg-pehra-bg/70 p-2 border border-pehra-raised/80 text-[11px] text-pehra-text-2">
+          <Info className="h-3.5 w-3.5 shrink-0 text-pehra-data-live" />
           <span>
             {waterLevelM <= 2.2
               ? 'Mithi estuary within normal tidal banks. Central transit corridors clear.'
@@ -573,98 +573,98 @@ export const Mumbai3DView: React.FC<Mumbai3DViewProps> = ({
       </div>
 
       {/* 3D Legend & Hypsometric Color Ramp */}
-      <div className="absolute bottom-4 right-4 z-10 hidden sm:block rounded-xl border border-slate-800 bg-slate-900/90 p-3 backdrop-blur-md shadow-xl text-xs text-slate-300 w-56">
-        <div className="font-bold text-white mb-2 flex items-center justify-between text-[11px] uppercase tracking-wider text-slate-400">
+      <div className="absolute bottom-4 right-4 z-10 hidden sm:block rounded-xl border border-pehra-raised bg-pehra-panel/90 p-3 backdrop-blur-md shadow-xl text-xs text-pehra-text-2 w-56">
+        <div className="font-bold text-pehra-text mb-2 flex items-center justify-between text-[11px] uppercase tracking-wider text-pehra-text-2">
           <span>Topographic Hypsometry</span>
-          <span className="font-mono text-[10px] text-cyan-400">Height</span>
+          <span className="font-mono text-[10px] text-pehra-data-live">Height</span>
         </div>
 
         <div className="space-y-1 text-[11px]">
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: '#78350f' }} />
+              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: 'var(--pehra-severity-warning)' }} />
               <span>SGNP Peak (Kanheri)</span>
             </span>
-            <span className="font-mono text-[10px] text-slate-400">468m</span>
+            <span className="font-mono text-[10px] text-pehra-text-2">468m</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: '#b45309' }} />
+              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: 'var(--pehra-severity-warning)' }} />
               <span>Trombay Hill Ridge</span>
             </span>
-            <span className="font-mono text-[10px] text-slate-400">302m</span>
+            <span className="font-mono text-[10px] text-pehra-text-2">302m</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: '#d97706' }} />
+              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: 'var(--pehra-severity-watch)' }} />
               <span>Powai & Malabar Ridges</span>
             </span>
-            <span className="font-mono text-[10px] text-slate-400">55–85m</span>
+            <span className="font-mono text-[10px] text-pehra-text-2">55–85m</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: '#64748b' }} />
+              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: 'var(--pehra-severity-advisory)' }} />
               <span>Urban Plain</span>
             </span>
-            <span className="font-mono text-[10px] text-slate-400">10–25m</span>
+            <span className="font-mono text-[10px] text-pehra-text-2">10–25m</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: '#0d9488' }} />
+              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: 'var(--pehra-data-live)' }} />
               <span>Kurla / Sion Flood Bowls</span>
             </span>
             <span className="font-mono text-[10px] text-rose-400 font-bold">1.8–3.5m</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm bg-cyan-500" />
+              <span className="h-2.5 w-2.5 rounded-sm bg-pehra-action" />
               <span>Arabian Sea / Tidal Creek</span>
             </span>
-            <span className="font-mono text-[10px] text-cyan-400">0.0m</span>
+            <span className="font-mono text-[10px] text-pehra-data-live">0.0m</span>
           </div>
         </div>
       </div>
 
       {/* Selected 3D Coordinate Probe Inspector Floating Card */}
       {selectedPin && (
-        <div className="absolute top-16 left-4 z-20 w-72 rounded-xl border border-cyan-800 bg-slate-900/95 p-3.5 backdrop-blur-md shadow-2xl text-xs">
+        <div className="absolute top-16 left-4 z-20 w-72 rounded-xl border border-cyan-800 bg-pehra-panel/95 p-3.5 backdrop-blur-md shadow-2xl text-xs">
           <div className="flex items-center justify-between mb-2">
-            <span className="font-bold text-white flex items-center gap-1.5">
-              <MapPin className="h-4 w-4 text-cyan-400" />
+            <span className="font-bold text-pehra-text flex items-center gap-1.5">
+              <MapPin className="h-4 w-4 text-pehra-data-live" />
               <span>3D Surface Inspection</span>
             </span>
             <button
               onClick={() => setSelectedPin(null)}
-              className="text-slate-400 hover:text-white text-xs px-1.5 py-0.5 rounded hover:bg-slate-800"
+              className="text-pehra-text-2 hover:text-pehra-text text-xs px-1.5 py-0.5 rounded hover:bg-pehra-raised"
             >
               ✕
             </button>
           </div>
 
           <div className="space-y-1.5">
-            <div className="text-[11px] text-slate-400 font-mono">
+            <div className="text-[11px] text-pehra-text-2 font-mono">
               {selectedPin.lat.toFixed(4)}° N, {selectedPin.lng.toFixed(4)}° E
             </div>
 
-            <div className="flex items-center justify-between border-t border-slate-800 pt-1.5">
-              <span className="text-slate-400">Ground Elevation:</span>
-              <span className="font-mono font-bold text-white">{selectedPin.elevation} m MSL</span>
+            <div className="flex items-center justify-between border-t border-pehra-raised pt-1.5">
+              <span className="text-pehra-text-2">Ground Elevation:</span>
+              <span className="font-mono font-bold text-pehra-text">{selectedPin.elevation} m MSL</span>
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-slate-400">Terrain Category:</span>
-              <span className="font-semibold text-cyan-300">{selectedPin.status}</span>
+              <span className="text-pehra-text-2">Terrain Category:</span>
+              <span className="font-semibold text-pehra-data-live">{selectedPin.status}</span>
             </div>
 
-            <div className="flex items-center justify-between border-t border-slate-800 pt-1.5">
-              <span className="text-slate-400">Flood Inundation:</span>
+            <div className="flex items-center justify-between border-t border-pehra-raised pt-1.5">
+              <span className="text-pehra-text-2">Flood Inundation:</span>
               {selectedPin.submerged ? (
                 <span className="font-bold text-rose-400 flex items-center gap-1">
                   <AlertTriangle className="h-3 w-3" />
                   Submerged ({selectedPin.waterDepth}m depth)
                 </span>
               ) : (
-                <span className="font-bold text-emerald-400 flex items-center gap-1">
+                <span className="font-bold text-pehra-data-live flex items-center gap-1">
                   <ShieldCheck className="h-3 w-3" />
                   Above Waterline (+{(selectedPin.elevation - waterLevelM).toFixed(1)}m)
                 </span>

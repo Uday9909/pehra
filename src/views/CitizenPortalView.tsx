@@ -61,7 +61,7 @@ export const CitizenPortalView: React.FC<CitizenPortalViewProps> = ({
   };
 
   return (
-    <div data-theme="citizen" className="space-y-4 text-pehra-text">
+    <div className="space-y-4 text-pehra-text">
       <Panel>
         <PanelHeader
           title="Citizen safety portal"

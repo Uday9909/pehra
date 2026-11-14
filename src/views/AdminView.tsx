@@ -118,7 +118,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Admin & ML Operations Console</h1>
+          <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Admin & ML Operations Console</h1>
           <p className="text-xs text-pehra-text mt-1">
             Sensor telemetry gateways, model governance, early warning thresholds, and immutable audit logs
           </p>
@@ -138,7 +138,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
               className={`rounded px-3 py-1.5 font-medium transition-all ${
-                activeTab === tab.id ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-white'
+                activeTab === tab.id ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-pehra-text'
               }`}
             >
               {tab.label}
@@ -175,7 +175,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                       <span className="text-pehra-text font-mono text-pehra-text uppercase tracking-wider font-semibold">
                         {src.type}
                       </span>
-                      <h3 className="font-bold text-white text-base mt-0.5">{src.name}</h3>
+                      <h3 className="font-bold text-pehra-text text-base mt-0.5">{src.name}</h3>
                       <p className="text-xs text-pehra-text font-mono truncate max-w-xs">{src.endpointUrl}</p>
                     </div>
 
@@ -194,17 +194,17 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
 
                   <div className="grid grid-cols-3 gap-2 border-t border-pehra-border-subtle pt-3 text-xs">
                     <div>
-                      <span className="text-pehra-text text-pehra-text block">Freshness</span>
-                      <span className="font-mono font-bold text-white">
+                      <span className="text-pehra-text-2 block">Freshness</span>
+                      <span className="font-mono font-bold text-pehra-text">
                         {Math.round((Date.now() - new Date(src.lastUpdate).getTime()) / 1000)}s ago
                       </span>
                     </div>
                     <div>
-                      <span className="text-pehra-text text-pehra-text block">Polling Cadence</span>
+                      <span className="text-pehra-text-2 block">Polling Cadence</span>
                       <span className="font-mono font-bold text-pehra-text">{src.updateFrequencySec}s</span>
                     </div>
                     <div>
-                      <span className="text-pehra-text text-pehra-text block">Quality Score</span>
+                      <span className="text-pehra-text-2 block">Quality Score</span>
                       <span className="font-mono font-bold text-pehra-text">
                         {(src.qualityScore * 100).toFixed(0)}%
                       </span>
@@ -227,7 +227,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
 
                       <button
                         onClick={() => handleToggleSource(src.id, { isSimulation: !src.isSimulation })}
-                        className="rounded bg-pehra-panel px-2 py-1 text-pehra-text hover:bg-pehra-panel"
+                        className="rounded bg-pehra-panel px-2 py-1 text-pehra-text hover:bg-pehra-raised"
                       >
                         {src.isSimulation ? 'Switch Live' : 'Simulate'}
                       </button>
@@ -236,7 +236,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                     <button
                       onClick={() => handleTestSource(src.id)}
                       disabled={testingSourceId === src.id}
-                      className="rounded bg-pehra-panel px-3 py-1 font-bold text-white hover:bg-pehra-panel shadow-none"
+                      className="rounded bg-pehra-panel px-3 py-1 font-bold text-pehra-text hover:bg-pehra-raised shadow-none"
                     >
                       {testingSourceId === src.id ? 'Testing...' : 'Test Gateway'}
                     </button>
@@ -270,7 +270,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                         </span>
                       )}
                     </div>
-                    <h3 className="font-bold text-white text-base mt-1">{mod.name} (v{mod.version})</h3>
+                    <h3 className="font-bold text-pehra-text text-base mt-1">{mod.name} (v{mod.version})</h3>
                   </div>
 
                   <span className="rounded bg-pehra-panel px-2 py-0.5 text-pehra-text font-mono text-pehra-text">
@@ -280,19 +280,19 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
 
                 <div className="grid grid-cols-4 gap-2 border-t border-pehra-border-subtle pt-3 text-xs text-center">
                   <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
-                    <span className="text-pehra-text text-pehra-text block">Precision</span>
-                    <span className="font-mono font-bold text-white">{(mod.metrics.precision * 100).toFixed(1)}%</span>
+                    <span className="text-pehra-text-2 block">Precision</span>
+                    <span className="font-mono font-bold text-pehra-text">{(mod.metrics.precision * 100).toFixed(1)}%</span>
                   </div>
                   <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
-                    <span className="text-pehra-text text-pehra-text block">Recall</span>
-                    <span className="font-mono font-bold text-white">{(mod.metrics.recall * 100).toFixed(1)}%</span>
+                    <span className="text-pehra-text-2 block">Recall</span>
+                    <span className="font-mono font-bold text-pehra-text">{(mod.metrics.recall * 100).toFixed(1)}%</span>
                   </div>
                   <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
-                    <span className="text-pehra-text text-pehra-text block">F1 Score</span>
+                    <span className="text-pehra-text-2 block">F1 Score</span>
                     <span className="font-mono font-bold text-pehra-text">{(mod.metrics.f1Score * 100).toFixed(1)}%</span>
                   </div>
                   <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
-                    <span className="text-pehra-text text-pehra-text block">Lead Time</span>
+                    <span className="text-pehra-text-2 block">Lead Time</span>
                     <span className="font-mono font-bold text-pehra-text">{mod.metrics.arrivalLeadTimeHours || 2}h</span>
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   {mod.status !== 'ACTIVE' && (
                     <button
                       onClick={() => handleActivateModel(mod.id)}
-                      className="rounded bg-pehra-panel px-3.5 py-1.5 font-bold text-pehra-text hover:bg-pehra-panel shadow-none"
+                      className="rounded bg-pehra-panel px-3.5 py-1.5 font-bold text-pehra-text hover:bg-pehra-raised shadow-none"
                     >
                       Activate Version
                     </button>
@@ -319,7 +319,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
         <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-6 space-y-6">
           <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
             <div>
-              <h2 className="text-lg font-bold text-white">Operational Early Warning Thresholds & Hysteresis</h2>
+              <h2 className="text-lg font-bold text-pehra-text">Operational Early Warning Thresholds & Hysteresis</h2>
               <p className="text-xs text-pehra-text">
                 Adjust model sensitivity margins, automated cooldown periods, and mandatory human sign-off triggers
               </p>
@@ -328,7 +328,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
             <button
               onClick={handleSaveThresholds}
               disabled={savingThresholds}
-              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-4 py-2 font-bold text-pehra-text hover:bg-pehra-panel shadow-none"
+              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-4 py-2 font-bold text-pehra-text hover:bg-pehra-raised shadow-none"
             >
               <Save className="h-4 w-4" />
               <span>{savingThresholds ? 'Saving...' : 'Save & Record Audit Log'}</span>
@@ -353,7 +353,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   onChange={(e) =>
                     setThresholds({ ...thresholds, watchRiskThreshold: parseFloat(e.target.value) })
                   }
-                  className="w-full accent-cyan-400"
+                  className="w-full accent-pehra-action"
                 />
               </div>
 
@@ -373,7 +373,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   onChange={(e) =>
                     setThresholds({ ...thresholds, warningRiskThreshold: parseFloat(e.target.value) })
                   }
-                  className="w-full accent-cyan-400"
+                  className="w-full accent-pehra-action"
                 />
               </div>
 
@@ -391,7 +391,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   onChange={(e) =>
                     setThresholds({ ...thresholds, alertCooldownMinutes: parseInt(e.target.value) })
                   }
-                  className="w-full accent-cyan-400"
+                  className="w-full accent-pehra-action"
                 />
               </div>
             </div>
@@ -413,7 +413,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   onChange={(e) =>
                     setThresholds({ ...thresholds, alertHysteresisPct: parseFloat(e.target.value) })
                   }
-                  className="w-full accent-cyan-400"
+                  className="w-full accent-pehra-action"
                 />
               </div>
 
@@ -431,7 +431,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   onChange={(e) =>
                     setThresholds({ ...thresholds, alertExpiryHours: parseInt(e.target.value) })
                   }
-                  className="w-full accent-cyan-400"
+                  className="w-full accent-pehra-action"
                 />
               </div>
 
@@ -468,7 +468,7 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
       {/* Tab 4: SYSTEM HEALTH */}
       {activeTab === 'HEALTH' && health && (
         <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-6 space-y-4 text-xs">
-          <h2 className="text-base font-bold text-white">Infrastructure Health Matrix</h2>
+          <h2 className="text-base font-bold text-pehra-text">Infrastructure Health Matrix</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {Object.entries(health.services || {}).map(([service, status]: any) => (
               <div key={service} className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
@@ -493,12 +493,12 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                 <th className="p-3">MFA & Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-pehra-border-subtle">
               {users.map((u) => (
-                <tr key={u.id} className="hover:bg-pehra-panel">
-                  <td className="p-3 font-medium text-white">
+                <tr key={u.id} className="hover:bg-pehra-raised">
+                  <td className="p-3 font-medium text-pehra-text">
                     <div>{u.fullName}</div>
-                    <div className="text-pehra-text text-pehra-text font-mono">{u.email}</div>
+                    <div className="text-pehra-text-2 font-mono">{u.email}</div>
                   </td>
                   <td className="p-3">
                     <span className="rounded bg-pehra-panel px-2 py-0.5 font-mono font-bold text-pehra-text">
@@ -508,10 +508,10 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                   <td className="p-3 text-pehra-text font-mono">{u.homeLocation?.address || 'MMR Metropolitan'}</td>
                   <td className="p-3 text-pehra-text font-mono">{u.phone || '+91 98200 00000'}</td>
                   <td className="p-3">
-                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text text-pehra-text font-semibold mr-1">
+                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text-2 font-semibold mr-1">
                       {u.status}
                     </span>
-                    <span className="text-pehra-text text-pehra-text">
+                    <span className="text-pehra-text-2">
                       MFA: {u.mfaEnabled ? 'Enforced' : 'Optional'}
                     </span>
                   </td>
@@ -535,17 +535,17 @@ export const AdminView: React.FC<AdminViewProps> = ({ activeRole }) => {
                 <th className="p-3">Reason / Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-pehra-border-subtle">
               {auditLogs.map((log) => (
-                <tr key={log.id} className="hover:bg-pehra-panel">
-                  <td className="p-3 font-mono text-pehra-text text-pehra-text">
+                <tr key={log.id} className="hover:bg-pehra-raised">
+                  <td className="p-3 font-mono text-pehra-text-2">
                     {new Date(log.timestamp).toLocaleTimeString()}
                   </td>
-                  <td className="p-3 font-semibold text-white">
+                  <td className="p-3 font-semibold text-pehra-text">
                     {log.userName} ({log.userRole})
                   </td>
                   <td className="p-3">
-                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 font-mono text-pehra-text text-pehra-text">
+                    <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 font-mono text-pehra-text-2">
                       {log.action}
                     </span>
                   </td>

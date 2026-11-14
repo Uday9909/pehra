@@ -227,7 +227,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
             <span className="flex h-7 w-7 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle">
               <Droplets className="h-4 w-4" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-white">Real-Time Water Level System</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-pehra-text">Real-Time Water Level System</h1>
             <span className="rounded-none bg-pehra-panel border border-pehra-border-subtle px-2.5 py-0.5 text-xs font-mono font-semibold text-pehra-text">
               LIVE TELEMETRY
             </span>
@@ -248,7 +248,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
             className={`flex items-center gap-1.5 rounded-none border px-3 py-1.5 text-xs font-semibold transition-all ${
               alarmSoundEnabled
                 ? 'border-pehra-border-subtle bg-pehra-panel text-pehra-text shadow-none'
-                : 'border-pehra-border-subtle bg-pehra-panel text-pehra-text hover:text-white'
+                : 'border-pehra-border-subtle bg-pehra-panel text-pehra-text hover:text-pehra-text'
             }`}
             title="Audio alert chime when any station crosses Danger Mark"
           >
@@ -260,7 +260,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
           <button
             onClick={handleResetBaseline}
             disabled={refreshing}
-            className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-1.5 text-xs font-semibold text-pehra-text hover:bg-pehra-panel hover:text-white transition-all"
+            className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-1.5 text-xs font-semibold text-pehra-text hover:bg-pehra-raised hover:text-pehra-text transition-all"
             title="Reset telemetry to calibrated baseline"
           >
             <RotateCcw className="h-3.5 w-3.5 text-pehra-text" />
@@ -274,7 +274,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
               fetchStations();
             }}
             disabled={refreshing}
-            className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-1.5 text-xs font-bold text-pehra-text hover:bg-pehra-panel shadow-none transition-all"
+            className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-1.5 text-xs font-bold text-pehra-text hover:bg-pehra-raised shadow-none transition-all"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? '' : ''}`} />
             <span>{refreshing ? 'Syncing...' : 'Poll Now'}</span>
@@ -287,7 +287,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-3">
           <div className="flex items-center gap-2">
             <Radio className="h-4 w-4 text-pehra-text " />
-            <span className="font-bold text-sm text-white">Stream Ingestion Controller</span>
+            <span className="font-bold text-sm text-pehra-text">Stream Ingestion Controller</span>
             <span className="text-xs text-pehra-text hidden sm:inline">• Ingest live telemetry from any custom or official endpoint</span>
           </div>
 
@@ -329,7 +329,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
               onChange={(e) => setInputUrl(e.target.value)}
               placeholder="Enter water level API endpoint / stream URL (e.g., https://mumbaiflood.in/api/v1/sensors/live)..."
               required
-              className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel pl-10 pr-4 py-2.5 text-xs text-white placeholder:text-pehra-text-muted focus:border-pehra-border-subtle focus:outline-none focus:ring-1 focus:ring-pehra-focus font-mono"
+              className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel pl-10 pr-4 py-2.5 text-xs text-pehra-text placeholder:text-pehra-text-muted focus:border-pehra-focus focus:outline-none focus:ring-1 focus:ring-pehra-focus font-mono"
             />
           </div>
 
@@ -356,7 +356,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                 className={`rounded-none px-2.5 py-1 text-pehra-text font-medium transition-all ${
                   inputUrl === preset.url
                     ? 'bg-pehra-panel text-pehra-text border border-pehra-border-subtle font-bold'
-                    : 'bg-pehra-panel border border-pehra-border-subtle text-pehra-text hover:bg-pehra-panel hover:text-white'
+                    : 'bg-pehra-panel border border-pehra-border-subtle text-pehra-text hover:bg-pehra-raised hover:text-pehra-text'
                 }`}
               >
                 {preset.name.split('(')[0].trim()}
@@ -381,7 +381,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
               <select
                 value={cadenceSec}
                 onChange={(e) => setCadenceSec(Number(e.target.value))}
-                className="rounded-none border border-pehra-border-subtle bg-pehra-panel px-2 py-1 text-pehra-text font-mono text-pehra-text focus:border-pehra-border-subtle focus:outline-none"
+                className="rounded-none border border-pehra-border-subtle bg-pehra-panel px-2 py-1 text-pehra-text font-mono text-pehra-text focus:border-pehra-focus focus:outline-none"
               >
                 <option value={5}>Every 5s</option>
                 <option value={10}>Every 10s</option>
@@ -394,7 +394,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
 
         {/* Diagnostics message */}
         {systemState?.diagnostics?.message && (
-          <div className="flex items-start gap-2 rounded-none bg-pehra-panel border border-pehra-border-subtle p-2.5 text-pehra-text text-pehra-text">
+          <div className="flex items-start gap-2 rounded-none bg-pehra-panel border border-pehra-border-subtle p-2.5 text-pehra-text-2">
             <Info className="h-3.5 w-3.5 text-pehra-text shrink-0 mt-0.5" />
             <div className="space-y-0.5">
               <span className="font-mono text-pehra-text font-semibold">Active Feed Status: </span>
@@ -407,39 +407,39 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
       {/* METRIC OVERVIEW BANNER */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-4">
-          <span className="text-pehra-text text-pehra-text block font-medium">Monitored Stations</span>
-          <div className="text-2xl font-bold font-mono text-white mt-1">{stations.length}</div>
-          <span className="text-pehra-text text-pehra-text">Basin telemetry points</span>
+          <span className="text-pehra-text-2 block font-medium">Monitored Stations</span>
+          <div className="text-2xl font-bold font-mono text-pehra-text mt-1">{stations.length}</div>
+          <span className="text-pehra-text-2">Basin telemetry points</span>
         </div>
 
         <div className={`rounded-none border p-4 ${dangerCount > 0 ? 'border-pehra-border-subtle bg-pehra-panel' : 'border-pehra-border-subtle bg-pehra-panel'}`}>
-          <span className="text-pehra-text text-pehra-text block font-medium">Danger Mark Breached</span>
+          <span className="text-pehra-text-2 block font-medium">Danger Mark Breached</span>
           <div className={`text-2xl font-bold font-mono mt-1 ${dangerCount > 0 ? 'text-pehra-text ' : 'text-pehra-text'}`}>
             {dangerCount}
           </div>
-          <span className="text-pehra-text text-pehra-text">{dangerCount > 0 ? 'Urgent dispatch required' : 'All below high flood mark'}</span>
+          <span className="text-pehra-text-2">{dangerCount > 0 ? 'Urgent dispatch required' : 'All below high flood mark'}</span>
         </div>
 
         <div className={`rounded-none border p-4 ${warningCount > 0 ? 'border-pehra-border-subtle bg-pehra-panel' : 'border-pehra-border-subtle bg-pehra-panel'}`}>
-          <span className="text-pehra-text text-pehra-text block font-medium">Warning Threshold</span>
+          <span className="text-pehra-text-2 block font-medium">Warning Threshold</span>
           <div className="text-2xl font-bold font-mono text-pehra-text mt-1">{warningCount}</div>
-          <span className="text-pehra-text text-pehra-text">Incipient ponding</span>
+          <span className="text-pehra-text-2">Incipient ponding</span>
         </div>
 
         <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-4">
-          <span className="text-pehra-text text-pehra-text block font-medium">Peak Measured Water</span>
+          <span className="text-pehra-text-2 block font-medium">Peak Measured Water</span>
           <div className="text-2xl font-bold font-mono text-pehra-text mt-1">
             {maxLevelStation ? `${maxLevelStation.currentLevelM}m` : '--'}
           </div>
-          <span className="text-pehra-text text-pehra-text truncate block">
+          <span className="text-pehra-text-2 truncate block">
             {maxLevelStation ? maxLevelStation.name.split('Gauge')[0] : 'Normal'}
           </span>
         </div>
 
         <div className="col-span-2 sm:col-span-1 rounded-none border border-pehra-border-subtle bg-pehra-panel p-4">
-          <span className="text-pehra-text text-pehra-text block font-medium">Arabian Sea Tidal Lock</span>
+          <span className="text-pehra-text-2 block font-medium">Arabian Sea Tidal Lock</span>
           <div className="text-2xl font-bold font-mono text-pehra-text mt-1">4.45m</div>
-          <span className="text-pehra-text text-pehra-text font-semibold">Tidal Backflow Active</span>
+          <span className="text-pehra-text-2 font-semibold">Tidal Backflow Active</span>
         </div>
       </div>
 
@@ -452,7 +452,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
             placeholder="Search stations by name, waterway, or municipal ward..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel pl-9 pr-4 py-2 text-xs text-white placeholder:text-pehra-text-muted focus:border-pehra-border-subtle focus:outline-none"
+            className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel pl-9 pr-4 py-2 text-xs text-pehra-text placeholder:text-pehra-text-muted focus:border-pehra-focus focus:outline-none"
           />
         </div>
 
@@ -465,11 +465,11 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
               className={`rounded px-3 py-1 font-semibold transition-all ${
                 statusFilter === filter
                   ? filter === 'DANGER'
-                    ? 'bg-pehra-panel text-white font-bold'
+                    ? 'bg-pehra-panel text-pehra-text font-bold'
                     : filter === 'WARNING'
-                    ? 'bg-pehra-panel text-white font-bold'
+                    ? 'bg-pehra-panel text-pehra-text font-bold'
                     : 'bg-pehra-panel text-pehra-text font-bold'
-                  : 'text-pehra-text hover:text-white'
+                  : 'text-pehra-text hover:text-pehra-text'
               }`}
             >
               {filter === 'ALL' ? 'All Stations' : filter}
@@ -505,10 +505,10 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                 key={station.id}
                 className={`rounded-none border transition-all duration-300 p-5 flex flex-col justify-between ${
                   isDanger
-                    ? 'border-pehra-border-subtle bg-pehra-panel shadow-none shadow-none'
+                    ? 'border-pehra-border-subtle bg-pehra-panel shadow-none'
                     : isWarning
-                    ? 'border-pehra-border-subtle bg-pehra-panel shadow-none shadow-none'
-                    : 'border-pehra-border-subtle bg-pehra-panel hover:border-pehra-border-subtle'
+                    ? 'border-pehra-border-subtle bg-pehra-panel shadow-none'
+                    : 'border-pehra-border-subtle bg-pehra-panel hover:border-pehra-border-control'
                 } ${isSurging ? 'ring-2 ring-pehra-focus scale-[1.01]' : ''}`}
               >
                 <div>
@@ -521,8 +521,8 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                           {station.waterway}
                         </span>
                       </div>
-                      <h3 className="font-bold text-white text-base leading-tight mt-0.5">{station.name}</h3>
-                      <span className="text-pehra-text text-pehra-text">{station.ward}</span>
+                      <h3 className="font-bold text-pehra-text text-base leading-tight mt-0.5">{station.name}</h3>
+                      <span className="text-pehra-text-2">{station.ward}</span>
                     </div>
 
                     <span
@@ -541,7 +541,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                   {/* RIVERBED CROSS-SECTION DEPTH GAUGE (Physical graphic) */}
                   <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3 mb-3 relative overflow-hidden">
                     <div className="flex items-baseline justify-between mb-1.5">
-                      <span className="text-pehra-text text-pehra-text font-mono">Current Water Level</span>
+                      <span className="text-pehra-text-2 font-mono">Current Water Level</span>
                       <div className="flex items-baseline gap-1">
                         <span
                           className={`text-2xl font-mono font-bold ${
@@ -550,7 +550,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                         >
                           {station.currentLevelM.toFixed(2)} m
                         </span>
-                        <span className="text-pehra-text text-pehra-text">MSL</span>
+                        <span className="text-pehra-text-2">MSL</span>
                       </div>
                     </div>
 
@@ -568,7 +568,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                         style={{ height: `${fillPct}%` }}
                       >
                         {/* Animated wave crest */}
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-white/30 " />
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-pehra-raised/30 " />
                       </div>
 
                       {/* Warning mark line */}
@@ -612,7 +612,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                   {/* Telemetry Rates & Discharge Metrics */}
                   <div className="grid grid-cols-3 gap-2 text-xs mb-3">
                     <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-2">
-                      <span className="text-pehra-text text-pehra-text block">Rate of Rise</span>
+                      <span className="text-pehra-text-2 block">Rate of Rise</span>
                       <div className="flex items-center gap-1 font-mono font-bold text-pehra-text mt-0.5">
                         {station.rateOfRiseMPerHr > 0 ? (
                           <ArrowUpRight className="h-3 w-3 text-pehra-text" />
@@ -628,14 +628,14 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                     </div>
 
                     <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-2">
-                      <span className="text-pehra-text text-pehra-text block">Discharge</span>
+                      <span className="text-pehra-text-2 block">Discharge</span>
                       <span className="font-mono font-bold text-pehra-text mt-0.5 block">
                         {station.dischargeM3s ? `${station.dischargeM3s} m³/s` : '--'}
                       </span>
                     </div>
 
                     <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-2">
-                      <span className="text-pehra-text text-pehra-text block">Flow Speed</span>
+                      <span className="text-pehra-text-2 block">Flow Speed</span>
                       <span className="font-mono font-bold text-pehra-text mt-0.5 block">
                         {station.flowVelocityMs ? `${station.flowVelocityMs} m/s` : '--'}
                       </span>
@@ -644,7 +644,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
 
                   {/* Mini-Hydrograph Sparkline */}
                   <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-2.5 mb-3">
-                    <div className="flex items-center justify-between text-pehra-text text-pehra-text mb-1">
+                    <div className="flex items-center justify-between text-pehra-text-2 mb-1">
                       <span className="font-mono">Hydrograph (Past 2 Hours)</span>
                       <span className="font-mono text-pehra-text font-semibold">{station.trend}</span>
                     </div>
@@ -669,7 +669,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                               style={{ height: `${barHeight}%` }}
                               title={`${pt.time}: ${pt.level}m`}
                             />
-                            <span className="text-pehra-text text-pehra-text font-mono hidden sm:inline">{pt.time.slice(3)}</span>
+                            <span className="text-pehra-text-2 font-mono hidden sm:inline">{pt.time.slice(3)}</span>
                           </div>
                         );
                       })}
@@ -699,7 +699,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                     <button
                       onClick={() => handleSimulateSurge(station.id)}
                       disabled={isSurging}
-                      className="rounded bg-pehra-panel hover:bg-pehra-panel px-2 py-1 text-pehra-text font-mono text-pehra-text hover:text-white transition-colors"
+                      className="rounded bg-pehra-panel hover:bg-pehra-raised px-2 py-1 text-pehra-text font-mono text-pehra-text hover:text-pehra-text transition-colors"
                       title="Simulate cloudburst water surge at this station"
                     >
                       <Zap className="h-3 w-3 inline mr-0.5 text-pehra-text" />
@@ -709,7 +709,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                     {/* Detailed Analysis Modal Trigger */}
                     <button
                       onClick={() => setSelectedStation(station)}
-                      className="rounded bg-pehra-panel hover:bg-pehra-panel text-pehra-text border border-pehra-border-subtle px-2.5 py-1 text-pehra-text font-bold transition-all"
+                      className="rounded bg-pehra-panel hover:bg-pehra-raised text-pehra-text border border-pehra-border-subtle px-2.5 py-1 text-pehra-text font-bold transition-all"
                     >
                       Deep Analysis
                     </button>
@@ -730,12 +730,12 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                 <span className="text-pehra-text font-mono text-pehra-text uppercase tracking-wider font-semibold">
                   {selectedStation.waterway} • Comprehensive Telemetry
                 </span>
-                <h2 className="text-xl font-bold text-white mt-0.5">{selectedStation.name}</h2>
+                <h2 className="text-xl font-bold text-pehra-text mt-0.5">{selectedStation.name}</h2>
                 <span className="text-xs text-pehra-text">{selectedStation.ward} • Coords: {selectedStation.lat.toFixed(4)}°N, {selectedStation.lng.toFixed(4)}°E</span>
               </div>
               <button
                 onClick={() => setSelectedStation(null)}
-                className="rounded-none p-1 text-pehra-text hover:bg-pehra-panel hover:text-white"
+                className="rounded-none p-1 text-pehra-text hover:bg-pehra-raised hover:text-pehra-text"
               >
                 ✕
               </button>
@@ -744,35 +744,35 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
             {/* Level Comparison Meter */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
               <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-3">
-                <span className="text-pehra-text text-pehra-text block">Current Level</span>
+                <span className="text-pehra-text-2 block">Current Level</span>
                 <span className="text-xl font-mono font-bold text-pehra-text">{selectedStation.currentLevelM}m</span>
-                <span className="text-pehra-text text-pehra-text block">MSL Datum</span>
+                <span className="text-pehra-text-2 block">MSL Datum</span>
               </div>
 
               <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-3">
-                <span className="text-pehra-text text-pehra-text block">Warning Level</span>
+                <span className="text-pehra-text-2 block">Warning Level</span>
                 <span className="text-xl font-mono font-bold text-pehra-text">{selectedStation.warningLevelM}m</span>
-                <span className="text-pehra-text text-pehra-text block">Stage 1 Threshold</span>
+                <span className="text-pehra-text-2 block">Stage 1 Threshold</span>
               </div>
 
               <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-3">
-                <span className="text-pehra-text text-pehra-text block">Danger Mark</span>
+                <span className="text-pehra-text-2 block">Danger Mark</span>
                 <span className="text-xl font-mono font-bold text-pehra-text">{selectedStation.dangerLevelM}m</span>
-                <span className="text-pehra-text text-pehra-text block">High Flood Mark</span>
+                <span className="text-pehra-text-2 block">High Flood Mark</span>
               </div>
 
               <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-3">
-                <span className="text-pehra-text text-pehra-text block">Highest Recorded</span>
-                <span className="text-xl font-mono font-bold text-white">{selectedStation.highestFloodLevelM}m</span>
-                <span className="text-pehra-text text-pehra-text block">July 2005 Deluge</span>
+                <span className="text-pehra-text-2 block">Highest Recorded</span>
+                <span className="text-xl font-mono font-bold text-pehra-text">{selectedStation.highestFloodLevelM}m</span>
+                <span className="text-pehra-text-2 block">July 2005 Deluge</span>
               </div>
             </div>
 
             {/* Expanded Time-Series Hydrograph */}
             <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-4 space-y-2">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-white">Full Historical Streamflow Hydrograph</span>
-                <span className="font-mono text-pehra-text text-pehra-text">Updated {selectedStation.freshnessSeconds}s ago</span>
+                <span className="font-bold text-pehra-text">Full Historical Streamflow Hydrograph</span>
+                <span className="font-mono text-pehra-text-2">Updated {selectedStation.freshnessSeconds}s ago</span>
               </div>
 
               <div className="h-32 w-full pt-4 flex items-end gap-2 border-b border-pehra-border-subtle">
@@ -794,8 +794,8 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
 
             {/* Hardware & Transmission Telemetry */}
             <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-4 text-xs space-y-2">
-              <span className="font-bold text-white block">Physical Sensor & Pipeline Metadata</span>
-              <div className="grid grid-cols-2 gap-2 text-pehra-text text-pehra-text">
+              <span className="font-bold text-pehra-text block">Physical Sensor & Pipeline Metadata</span>
+              <div className="grid grid-cols-2 gap-2 text-pehra-text-2">
                 <div>
                   <span className="text-pehra-text block">Sensor Model:</span>
                   <span className="font-mono">{selectedStation.sensorModel}</span>
@@ -819,7 +819,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
             <div className="flex items-center justify-end gap-2 pt-2 border-t border-pehra-border-subtle">
               <button
                 onClick={() => setSelectedStation(null)}
-                className="rounded-none bg-pehra-panel px-4 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-panel"
+                className="rounded-none bg-pehra-panel px-4 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-raised"
               >
                 Close
               </button>
@@ -833,7 +833,7 @@ export const WaterLevelView: React.FC<WaterLevelViewProps> = ({
                     onNavigate('map');
                   }
                 }}
-                className="rounded-none bg-pehra-panel px-4 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-panel"
+                className="rounded-none bg-pehra-panel px-4 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-raised"
               >
                 Inspect on Topographic Map
               </button>

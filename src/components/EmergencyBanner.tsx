@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from '../types/index.ts';
-import { AlertBanner, Button, DataBadge } from './ui/index.tsx';
+import { DataBadge, SeverityBadge } from './ui/index.tsx';
 
 interface EmergencyBannerProps {
   alerts: Alert[];
@@ -18,12 +18,40 @@ export const EmergencyBanner: React.FC<EmergencyBannerProps> = ({ alerts, onView
   if (!alert) return null;
 
   return (
-    <div id="emergency-top-banner" className="w-full px-3 py-2" aria-label="Emergency alert">
-      <AlertBanner alert={alert}>
-        <DataBadge source={alert.stage === 'CONFIRMED' ? 'authority' : 'seeded-store'} asOf={alert.issuedAt} />
-        <Button variant="secondary" onClick={() => onAcknowledge(alert.id)}>Acknowledge</Button>
-        <Button variant="ghost" onClick={() => onViewAlert(alert)}>View alert</Button>
-      </AlertBanner>
+    <div
+      id="emergency-top-banner"
+      className="flex min-h-9 items-center gap-2 border-b border-pehra-border-subtle bg-pehra-panel px-3"
+      role="alert"
+      aria-label="Emergency alert"
+    >
+      <span
+        className={`h-5 w-0.5 shrink-0 ${
+          alert.riskLevel === 'CRITICAL' ? 'bg-pehra-severity-critical' : 'bg-pehra-severity-warning'
+        }`}
+        aria-hidden="true"
+      />
+      <SeverityBadge severity={alert.riskLevel} />
+      <span className="min-w-0 flex-1 truncate text-xs font-medium text-pehra-text">{alert.title}</span>
+      <span className="hidden shrink-0 text-[11px] text-pehra-text-muted sm:inline">{alert.villageName}</span>
+      <DataBadge
+        source={alert.stage === 'CONFIRMED' ? 'authority' : 'seeded-store'}
+        asOf={alert.issuedAt}
+        className="hidden lg:inline-flex"
+      />
+      <button
+        type="button"
+        onClick={() => onAcknowledge(alert.id)}
+        className="shrink-0 border border-pehra-border-control px-2 py-0.5 text-[11px] font-medium text-pehra-text hover:bg-pehra-raised"
+      >
+        Acknowledge
+      </button>
+      <button
+        type="button"
+        onClick={() => onViewAlert(alert)}
+        className="shrink-0 text-[11px] font-semibold text-pehra-data-predicted hover:underline"
+      >
+        View alert
+      </button>
     </div>
   );
 };

@@ -40,7 +40,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
   return (
     <div className="space-y-8 pb-16">
       {/* Hero Section - Clean White Card with Cool Blue Accent */}
-      <section className="relative overflow-hidden rounded-2xl border border-[#E5EAF0] bg-white p-6 sm:p-10 shadow-xs">
+      <section className="relative overflow-hidden rounded-2xl border border-[#E5EAF0] bg-pehra-raised p-6 sm:p-10 shadow-xs">
         {/* Soft background ambient gradient */}
         <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-blue-50/60 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-cyan-50/50 blur-3xl pointer-events-none" />
@@ -66,7 +66,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             <button
               onClick={() => onNavigate('map')}
               id="hero-open-map-btn"
-              className="flex items-center gap-2 rounded-xl bg-[#2563EB] px-5 py-2.5 font-semibold text-white hover:bg-blue-700 shadow-sm transition-all"
+              className="flex items-center gap-2 rounded-xl bg-[#2563EB] px-5 py-2.5 font-semibold text-pehra-text hover:bg-blue-700 shadow-sm transition-all"
             >
               <MapPin className="h-4 w-4" />
               <span>Explore Hyperlocal Map</span>
@@ -76,7 +76,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             <button
               onClick={() => onNavigate('alerts')}
               id="hero-view-alerts-btn"
-              className="flex items-center gap-2 rounded-xl border border-[#E5EAF0] bg-white px-5 py-2.5 font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-xs transition-all"
+              className="flex items-center gap-2 rounded-xl border border-[#E5EAF0] bg-pehra-raised px-5 py-2.5 font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-xs transition-all"
             >
               <span>View Active Alerts ({activeAlerts.length})</span>
             </button>
@@ -129,7 +129,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="rounded-xl border border-[#E5EAF0] bg-white p-5 hover:border-slate-300 transition-all shadow-xs">
+          <div className="rounded-xl border border-[#E5EAF0] bg-pehra-raised p-5 hover:border-slate-300 transition-all shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] mb-3">
               <TrendingUp className="h-5 w-5" />
             </div>
@@ -139,7 +139,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             </p>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-white p-5 hover:border-slate-300 transition-all shadow-xs">
+          <div className="rounded-xl border border-[#E5EAF0] bg-pehra-raised p-5 hover:border-slate-300 transition-all shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600 mb-3">
               <Layers className="h-5 w-5" />
             </div>
@@ -149,7 +149,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             </p>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-white p-5 hover:border-slate-300 transition-all shadow-xs">
+          <div className="rounded-xl border border-[#E5EAF0] bg-pehra-raised p-5 hover:border-slate-300 transition-all shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 mb-3">
               <AlertOctagon className="h-5 w-5" />
             </div>
@@ -159,7 +159,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             </p>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-white p-5 hover:border-slate-300 transition-all shadow-xs">
+          <div className="rounded-xl border border-[#E5EAF0] bg-pehra-raised p-5 hover:border-slate-300 transition-all shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 mb-3">
               <Compass className="h-5 w-5" />
             </div>
@@ -169,7 +169,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             </p>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-white p-5 hover:border-slate-300 transition-all shadow-xs">
+          <div className="rounded-xl border border-[#E5EAF0] bg-pehra-raised p-5 hover:border-slate-300 transition-all shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 mb-3">
               <WifiOff className="h-5 w-5" />
             </div>
@@ -179,7 +179,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
             </p>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-white p-5 hover:border-slate-300 transition-all shadow-xs">
+          <div className="rounded-xl border border-[#E5EAF0] bg-pehra-raised p-5 hover:border-slate-300 transition-all shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-600 mb-3">
               <Cpu className="h-5 w-5" />
             </div>
@@ -225,7 +225,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
                   onSelectVillage(village);
                   onNavigate('map');
                 }}
-                className={`cursor-pointer rounded-xl border bg-white p-4 transition-all hover:shadow-sm ${style.border}`}
+                className={`cursor-pointer rounded-xl border bg-pehra-raised p-4 transition-all hover:shadow-sm ${style.border}`}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
@@ -273,19 +273,19 @@ export const LandingView: React.FC<LandingViewProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <a
               href="tel:1916"
-              className="flex items-center gap-2 rounded-xl bg-[#DC2626] px-4 py-2 text-xs font-semibold text-white hover:bg-red-700 shadow-xs transition-colors"
+              className="flex items-center gap-2 rounded-xl bg-[#DC2626] px-4 py-2 text-xs font-semibold text-pehra-text hover:bg-red-700 shadow-xs transition-colors"
             >
               <span>MCGM Disaster Cell: 1916</span>
             </a>
             <a
               href="tel:112"
-              className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-800 hover:bg-slate-50 transition-colors"
+              className="flex items-center gap-2 rounded-xl border border-slate-200 bg-pehra-raised px-3.5 py-2 text-xs font-medium text-slate-800 hover:bg-slate-50 transition-colors"
             >
               <span>Police / NDRF: 112</span>
             </a>
             <a
               href="tel:108"
-              className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-800 hover:bg-slate-50 transition-colors"
+              className="flex items-center gap-2 rounded-xl border border-slate-200 bg-pehra-raised px-3.5 py-2 text-xs font-medium text-slate-800 hover:bg-slate-50 transition-colors"
             >
               <span>Ambulance: 108</span>
             </a>

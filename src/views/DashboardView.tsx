@@ -50,7 +50,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white tracking-tight">Command & Operations Center</h1>
+            <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Command & Operations Center</h1>
             <span className="rounded bg-rose-950 border border-rose-700/60 px-2 py-0.5 text-[11px] font-bold text-rose-300 font-mono">
               LEVEL 2 INCIDENT
             </span>
@@ -63,13 +63,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={() => onNavigate('alerts')}
-            className="rounded-lg bg-rose-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-rose-500 shadow-sm"
+            className="rounded-lg bg-rose-600 px-3.5 py-1.5 text-xs font-bold text-pehra-text hover:bg-rose-500 shadow-sm"
           >
             + Authorize Emergency Alert
           </button>
           <button
             onClick={() => onNavigate('simulation')}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-slate-700"
+            className="rounded-lg border border-slate-700 bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-pehra-text hover:bg-slate-700"
           >
             Launch Scenario
           </button>
@@ -83,7 +83,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>Active Incidents</span>
             <Flame className="h-4 w-4 text-rose-400/80 group-hover:scale-110 transition-transform" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white tracking-tight">{activeIncidents.length}</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-pehra-text tracking-tight">{activeIncidents.length}</div>
           <div className="mt-1 text-[11px] text-slate-400 font-medium">1 Breach, 1 Urban</div>
         </div>
 
@@ -92,7 +92,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>Active Warnings</span>
             <AlertTriangle className="h-4 w-4 text-amber-400/80 group-hover:scale-110 transition-transform" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white tracking-tight">{activeAlerts.length}</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-pehra-text tracking-tight">{activeAlerts.length}</div>
           <div className="mt-1 text-[11px] text-slate-400 font-medium">Stage 2 & 3 Broadcasted</div>
         </div>
 
@@ -101,7 +101,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>People at Risk</span>
             <Users className="h-4 w-4 text-cyan-400/80 group-hover:scale-110 transition-transform" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white tracking-tight">{peopleAtRisk.toLocaleString()}</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-pehra-text tracking-tight">{peopleAtRisk.toLocaleString()}</div>
           <div className="mt-1 text-[11px] text-slate-400 font-medium">Kurla West & Sion</div>
         </div>
 
@@ -110,7 +110,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>Critical Subways</span>
             <Building2 className="h-4 w-4 text-blue-400/80 group-hover:scale-110 transition-transform" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white tracking-tight">3 Closed</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-pehra-text tracking-tight">3 Closed</div>
           <div className="mt-1 text-[11px] text-slate-400 font-medium">Milan, Andheri, Sion</div>
         </div>
 
@@ -119,7 +119,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>Model Confidence</span>
             <TrendingUp className="h-4 w-4 text-emerald-400/80 group-hover:scale-110 transition-transform" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white tracking-tight">89.4%</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-pehra-text tracking-tight">89.4%</div>
           <div className="mt-1 text-[11px] text-emerald-400 font-medium">Lead Time 2.4h</div>
         </div>
 
@@ -128,7 +128,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>Source Feeds</span>
             <Radio className="h-4 w-4 text-purple-400/80 group-hover:scale-110 transition-transform" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white tracking-tight">{healthySources} / {sources.length}</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-pehra-text tracking-tight">{healthySources} / {sources.length}</div>
           <div className="mt-1 text-[11px] text-slate-400 font-medium">1 Degraded (KR-04)</div>
         </div>
       </div>
@@ -149,7 +149,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <span>Kurla West Rainfall</span>
               <Droplets className="h-3.5 w-3.5 text-cyan-400" />
             </div>
-            <div className="mt-1 text-xl font-bold font-mono text-white">74.5 mm/hr</div>
+            <div className="mt-1 text-xl font-bold font-mono text-pehra-text">74.5 mm/hr</div>
             <div className="mt-1 text-[10px] text-rose-400 font-semibold">Drainage Capacity: 22 mm/hr (Stress 338%)</div>
           </div>
 
@@ -158,7 +158,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <span>Sion Circle Rainfall</span>
               <Droplets className="h-3.5 w-3.5 text-cyan-400" />
             </div>
-            <div className="mt-1 text-xl font-bold font-mono text-white">86.2 mm/hr</div>
+            <div className="mt-1 text-xl font-bold font-mono text-pehra-text">86.2 mm/hr</div>
             <div className="mt-1 text-[10px] text-rose-400 font-semibold">Cloudburst Threshold: &gt;100 mm/hr</div>
           </div>
 
@@ -190,7 +190,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </span>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-bold text-white text-sm">Real-Time Water Level System Active</h3>
+              <h3 className="font-bold text-pehra-text text-sm">Real-Time Water Level System Active</h3>
               <span className="rounded-full bg-emerald-950/80 border border-emerald-700/60 px-2 py-0.5 text-[10px] font-mono font-bold text-emerald-300">
                 LIVE STREAM INGESTION
               </span>
@@ -215,7 +215,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="lg:col-span-2 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <h2 className="text-base font-bold text-white tracking-tight">Operator Priority Queue</h2>
+              <h2 className="text-base font-bold text-pehra-text tracking-tight">Operator Priority Queue</h2>
               <span className="rounded bg-rose-950/80 border border-rose-800 px-1.5 py-0.5 text-[10px] font-mono text-rose-300">
                 Action Required
               </span>
@@ -228,10 +228,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded bg-rose-600 px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider">
+                    <span className="rounded bg-rose-600 px-2 py-0.5 text-[10px] font-bold text-pehra-text uppercase tracking-wider">
                       PRIORITY 1 • CRITICAL
                     </span>
-                    <span className="font-bold text-white text-sm">Mithi River Spillage at Kurla Bail Bazar</span>
+                    <span className="font-bold text-pehra-text text-sm">Mithi River Spillage at Kurla Bail Bazar</span>
                   </div>
                   <div className="rounded-lg bg-rose-950/40 border border-rose-900/40 p-2.5 text-xs text-rose-200/90 leading-relaxed">
                     <strong className="text-rose-300">Why Priority?</strong> Sensor rise rate exceeds 0.45m/15min while 4.45m high tide locks sluice gates. Downhill flow model predicts 1.85m depth within 45 minutes affecting 48,500 residents.
@@ -243,7 +243,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
                 <button
                   onClick={() => onNavigate('alerts')}
-                  className="shrink-0 rounded-lg bg-rose-600 px-3.5 py-2 text-xs font-bold text-white hover:bg-rose-500 shadow-sm active:scale-[0.98] transition-all"
+                  className="shrink-0 rounded-lg bg-rose-600 px-3.5 py-2 text-xs font-bold text-pehra-text hover:bg-rose-500 shadow-sm active:scale-[0.98] transition-all"
                 >
                   Manage Alert
                 </button>
@@ -257,7 +257,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     <span className="rounded bg-amber-500 px-2 py-0.5 text-[10px] font-bold text-slate-950 uppercase tracking-wider">
                       PRIORITY 2 • HIGH
                     </span>
-                    <span className="font-bold text-white text-sm">Sion Circle Subway Submersion</span>
+                    <span className="font-bold text-pehra-text text-sm">Sion Circle Subway Submersion</span>
                   </div>
                   <div className="rounded-lg bg-amber-950/40 border border-amber-900/40 p-2.5 text-xs text-amber-200/90 leading-relaxed">
                     <strong className="text-amber-300">Why Priority?</strong> Gandhi Market highway dip has 2.15m water. Dr. Ambedkar Road arterial highway halted.
@@ -280,10 +280,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded bg-blue-600 px-2 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider">
+                    <span className="rounded bg-blue-600 px-2 py-0.5 text-[10px] font-bold text-pehra-text uppercase tracking-wider">
                       PRIORITY 3 • SENSOR
                     </span>
-                    <span className="font-bold text-white text-sm">Telemetry Station KR-04 Degraded</span>
+                    <span className="font-bold text-pehra-text text-sm">Telemetry Station KR-04 Degraded</span>
                   </div>
                   <div className="rounded-lg bg-slate-800/60 border border-slate-700/50 p-2.5 text-xs text-slate-300 leading-relaxed">
                     <strong className="text-blue-300">Why Priority?</strong> CWC telemetry packet dropped last contact 14 mins ago. Prediction engine fell back to adjacent station IITB-SN08.
@@ -295,7 +295,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
                 <button
                   onClick={() => onNavigate('admin')}
-                  className="shrink-0 rounded-lg border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-semibold text-white hover:bg-slate-700 active:scale-[0.98] transition-all"
+                  className="shrink-0 rounded-lg border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-semibold text-pehra-text hover:bg-slate-700 active:scale-[0.98] transition-all"
                 >
                   Inspect Source
                 </button>
@@ -307,7 +307,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         {/* Live Citizen Field Reports Stream */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-white tracking-tight">Verified Field Reports</h2>
+            <h2 className="text-base font-bold text-pehra-text tracking-tight">Verified Field Reports</h2>
             <button
               onClick={() => onNavigate('reports')}
               className="text-xs font-semibold text-cyan-400 hover:text-cyan-300"
@@ -320,7 +320,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             {reports.slice(0, 3).map((rep) => (
               <div key={rep.id} className="rounded-xl border border-slate-800 bg-slate-900/70 p-3.5 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-white">{rep.location.address}</span>
+                  <span className="font-bold text-pehra-text">{rep.location.address}</span>
                   <span
                     className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${
                       rep.status === 'VERIFIED' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/60' : 'bg-amber-950 text-amber-300 border border-amber-700/60'

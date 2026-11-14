@@ -11,7 +11,8 @@ import {
   Observation,
 } from '../types/index.ts';
 import { LeafletMap } from '../components/LeafletMap.tsx';
-import { MUMBAI_TOPOGRAPHIC_LANDMARKS } from '../utils/mumbaiElevation.ts';
+import { Mumbai3DView } from '../components/Mumbai3DView.tsx';
+import { MUMBAI_TOPOGRAPHIC_LANDMARKS, getMumbaiElevation } from '../utils/mumbaiElevation.ts';
 import {
   fetchLiveMumbaiTelemetry,
   LiveMumbaiSummary,
@@ -132,125 +133,47 @@ export const MapView: React.FC<MapViewProps> = ({
     : [];
 
   return (
-    <div className="flex flex-col gap-3 h-[calc(100vh-140px)] min-h-[620px] pb-2">
-      {/* Top View Mode Navigation Bar */}
-      <Panel className="shrink-0">
-        <PanelHeader
-          title="Geospatial telemetry observatory"
-          badge={<DataBadge source="seeded-store" asOf="Mumbai operational dataset" />}
-          actions={
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => onNavigate('drone-recon')}
-                className="inline-flex items-center gap-1.5 border border-pehra-border-subtle bg-pehra-panel px-3 py-1 font-semibold text-xs text-pehra-text hover:bg-pehra-raised"
-              >
-                <Plane className="h-3.5 w-3.5" aria-hidden="true" />
-                Drone recon
-              </button>
-              <div className="flex items-center gap-1 border border-pehra-border-subtle p-1" role="group" aria-label="Map display mode">
-                {([
-                  ['2d', '2D map', Globe],
-                  ['3d', '3D terrain', Box],
-                  ['split', 'Split view', Columns],
-                ] as const).map(([mode, label, Icon]) => (
-                  <button
-                    key={mode}
-                    type="button"
-                    onClick={() => setDisplayMode(mode)}
-                    aria-pressed={displayMode === mode}
-                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${
-                      displayMode === mode
-                        ? 'bg-pehra-accent text-pehra-accent-contrast'
-                        : 'text-pehra-text-2 hover:bg-pehra-raised'
-                    } ${mode === 'split' ? 'hidden lg:inline-flex' : ''}`}
-                  >
-                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          }
-        />
-        <div className="flex items-center justify-between gap-3 px-3 py-2 text-xs text-pehra-text-2">
-          <div className="flex items-center gap-2">
-            <Mountain className="h-4 w-4 text-pehra-text-2" aria-hidden="true" />
-            <span>Map-first flood intelligence with sensor-grounded layers.</span>
-          </div>
-          <span className="hidden sm:inline-flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-pehra-data-live" aria-hidden="true" />
-            Live telemetry when available
-          </span>
-        </div>
-      </Panel>
-      <div className="hidden">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <Mountain className="h-4 w-4 text-pehra-text" />
-            <span className="font-semibold text-sm text-pehra-text">Geospatial Telemetry Observatory</span>
-          </div>
-
-          <div className="hidden lg:flex items-center gap-1.5 rounded-none bg-pehra-panel border border-pehra-border-subtle px-2.5 py-0.5 text-pehra-text font-semibold text-pehra-text">
-            <span className="h-2 w-2 rounded-none bg-pehra-panel " />
-            <span>Real-Time Sensor Grounded (No AI/Fake Data)</span>
-          </div>
-        </div>
-
-        {/* 2D / 3D UI View Toggle + Drone Quick Button */}
-        <div className="flex items-center gap-2 text-xs">
-          <button
-            onClick={() => onNavigate('drone-recon')}
-            className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3 py-1 font-bold text-pehra-text hover:bg-pehra-panel transition-colors shadow-none"
-          >
-            <Plane className="h-3.5 w-3.5" />
-            <span>🚁 Drone Recon</span>
-          </button>
-
-          <div className="flex items-center gap-1 rounded-none border border-pehra-border-subtle bg-pehra-panel p-1">
-            <button
-              onClick={() => setDisplayMode('2d')}
-              className={`flex items-center gap-1.5 rounded-none px-3 py-1 font-medium transition-all ${
-                displayMode === '2d'
-                  ? 'bg-pehra-panel text-white shadow-none font-semibold'
-                  : 'text-pehra-text hover:text-pehra-text'
-              }`}
-            >
-              <Globe className="h-3.5 w-3.5" />
-              <span>2D Map</span>
-            </button>
-
-            <button
-              onClick={() => setDisplayMode('3d')}
-              className={`flex items-center gap-1.5 rounded-none px-3 py-1 font-medium transition-all ${
-                displayMode === '3d'
-                  ? 'bg-pehra-panel text-white shadow-none font-semibold'
-                  : 'text-pehra-text hover:text-pehra-text'
-              }`}
-            >
-              <Box className="h-3.5 w-3.5" />
-              <span>3D Terrain</span>
-            </button>
-
-            <button
-              onClick={() => setDisplayMode('split')}
-              className={`hidden lg:flex items-center gap-1.5 rounded-none px-3 py-1 font-medium transition-all ${
-                displayMode === 'split'
-                  ? 'bg-pehra-panel text-white shadow-none font-semibold'
-                  : 'text-pehra-text hover:text-pehra-text'
-              }`}
-            >
-              <Columns className="h-3.5 w-3.5" />
-              <span>Split 2D / 3D</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
+    <div className="flex h-[calc(100vh-140px)] min-h-[560px] flex-col overflow-hidden">
       {/* Main Interactive Stage & Side Inspector Drawer */}
-      <div className="flex flex-col lg:flex-row gap-3 flex-1 min-h-0">
+      <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         {/* Map / 3D Stage Container */}
-        <div className="flex-1 h-full min-h-[350px] relative flex flex-col md:flex-row gap-2">
+        <div className="relative flex min-h-[350px] flex-1 flex-col gap-2 md:flex-row">
+          <div className="absolute left-2 top-2 z-20 flex flex-wrap items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => onNavigate('drone-recon')}
+              className="inline-flex min-h-7 items-center gap-1.5 border border-pehra-border-control bg-pehra-panel/95 px-2 text-xs font-medium text-pehra-text backdrop-blur hover:bg-pehra-raised"
+            >
+              <Plane className="h-3.5 w-3.5" aria-hidden="true" />
+              Drone recon
+            </button>
+            <div className="flex border border-pehra-border-control bg-pehra-panel/95 backdrop-blur" role="group" aria-label="Map display mode">
+              {([
+                ['2d', '2D', Globe],
+                ['3d', '3D', Box],
+                ['split', 'Split', Columns],
+              ] as const).map(([mode, label, Icon]) => (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => setDisplayMode(mode)}
+                  aria-pressed={displayMode === mode}
+                  className={`inline-flex min-h-7 items-center gap-1 px-2 text-xs font-medium ${
+                    displayMode === mode
+                      ? 'bg-pehra-action text-pehra-action-text'
+                      : 'text-pehra-text-2 hover:bg-pehra-raised hover:text-pehra-text'
+                  } ${mode === 'split' ? 'hidden lg:inline-flex' : ''}`}
+                >
+                  <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                  {label}
+                </button>
+              ))}
+            </div>
+            <span className="hidden items-center gap-1.5 border border-pehra-border-subtle bg-pehra-panel/95 px-2 py-1 text-[10px] text-pehra-text-2 backdrop-blur md:inline-flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-pehra-data-live" aria-hidden="true" />
+              Sensor-grounded layers
+            </span>
+          </div>
           {/* 2D Leaflet Map (Shown in '2d' or 'split' modes) */}
           {(displayMode === '2d' || displayMode === 'split') && (
             <div className={`h-full relative ${displayMode === 'split' ? 'w-full md:w-1/2' : 'w-full'}`}>
@@ -296,10 +219,33 @@ export const MapView: React.FC<MapViewProps> = ({
             </div>
           )}
 
+          {(displayMode === '3d' || displayMode === 'split') && (
+            <div className={`h-full relative ${displayMode === 'split' ? 'w-full md:w-1/2' : 'w-full'}`}>
+              <Mumbai3DView
+                villages={villages}
+                incidents={incidents}
+                shelters={shelters}
+                userLocation={userLocation}
+                onSelectLocation={(lat, lng) => {
+                  const elevation = getMumbaiElevation(lat, lng);
+                  setProbedLocation({
+                    lat,
+                    lng,
+                    elevation: elevation.elevationM,
+                    zoneName: elevation.zoneName,
+                    vulnerability: elevation.floodVulnerability,
+                  });
+                  setInspectedShelter(null);
+                  setInspectedRoute(null);
+                  onSelectVillage(null);
+                }}
+              />
+            </div>
+          )}
         </div>
 
         {/* Side Inspector & Topographic Telemetry Drawer */}
-        <div className="w-full lg:w-96 shrink-0 h-full overflow-y-auto rounded-none border border-pehra-border-subtle bg-white p-4 shadow-none flex flex-col justify-between">
+        <aside className="flex w-full shrink-0 flex-col justify-between overflow-y-auto border-t border-pehra-border-subtle bg-pehra-panel p-3 lg:h-full lg:w-[22rem] lg:border-l lg:border-t-0">
           {/* A. If a Specific Point was Probed on Map or 3D Canvas */}
           {probedLocation ? (
             <div className="space-y-4">
@@ -322,27 +268,29 @@ export const MapView: React.FC<MapViewProps> = ({
               {/* Coordinates & Elevation Summary */}
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
-                  <span className="text-pehra-text text-pehra-text block font-medium">Ground Elevation</span>
+                  <span className="text-pehra-text-2 block font-medium">Ground Elevation</span>
                   <div className="text-lg font-mono font-bold text-pehra-text">
                     {probedLocation.elevation} m
                   </div>
-                  <span className="text-pehra-text text-pehra-text">Mean Sea Level (MSL)</span>
+                  <span className="text-pehra-text-2">Mean Sea Level (MSL)</span>
                 </div>
 
                 <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
-                  <span className="text-pehra-text text-pehra-text block font-medium">Vulnerability</span>
+                  <span className="text-pehra-text-2 block font-medium">Vulnerability</span>
                   <div
                     className={`text-sm font-bold font-mono ${
                       probedLocation.vulnerability === 'CRITICAL'
-                        ? 'text-pehra-text'
+                        ? 'text-pehra-severity-critical'
                         : probedLocation.vulnerability === 'HIGH'
-                        ? 'text-pehra-text'
-                        : 'text-pehra-text'
+                        ? 'text-pehra-severity-warning'
+                        : probedLocation.vulnerability === 'MODERATE'
+                        ? 'text-pehra-severity-watch'
+                        : 'text-pehra-severity-advisory'
                     }`}
                   >
                     {probedLocation.vulnerability}
                   </div>
-                  <span className="text-pehra-text text-pehra-text">Tidal Lock Factor</span>
+                  <span className="text-pehra-text-2">Tidal Lock Factor</span>
                 </div>
               </div>
 
@@ -354,31 +302,31 @@ export const MapView: React.FC<MapViewProps> = ({
                       <Gauge className="h-4 w-4 text-pehra-text" />
                       <span>Live Barometric & Water Feed</span>
                     </span>
-                    <span className="rounded bg-pehra-panel px-1.5 py-0.5 text-pehra-text text-white font-mono">
+                    <span className="bg-pehra-data-live px-1.5 py-0.5 font-mono text-[10px] font-bold text-pehra-bg">
                       OPEN-METEO LIVE
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-pehra-text">
-                    <div className="rounded-none bg-white p-2 border border-pehra-border-subtle">
+                    <div className="bg-pehra-raised p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Air Pressure (MSL)</span>
                       <strong className="font-mono text-pehra-text text-xs">
                         {probedLocation.liveTelemetry.seaLevelPressureHpa} hPa
                       </strong>
-                      <span className="text-pehra-text text-pehra-text block">
+                      <span className="text-pehra-text-2 block">
                         Surf: {probedLocation.liveTelemetry.surfacePressureHpa} hPa
                       </span>
                     </div>
-                    <div className="rounded-none bg-white p-2 border border-pehra-border-subtle">
+                    <div className="bg-pehra-raised p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Directional Wind</span>
                       <strong className="font-mono text-pehra-text text-xs">
                         {probedLocation.liveTelemetry.windSpeedKmh} km/h {probedLocation.liveTelemetry.windCardinal}
                       </strong>
-                      <span className="text-pehra-text text-pehra-text block">
+                      <span className="text-pehra-text-2 block">
                         Dir: {probedLocation.liveTelemetry.windDirectionDeg}° • Gust {probedLocation.liveTelemetry.windGustsKmh}
                       </span>
                     </div>
                   </div>
-                  <div className="rounded-none bg-white p-2 border border-pehra-border-subtle text-pehra-text space-y-1">
+                  <div className="bg-pehra-raised p-2 border border-pehra-border-subtle text-pehra-text space-y-1">
                     <div className="font-semibold text-pehra-text">Water & Hydrological Details:</div>
                     <div className="flex justify-between">
                       <span className="text-pehra-text">Rainfall / Rate:</span>
@@ -408,14 +356,14 @@ export const MapView: React.FC<MapViewProps> = ({
                   <Mountain className="h-4 w-4 text-pehra-text" />
                   <span>Geomorphological Profile</span>
                 </div>
-                <p className="text-pehra-text text-pehra-text leading-relaxed">
+                <p className="text-pehra-text-2 leading-relaxed">
                   {probedLocation.elevation <= 3.0
                     ? 'Inter-island reclaimed depression basin. Stormwater discharges slowly due to low hydraulic gradient and Arabian Sea tidal lock.'
                     : probedLocation.elevation <= 15.0
                     ? 'Coastal alluvial terrace. Moderate drainage runoff toward secondary stormwater nullahs.'
                     : 'Elevated Deccan basalt ridge. Naturally elevated above maximum 100-year storm surge and river backwater.'}
                 </p>
-                <div className="text-pehra-text text-pehra-text font-mono pt-1 border-t border-pehra-border-subtle">
+                <div className="text-pehra-text-2 font-mono pt-1 border-t border-pehra-border-subtle">
                   Lat: {probedLocation.lat.toFixed(4)}° N • Lng: {probedLocation.lng.toFixed(4)}° E
                 </div>
               </div>
@@ -423,7 +371,7 @@ export const MapView: React.FC<MapViewProps> = ({
               {/* Nearest High Ground Shelter recommendation */}
               <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3 text-xs">
                 <span className="font-semibold text-pehra-text block mb-1">Elevation Safety Guidance</span>
-                <p className="text-pehra-text text-pehra-text">
+                <p className="text-pehra-text-2">
                   {probedLocation.elevation < 3.5
                     ? '⚠️ Low ground warning: In event of cloudburst (>60mm/hr) coincident with high tide, move immediately toward elevated ridges (Sion Fort or BKC Elevated Corridor).'
                     : '✅ Safe elevation: Ground elevation remains above projected 5m deluge flood contours.'}
@@ -451,11 +399,11 @@ export const MapView: React.FC<MapViewProps> = ({
               {/* Risk Badge & Depth */}
               <div className="flex items-center justify-between rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
                 <div>
-                  <div className="text-pehra-text text-pehra-text font-medium">Basin Status</div>
+                  <div className="text-pehra-text-2 font-medium">Basin Status</div>
                   <div className="text-lg font-bold font-mono text-pehra-text">{selectedVillage.riskLevel}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-pehra-text text-pehra-text font-medium">Observed Water Level</div>
+                  <div className="text-pehra-text-2 font-medium">Observed Water Level</div>
                   <div className="text-lg font-bold font-mono text-pehra-text">{selectedVillage.waterLevelM} m</div>
                 </div>
               </div>
@@ -494,9 +442,9 @@ export const MapView: React.FC<MapViewProps> = ({
                       <Waves className="h-4 w-4 text-pehra-text" />
                       <span>Real-Time Water & Pressure Feed</span>
                     </span>
-                    <span className="text-pehra-text font-mono bg-pehra-panel text-white px-1.5 py-0.5 rounded">LIVE</span>
+                    <span className="bg-pehra-data-live px-1.5 py-0.5 font-mono text-[10px] font-bold text-pehra-bg">LIVE</span>
                   </div>
-                  <div className="space-y-1 text-pehra-text text-pehra-text">
+                  <div className="space-y-1 text-pehra-text-2">
                     <div className="flex justify-between">
                       <span className="text-pehra-text">Air Pressure (MSL / Surf):</span>
                       <span className="font-mono font-semibold">
@@ -535,7 +483,7 @@ export const MapView: React.FC<MapViewProps> = ({
                         <AlertTriangle className="h-3.5 w-3.5 text-pehra-text" />
                         <span>{alt.stage}: {alt.title}</span>
                       </div>
-                      <p className="mt-1 text-pehra-text text-pehra-text line-clamp-2">{alt.message}</p>
+                      <p className="mt-1 text-pehra-text-2 line-clamp-2">{alt.message}</p>
                       <button
                         onClick={() => onNavigate('alerts')}
                         className="mt-2 text-pehra-text font-semibold text-pehra-text hover:text-pehra-text flex items-center gap-1"
@@ -578,7 +526,7 @@ export const MapView: React.FC<MapViewProps> = ({
                 </div>
                 <div className="h-2 rounded-none bg-pehra-panel overflow-hidden">
                   <div
-                    className="h-full bg-pehra-panel rounded-none"
+                    className="h-full bg-pehra-data-live"
                     style={{ width: `${(inspectedShelter.occupancy / inspectedShelter.capacity) * 100}%` }}
                   />
                 </div>
@@ -599,7 +547,7 @@ export const MapView: React.FC<MapViewProps> = ({
               </div>
 
               <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3 text-xs">
-                <div className="text-pehra-text text-pehra-text">Shelter Coordinator:</div>
+                <div className="text-pehra-text-2">Shelter Coordinator:</div>
                 <div className="font-semibold text-pehra-text">{inspectedShelter.contactPerson}</div>
                 <a href={`tel:${inspectedShelter.contactPhone}`} className="text-pehra-text font-mono block mt-0.5">
                   📞 {inspectedShelter.contactPhone}
@@ -626,11 +574,11 @@ export const MapView: React.FC<MapViewProps> = ({
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-2.5">
-                  <span className="text-pehra-text text-pehra-text block">Corridor Status</span>
+                  <span className="text-pehra-text-2 block">Corridor Status</span>
                   <span className="font-semibold text-pehra-text">{inspectedRoute.status}</span>
                 </div>
                 <div className="rounded-none bg-pehra-panel border border-pehra-border-subtle p-2.5">
-                  <span className="text-pehra-text text-pehra-text block">Travel Time</span>
+                  <span className="text-pehra-text-2 block">Travel Time</span>
                   <span className="font-semibold text-pehra-text">{inspectedRoute.estimatedTravelMinutes} mins</span>
                 </div>
               </div>
@@ -648,7 +596,7 @@ export const MapView: React.FC<MapViewProps> = ({
                     <Gauge className="h-4 w-4 text-pehra-text" />
                     <span>Live Air Pressure & Water Telemetry</span>
                   </h2>
-                  <p className="text-pehra-text text-pehra-text mt-0.5">
+                  <p className="text-pehra-text-2 mt-0.5">
                     Real-time Open-Meteo / IMD / GloFAS station feed. Click any coordinate on the map to probe live values.
                   </p>
                 </div>
@@ -670,33 +618,33 @@ export const MapView: React.FC<MapViewProps> = ({
                       <Wind className="h-4 w-4 text-pehra-text" />
                       <span>Air Pressure & Directional Wind</span>
                     </span>
-                    <span className="rounded bg-pehra-panel px-1.5 py-0.5 text-pehra-text text-white font-mono">
+                    <span className="bg-pehra-data-live px-1.5 py-0.5 font-mono text-[10px] font-bold text-pehra-bg">
                       LIVE BAROMETRIC
                     </span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 text-pehra-text">
-                    <div className="rounded-none bg-white p-2 border border-pehra-border-subtle">
+                    <div className="bg-pehra-raised p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Sea-Level Pressure</span>
                       <span className="font-mono font-bold text-pehra-text text-sm">
                         {liveSummary.airPressureMslHpa} hPa
                       </span>
-                      <span className="text-pehra-text text-pehra-text block">
+                      <span className="text-pehra-text-2 block">
                         Surf: {liveSummary.surfacePressureHpa} hPa ({liveSummary.pressureTrend})
                       </span>
                     </div>
-                    <div className="rounded-none bg-white p-2 border border-pehra-border-subtle">
+                    <div className="bg-pehra-raised p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Directional Wind</span>
                       <span className="font-mono font-bold text-pehra-text text-sm">
                         {liveSummary.windSpeedKmh} km/h {liveSummary.windCardinal}
                       </span>
-                      <span className="text-pehra-text text-pehra-text block">
+                      <span className="text-pehra-text-2 block">
                         Azimuth: {liveSummary.windDirectionDeg}° • Gusts {liveSummary.windGustsKmh}
                       </span>
                     </div>
                   </div>
 
-                  <div className="text-pehra-text text-pehra-text bg-white/80 rounded-none px-2.5 py-1.5 border border-pehra-border-subtle font-medium">
+                  <div className="text-pehra-text-2 bg-pehra-raised px-2.5 py-1.5 border border-pehra-border-subtle font-medium">
                     <span className="text-pehra-text">Directional Pressure Gradient: </span>
                     <span className="font-mono font-semibold">{liveSummary.pressureSystemDirection}</span>
                   </div>
@@ -711,33 +659,33 @@ export const MapView: React.FC<MapViewProps> = ({
                       <Droplets className="h-4 w-4 text-pehra-text" />
                       <span>Normal & Live Water Details</span>
                     </span>
-                    <span className="rounded bg-pehra-panel px-1.5 py-0.5 text-pehra-text text-white font-mono">
+                    <span className="bg-pehra-data-predicted px-1.5 py-0.5 font-mono text-[10px] font-bold text-pehra-bg">
                       HYDRO / MARINE
                     </span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 text-pehra-text">
-                    <div className="rounded-none bg-white p-2 border border-pehra-border-subtle">
+                    <div className="bg-pehra-raised p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Mithi Water Level</span>
                       <span className="font-mono font-bold text-pehra-text text-sm">
                         {liveSummary.mithiWaterLevelM} m
                       </span>
-                      <span className="text-pehra-text text-pehra-text block">
+                      <span className="text-pehra-text-2 block">
                         Normal: {liveSummary.mithiNormalLevelM}m | Danger: {liveSummary.mithiDangerLevelM}m
                       </span>
                     </div>
-                    <div className="rounded-none bg-white p-2 border border-pehra-border-subtle">
+                    <div className="bg-pehra-raised p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">River Discharge</span>
                       <span className="font-mono font-bold text-pehra-text text-sm">
                         {liveSummary.riverDischargeM3s} m³/s
                       </span>
-                      <span className="text-pehra-text text-pehra-text block">
+                      <span className="text-pehra-text-2 block">
                         Runoff: {liveSummary.surfaceRunoffMm}mm • Soil: {liveSummary.soilMoisturePercent}%
                       </span>
                     </div>
                   </div>
 
-                  <div className="rounded-none bg-white p-2 border border-pehra-border-subtle text-pehra-text space-y-1">
+                  <div className="bg-pehra-raised p-2 border border-pehra-border-subtle text-pehra-text space-y-1">
                     <div className="flex justify-between">
                       <span className="text-pehra-text">Astronomical Tide:</span>
                       <span className="font-mono font-semibold text-pehra-text">
@@ -783,17 +731,19 @@ export const MapView: React.FC<MapViewProps> = ({
                         vulnerability: lm.floodVulnerability,
                       });
                     }}
-                    className="flex w-full items-center justify-between rounded-none border border-pehra-border-subtle bg-white p-2 text-left text-xs text-pehra-text hover:border-pehra-border-subtle hover:bg-pehra-panel transition-all shadow-none"
+                    className="flex w-full items-center justify-between rounded-none border border-pehra-border-subtle bg-pehra-raised p-2 text-left text-xs text-pehra-text hover:border-pehra-border-control hover:bg-pehra-panel transition-colors"
                   >
                     <div>
                       <span className="font-medium text-pehra-text block">{lm.name}</span>
-                      <span className="text-pehra-text text-pehra-text">{lm.ward}</span>
+                      <span className="text-pehra-text-2">{lm.ward}</span>
                     </div>
                     <span
-                      className={`font-mono text-pehra-text font-semibold px-2 py-0.5 rounded-none border ${
+                      className={`font-mono font-semibold px-2 py-0.5 border ${
                         lm.floodVulnerability === 'CRITICAL'
-                          ? 'bg-pehra-panel text-pehra-text border-pehra-border-subtle'
-                          : 'bg-pehra-panel text-pehra-text border-pehra-border-subtle'
+                          ? 'border-pehra-severity-critical text-pehra-severity-critical'
+                          : lm.floodVulnerability === 'HIGH'
+                          ? 'border-pehra-severity-warning text-pehra-severity-warning'
+                          : 'border-pehra-border-subtle text-pehra-text-2'
                       }`}
                     >
                       {lm.elevationM}m MSL
@@ -808,12 +758,12 @@ export const MapView: React.FC<MapViewProps> = ({
           <div className="pt-4 border-t border-pehra-border-subtle space-y-2">
             <button
               onClick={() => onNavigate('alerts')}
-              className="w-full rounded-none bg-pehra-panel py-2.5 text-xs font-semibold text-white hover:bg-pehra-panel shadow-none transition-colors"
+              className="w-full bg-pehra-action py-2.5 text-xs font-semibold text-pehra-action-text transition-opacity hover:opacity-90"
             >
               Review Early Warning Alerts
             </button>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   );

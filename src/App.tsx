@@ -235,7 +235,10 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen overflow-hidden bg-pehra-bg text-pehra-text flex flex-col font-sans">
+    <div
+      data-theme={activeRole === 'CITIZEN' ? 'citizen' : 'operator'}
+      className="h-screen overflow-hidden bg-pehra-bg text-pehra-text flex flex-col font-sans"
+    >
       <a className="pehra-skip-link" href="#main-content">Skip to main content</a>
       {/* 1. TOP BAR (Section 7) */}
       <Header
@@ -279,10 +282,18 @@ export default function App() {
           setIsCollapsed={setIsSidebarCollapsed}
           isMobileOpen={isMobileSidebarOpen}
           setIsMobileOpen={setIsMobileSidebarOpen}
+          villages={villages}
+          alerts={alerts}
         />
 
-        <main id="main-content" className="pehra-workspace flex-1 min-w-0 overflow-y-auto bg-pehra-bg px-4 py-5 sm:px-6 lg:px-8 custom-scrollbar" tabIndex={-1}>
-          <div className="max-w-[1480px] mx-auto w-full">
+        <main
+          id="main-content"
+          className={`pehra-workspace flex-1 min-w-0 overflow-y-auto bg-pehra-bg custom-scrollbar ${
+            currentTab === 'map' ? 'p-0' : 'px-4 py-4 sm:px-6 lg:px-8'
+          }`}
+          tabIndex={-1}
+        >
+          <div className={`w-full ${currentTab === 'map' ? '' : 'mx-auto max-w-[1480px]'}`}>
             {loading ? (
               <div className="flex flex-col items-center justify-center min-h-[400px] space-y-3">
                 <div className="h-10 w-10 border-4 border-pehra-action border-t-transparent" />
@@ -478,32 +489,53 @@ export default function App() {
         onSubmitReport={handleSubmitReport}
       />
 
-      {/* 5. OPERATIONAL PERSISTENT FOOTER */}
-      <footer className="border-t border-pehra-border-subtle bg-pehra-panel px-4 sm:px-6 py-3 text-xs text-pehra-text-2">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-pehra-text">PEHRA</span>
-            <span>•</span>
-            <span className="text-[11px]">
-              Predictive Early-warning for Hyperlocal Risk Assessment
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px]">
-            <span>
-              MCGM Disaster Cell: <strong className="text-pehra-severity-critical font-semibold">1916</strong>
-            </span>
-            <span>
-              Police: <strong className="text-pehra-text font-semibold">112</strong>
-            </span>
-            <span>
-              Ambulance: <strong className="text-pehra-text font-semibold">108</strong>
-            </span>
-            <span>
-              State Emergency Ops: <strong className="text-pehra-action font-semibold">1070</strong>
-            </span>
-          </div>
-        </div>
+      {/* 5. EVENT LOG TICKER */}
+      <footer className="flex h-8 shrink-0 items-center gap-3 overflow-x-auto border-t border-pehra-border-subtle bg-pehra-panel px-3 text-[11px] text-pehra-text-2 no-scrollbar">
+        <span className="pehra-code shrink-0 text-pehra-text-muted">Event log</span>
+        {alerts
+          .filter((alert) => alert.status === 'ACTIVE')
+          .slice(0, 4)
+          .map((alert) => (
+            <button
+              key={alert.id}
+              type="button"
+              onClick={() => setCurrentTab('alerts')}
+              className="flex max-w-[26rem] shrink-0 items-center gap-1.5 hover:text-pehra-text"
+            >
+              <span
+                className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+                  alert.riskLevel === 'CRITICAL'
+                    ? 'bg-pehra-severity-critical'
+                    : alert.riskLevel === 'HIGH'
+                      ? 'bg-pehra-severity-warning'
+                      : 'bg-pehra-severity-watch'
+                }`}
+                aria-hidden="true"
+              />
+              <span className="pehra-value shrink-0">
+                {new Date(alert.issuedAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false })}
+              </span>
+              <span className="truncate">{alert.title}</span>
+            </button>
+          ))}
+        {incidents
+          .filter((incident) => incident.status === 'ACTIVE')
+          .slice(0, 2)
+          .map((incident) => (
+            <button
+              key={incident.id}
+              type="button"
+              onClick={() => setCurrentTab('incidents')}
+              className="flex max-w-[22rem] shrink-0 items-center gap-1.5 hover:text-pehra-text"
+            >
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-pehra-severity-warning" aria-hidden="true" />
+              <span className="pehra-value shrink-0">
+                {new Date(incident.startedAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false })}
+              </span>
+              <span className="truncate">{incident.title}</span>
+            </button>
+          ))}
+        <span className="ml-auto shrink-0 pl-3 text-pehra-text-muted">MCGM 1916 · Police 112 · Ambulance 108</span>
       </footer>
     </div>
   );

@@ -32,7 +32,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-pehra-border-subtle pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Evacuation Logistics & Safe Havens</h1>
+          <h1 className="text-2xl font-bold text-pehra-text tracking-tight">Evacuation Logistics & Safe Havens</h1>
           <p className="text-xs text-pehra-text mt-1">
             Real-time verified corridors, relief camp inventory stockpiles, and trauma hospital emergency capacities
           </p>
@@ -43,7 +43,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
           <button
             onClick={() => setActiveTab('ROUTES')}
             className={`flex items-center gap-1.5 rounded px-3 py-1.5 font-medium transition-all ${
-              activeTab === 'ROUTES' ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-white'
+              activeTab === 'ROUTES' ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-pehra-text'
             }`}
           >
             <Compass className="h-3.5 w-3.5" />
@@ -52,7 +52,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
           <button
             onClick={() => setActiveTab('SHELTERS')}
             className={`flex items-center gap-1.5 rounded px-3 py-1.5 font-medium transition-all ${
-              activeTab === 'SHELTERS' ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-white'
+              activeTab === 'SHELTERS' ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-pehra-text'
             }`}
           >
             <LifeBuoy className="h-3.5 w-3.5" />
@@ -61,7 +61,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
           <button
             onClick={() => setActiveTab('HOSPITALS')}
             className={`flex items-center gap-1.5 rounded px-3 py-1.5 font-medium transition-all ${
-              activeTab === 'HOSPITALS' ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-white'
+              activeTab === 'HOSPITALS' ? 'bg-pehra-panel text-pehra-text font-bold' : 'text-pehra-text hover:text-pehra-text'
             }`}
           >
             <Building2 className="h-3.5 w-3.5" />
@@ -89,11 +89,11 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
                       <span className="text-pehra-text font-mono text-pehra-text uppercase tracking-wider font-semibold">
                         Route Corridor
                       </span>
-                      <h3 className="font-bold text-white text-base mt-0.5">{route.name}</h3>
+                      <h3 className="font-bold text-pehra-text text-base mt-0.5">{route.name}</h3>
                     </div>
                     <span
                       className={`rounded px-2 py-0.5 text-pehra-text font-bold uppercase ${
-                        isClear ? 'bg-pehra-panel text-white' : isCaution ? 'bg-pehra-panel text-pehra-text' : 'bg-pehra-panel text-white'
+                        isClear ? 'bg-pehra-panel text-pehra-text' : isCaution ? 'bg-pehra-panel text-pehra-text' : 'bg-pehra-panel text-pehra-text'
                       }`}
                     >
                       {route.status}
@@ -102,15 +102,15 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
 
                   <div className="grid grid-cols-3 gap-2 border-t border-pehra-border-subtle pt-3 text-xs">
                     <div>
-                      <span className="text-pehra-text text-pehra-text block">Corridor Length</span>
-                      <span className="font-mono font-bold text-white">{route.distanceKm} km</span>
+                      <span className="text-pehra-text-2 block">Corridor Length</span>
+                      <span className="font-mono font-bold text-pehra-text">{route.distanceKm} km</span>
                     </div>
                     <div>
-                      <span className="text-pehra-text text-pehra-text block">Travel Time</span>
+                      <span className="text-pehra-text-2 block">Travel Time</span>
                       <span className="font-mono font-bold text-pehra-text">{route.estimatedTravelMinutes} mins</span>
                     </div>
                     <div>
-                      <span className="text-pehra-text text-pehra-text block">Hazard Risk</span>
+                      <span className="text-pehra-text-2 block">Hazard Risk</span>
                       <span className="font-mono font-bold text-pehra-text">{(route.riskScore * 100).toFixed(0)}%</span>
                     </div>
                   </div>
@@ -123,7 +123,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
                   </div>
 
                   {route.alternativeRouteWaypoints && (
-                    <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-2.5 text-pehra-text text-pehra-text">
+                    <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-2.5 text-pehra-text-2">
                       <strong>Elevated Bypass Verified:</strong> Secondary high-ground route mapped in case of arterial congestion.
                     </div>
                   )}
@@ -157,7 +157,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
                     <span className="text-pehra-text font-mono text-pehra-text uppercase tracking-wider font-semibold">
                       Designated Municipal Facility
                     </span>
-                    <h3 className="font-bold text-white text-base mt-0.5">{shelter.name}</h3>
+                    <h3 className="font-bold text-pehra-text text-base mt-0.5">{shelter.name}</h3>
                     <p className="text-xs text-pehra-text">{shelter.location.address}</p>
                   </div>
                   <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text font-bold text-pehra-text uppercase">
@@ -169,7 +169,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
                 <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3 text-xs space-y-1.5">
                   <div className="flex justify-between font-semibold">
                     <span className="text-pehra-text">Current Occupancy:</span>
-                    <span className="text-white">
+                    <span className="text-pehra-text">
                       {shelter.occupancy} / {shelter.capacity} people ({pct}%)
                     </span>
                   </div>
@@ -187,25 +187,25 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-pehra-text">
                     <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Food Packs</span>
-                      <span className="font-mono font-bold text-white">{shelter.emergencySupplies.foodPacks}</span>
+                      <span className="font-mono font-bold text-pehra-text">{shelter.emergencySupplies.foodPacks}</span>
                     </div>
                     <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Water (L)</span>
-                      <span className="font-mono font-bold text-white">{shelter.emergencySupplies.waterLiters}</span>
+                      <span className="font-mono font-bold text-pehra-text">{shelter.emergencySupplies.waterLiters}</span>
                     </div>
                     <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">First Aid</span>
-                      <span className="font-mono font-bold text-white">{shelter.emergencySupplies.firstAidKits}</span>
+                      <span className="font-mono font-bold text-pehra-text">{shelter.emergencySupplies.firstAidKits}</span>
                     </div>
                     <div className="rounded bg-pehra-panel p-2 border border-pehra-border-subtle">
                       <span className="text-pehra-text block text-pehra-text">Blankets</span>
-                      <span className="font-mono font-bold text-white">{shelter.emergencySupplies.blankets}</span>
+                      <span className="font-mono font-bold text-pehra-text">{shelter.emergencySupplies.blankets}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between border-t border-pehra-border-subtle pt-3 text-xs">
-                  <span className="text-pehra-text">Coordinator: <strong className="text-white">{shelter.contactPerson}</strong></span>
+                  <span className="text-pehra-text">Coordinator: <strong className="text-pehra-text">{shelter.contactPerson}</strong></span>
                   <a href={`tel:${shelter.contactPhone}`} className="text-pehra-text font-bold hover:underline">
                     📞 {shelter.contactPhone}
                   </a>
@@ -226,7 +226,7 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
                   <span className="text-pehra-text font-mono text-pehra-text uppercase tracking-wider font-semibold">
                     Emergency Medical Center
                   </span>
-                  <h3 className="font-bold text-white text-base mt-0.5">{hospital.name}</h3>
+                  <h3 className="font-bold text-pehra-text text-base mt-0.5">{hospital.name}</h3>
                   <p className="text-xs text-pehra-text">{hospital.location.address}</p>
                 </div>
                 <span className="rounded bg-pehra-panel border border-pehra-border-subtle px-2 py-0.5 text-pehra-text font-bold text-pehra-text">
@@ -236,29 +236,29 @@ export const EvacuationView: React.FC<EvacuationViewProps> = ({
 
               <div className="grid grid-cols-3 gap-2 border-t border-pehra-border-subtle pt-3 text-xs">
                 <div className="rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle text-center">
-                  <span className="text-pehra-text text-pehra-text block">Available Beds</span>
+                  <span className="text-pehra-text-2 block">Available Beds</span>
                   <span className="font-mono text-lg font-bold text-pehra-text">{hospital.availableBeds}</span>
-                  <span className="text-pehra-text text-pehra-text block">of {hospital.emergencyCapacity}</span>
+                  <span className="text-pehra-text-2 block">of {hospital.emergencyCapacity}</span>
                 </div>
 
                 <div className="rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle text-center">
-                  <span className="text-pehra-text text-pehra-text block">Ambulances Ready</span>
+                  <span className="text-pehra-text-2 block">Ambulances Ready</span>
                   <span className="font-mono text-lg font-bold text-pehra-text">{hospital.ambulanceAvailable}</span>
-                  <span className="text-pehra-text text-pehra-text block">High-Axle</span>
+                  <span className="text-pehra-text-2 block">High-Axle</span>
                 </div>
 
                 <div className="rounded bg-pehra-panel p-2.5 border border-pehra-border-subtle text-center">
-                  <span className="text-pehra-text text-pehra-text block">Blood Bank</span>
+                  <span className="text-pehra-text-2 block">Blood Bank</span>
                   <span className="font-mono text-lg font-bold text-pehra-text">{hospital.bloodBank ? 'YES' : 'NO'}</span>
-                  <span className="text-pehra-text text-pehra-text block">O-Neg Avail</span>
+                  <span className="text-pehra-text-2 block">O-Neg Avail</span>
                 </div>
               </div>
 
               <div className="flex items-center justify-between border-t border-pehra-border-subtle pt-3 text-xs">
-                <span className="text-pehra-text">Helpline: <strong className="text-white font-mono">{hospital.contactPhone}</strong></span>
+                <span className="text-pehra-text">Helpline: <strong className="text-pehra-text font-mono">{hospital.contactPhone}</strong></span>
                 <a
                   href={`tel:${hospital.contactPhone}`}
-                  className="rounded bg-pehra-panel px-3 py-1 text-white font-bold hover:bg-pehra-panel"
+                  className="rounded bg-pehra-panel px-3 py-1 text-pehra-text font-bold hover:bg-pehra-raised"
                 >
                   Call Casualty
                 </a>

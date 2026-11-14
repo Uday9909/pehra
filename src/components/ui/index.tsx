@@ -44,6 +44,15 @@ const severityMap: Record<RiskLevel | 'ADVISORY' | 'WATCH' | 'NORMAL' | 'WARNING
 
 export type Severity = keyof typeof severityMap;
 
+// Static class names so Tailwind can generate them (no dynamic class concatenation).
+const severityTone: Record<string, { text: string; border: string }> = {
+  normal: { text: 'text-pehra-severity-normal', border: 'border-pehra-severity-normal' },
+  advisory: { text: 'text-pehra-severity-advisory', border: 'border-pehra-severity-advisory' },
+  watch: { text: 'text-pehra-severity-watch', border: 'border-pehra-severity-watch' },
+  warning: { text: 'text-pehra-severity-warning', border: 'border-pehra-severity-warning' },
+  critical: { text: 'text-pehra-severity-critical', border: 'border-pehra-severity-critical' },
+};
+
 export function Panel({
   children,
   className = '',
@@ -157,7 +166,7 @@ export function DataModeStrip({
 export function SeverityBadge({ severity }: { severity: Severity }) {
   const tone = severityMap[severity];
   return (
-    <span className={`inline-flex items-center gap-1 border px-1.5 py-0.5 text-[11px] font-medium text-pehra-severity-${tone} border-pehra-severity-${tone}`}>
+    <span className={`inline-flex items-center gap-1 border px-1.5 py-0.5 text-[11px] font-medium ${severityTone[tone].text} ${severityTone[tone].border}`}>
       <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
       {severity}
     </span>
@@ -176,7 +185,7 @@ export function AlertBanner({
     <div
       role={critical ? 'alert' : 'status'}
       aria-live={critical ? 'assertive' : 'polite'}
-      className={`border-l-4 border-pehra-severity-${severityMap[alert.riskLevel]} bg-pehra-panel px-3 py-2`}
+      className={`border-l-4 ${severityTone[severityMap[alert.riskLevel]].border} bg-pehra-panel px-3 py-2`}
     >
       <div className="flex flex-wrap items-center gap-2">
         <SeverityBadge severity={alert.riskLevel} />

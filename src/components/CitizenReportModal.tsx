@@ -72,11 +72,11 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pehra-panel -sm animate-in fade-in">
-      <div className="relative w-full max-w-lg overflow-hidden rounded-[24px] bg-white border border-pehra-border-subtle shadow-none">
+      <div className="relative w-full max-w-lg overflow-hidden rounded-[24px] bg-pehra-raised border border-pehra-border-subtle shadow-none">
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-pehra-border-subtle bg-pehra-panel/60">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-none bg-pehra-panel text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-none bg-pehra-panel text-pehra-text">
               <AlertTriangle className="h-4 w-4" />
             </div>
             <div>
@@ -123,7 +123,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
               </div>
               <button
                 onClick={handleResetAndClose}
-                className="w-full rounded-none bg-pehra-panel py-2.5 text-sm font-semibold text-white shadow-none hover:bg-pehra-panel transition-colors"
+                className="w-full rounded-none bg-pehra-panel py-2.5 text-sm font-semibold text-pehra-text shadow-none hover:bg-pehra-panel transition-colors"
               >
                 Done
               </button>
@@ -158,7 +158,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                     type="text"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2.5 text-xs text-pehra-text focus:bg-white focus:border-pehra-border-subtle focus:outline-none transition-all"
+                    className="w-full rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2.5 text-xs text-pehra-text focus:bg-pehra-raised focus:border-pehra-border-subtle focus:outline-none transition-all"
                     placeholder="Enter landmark, road or area in Mumbai..."
                   />
                   <div className="flex flex-wrap gap-1.5 pt-1">
@@ -167,7 +167,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                         key={preset}
                         type="button"
                         onClick={() => setLocation(preset)}
-                        className="rounded-none border border-pehra-border-subtle bg-white px-2.5 py-1 text-pehra-text text-pehra-text hover:border-pehra-border-subtle hover:text-pehra-text transition-colors"
+                        className="rounded-none border border-pehra-border-subtle bg-pehra-raised px-2.5 py-1 text-pehra-text-2 hover:border-pehra-border-subtle hover:text-pehra-text transition-colors"
                       >
                         {preset}
                       </button>
@@ -207,7 +207,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                           />
                           <span className="text-xs font-semibold text-pehra-text">{item.label}</span>
                         </div>
-                        <p className="text-pehra-text text-pehra-text mt-1">{item.desc}</p>
+                        <p className="text-pehra-text-2 mt-1">{item.desc}</p>
                       </button>
                     ))}
                   </div>
@@ -233,7 +233,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                     onChange={(e) => setWaterDepthCm(Number(e.target.value))}
                     className="w-full "
                   />
-                  <div className="flex justify-between text-pehra-text text-pehra-text">
+                  <div className="flex justify-between text-pehra-text-2">
                     <span>Ankle (10 cm)</span>
                     <span>Knee (45 cm)</span>
                     <span>Waist (90 cm)</span>
@@ -261,7 +261,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                           alt="Flood preview"
                           className="w-full h-full object-cover"
                         />
-                        <span className="absolute bottom-1 right-1 bg-black/60 text-white text-pehra-text px-2 py-0.5 rounded">
+                        <span className="absolute bottom-1 right-1 bg-black/60 text-pehra-text text-pehra-text px-2 py-0.5 rounded">
                           Photo Attached
                         </span>
                       </div>
@@ -271,7 +271,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                         <span className="text-xs font-medium text-pehra-text">
                           Click to upload or drag photo
                         </span>
-                        <span className="text-pehra-text text-pehra-text">JPEG, PNG up to 5MB</span>
+                        <span className="text-pehra-text-2">JPEG, PNG up to 5MB</span>
                       </>
                     )}
                     <input
@@ -282,7 +282,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                     />
                   </label>
 
-                  <div className="rounded-none border border-pehra-border-subtle bg-white p-3 text-xs space-y-1">
+                  <div className="rounded-none border border-pehra-border-subtle bg-pehra-raised p-3 text-xs space-y-1">
                     <div className="flex justify-between text-pehra-text">
                       <span>Location:</span>
                       <span className="font-medium text-pehra-text">{location}</span>
@@ -317,7 +317,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                   <button
                     type="button"
                     onClick={() => setStep((s) => s + 1)}
-                    className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-4 py-2 text-xs font-semibold text-white hover:bg-pehra-panel transition-colors"
+                    className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-4 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-panel transition-colors"
                   >
                     Next <ArrowRight className="h-3.5 w-3.5" />
                   </button>
@@ -326,7 +326,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-5 py-2 text-xs font-semibold text-white hover:bg-pehra-panel transition-colors disabled:opacity-50"
+                    className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-5 py-2 text-xs font-semibold text-pehra-text hover:bg-pehra-panel transition-colors disabled:opacity-50"
                   >
                     {isSubmitting ? 'Submitting...' : 'Confirm & Submit Report'}
                   </button>
