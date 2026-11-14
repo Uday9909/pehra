@@ -229,23 +229,23 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
     if (progressPercent >= 80) {
       return {
         label: 'Survival Ready',
-        color: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-        barColor: 'bg-emerald-500',
+        color: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
+        barColor: 'bg-pehra-panel',
         desc: 'Your emergency go-bag has all critical flood survival essentials packed.',
       };
     }
     if (progressPercent >= 45) {
       return {
         label: 'Moderate Preparedness',
-        color: 'bg-amber-50 text-amber-700 border-amber-200',
-        barColor: 'bg-amber-500',
+        color: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
+        barColor: 'bg-pehra-panel',
         desc: 'Pack remaining essential items before nightfall or high-tide alert.',
       };
     }
     return {
       label: 'Needs Attention',
-      color: 'bg-rose-50 text-rose-700 border-rose-200',
-      barColor: 'bg-rose-500',
+      color: 'bg-pehra-panel text-pehra-text border-pehra-border-subtle',
+      barColor: 'bg-pehra-panel',
       desc: 'Critical essentials like fresh water, power bank, and first aid are missing.',
     };
   };
@@ -253,19 +253,19 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
   const status = getStatusBadge();
 
   return (
-    <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 sm:p-6 shadow-xs space-y-6">
+    <div className="rounded-none border border-pehra-border-subtle bg-white p-5 sm:p-6 shadow-none space-y-6">
       {/* Header & Preparedness Meter */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-pehra-border-subtle pb-5">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-200">
+            <span className="flex h-8 w-8 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle">
               <ShieldCheck className="h-4.5 w-4.5" />
             </span>
             <div>
-              <h2 className="text-lg font-bold text-slate-900 tracking-tight">
+              <h2 className="text-lg font-bold text-pehra-text tracking-tight">
                 Citizen Flood Survival Checklist
               </h2>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-pehra-text">
                 Essential emergency kit for family readiness during monsoon inundation & grid blackouts
               </p>
             </div>
@@ -276,14 +276,14 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
           <div className="text-left sm:text-right">
             <div className="flex items-center gap-2 justify-start sm:justify-end">
-              <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${status.color}`}>
+              <span className={`text-pehra-text font-bold px-2 py-0.5 rounded-none border ${status.color}`}>
                 {status.label}
               </span>
-              <span className="text-lg font-bold font-mono text-slate-900">
+              <span className="text-lg font-bold font-mono text-pehra-text">
                 {progressPercent}%
               </span>
             </div>
-            <span className="text-[11px] text-slate-400">
+            <span className="text-pehra-text text-pehra-text">
               {checkedCount} of {totalCount} items packed ({essentialChecked}/{essentialItems.length} critical)
             </span>
           </div>
@@ -292,7 +292,7 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
             <button
               onClick={handleMarkAll}
               id="mark-all-packed-btn"
-              className="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-medium hover:bg-slate-100 transition-colors"
+              className="px-2.5 py-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel text-pehra-text text-xs font-medium hover:bg-pehra-panel transition-colors"
               title="Mark all items as packed"
             >
               Pack All
@@ -300,7 +300,7 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
             <button
               onClick={handleReset}
               id="reset-checklist-btn"
-              className="p-1.5 rounded-xl border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+              className="p-1.5 rounded-none border border-pehra-border-subtle text-pehra-text hover:text-pehra-text hover:bg-pehra-panel transition-colors"
               title="Reset checklist"
             >
               <RotateCcw className="h-3.5 w-3.5" />
@@ -311,15 +311,15 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
 
       {/* Visual Progress Bar */}
       <div className="space-y-1.5">
-        <div className="h-2.5 w-full rounded-full bg-slate-100 overflow-hidden">
+        <div className="h-2.5 w-full rounded-none bg-pehra-panel overflow-hidden">
           <div
-            className={`h-full transition-all duration-300 rounded-full ${status.barColor}`}
+            className={`h-full transition-all duration-300 rounded-none ${status.barColor}`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <div className="flex items-center justify-between text-[11px] text-slate-500">
+        <div className="flex items-center justify-between text-pehra-text text-pehra-text">
           <span>{status.desc}</span>
-          <span className="font-mono text-emerald-600 font-semibold">
+          <span className="font-mono text-pehra-text font-semibold">
             {essentialComplete ? '✓ All Critical Items Packed' : `${essentialItems.length - essentialChecked} Critical Items Missing`}
           </span>
         </div>
@@ -329,27 +329,27 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
         <button
           onClick={() => setActiveCategory('all')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-colors shrink-0 ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-medium transition-colors shrink-0 ${
             activeCategory === 'all'
-              ? 'bg-slate-900 text-white shadow-xs'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <span>All Items</span>
-          <span className="text-[10px] opacity-75 font-mono">({items.length})</span>
+          <span className="text-pehra-text opacity-75 font-mono">({items.length})</span>
         </button>
 
         <button
           onClick={() => setActiveCategory('sustenance')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-colors shrink-0 ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-medium transition-colors shrink-0 ${
             activeCategory === 'sustenance'
-              ? 'bg-blue-600 text-white shadow-xs'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <Droplets className="h-3.5 w-3.5" />
           <span>Water & Food</span>
-          <span className="text-[10px] opacity-75 font-mono">
+          <span className="text-pehra-text opacity-75 font-mono">
             ({items.filter((i) => i.category === 'sustenance' && i.checked).length}/
             {items.filter((i) => i.category === 'sustenance').length})
           </span>
@@ -357,15 +357,15 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
 
         <button
           onClick={() => setActiveCategory('medical')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-colors shrink-0 ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-medium transition-colors shrink-0 ${
             activeCategory === 'medical'
-              ? 'bg-rose-600 text-white shadow-xs'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <HeartPulse className="h-3.5 w-3.5" />
           <span>Medical & First Aid</span>
-          <span className="text-[10px] opacity-75 font-mono">
+          <span className="text-pehra-text opacity-75 font-mono">
             ({items.filter((i) => i.category === 'medical' && i.checked).length}/
             {items.filter((i) => i.category === 'medical').length})
           </span>
@@ -373,15 +373,15 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
 
         <button
           onClick={() => setActiveCategory('power')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-colors shrink-0 ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-medium transition-colors shrink-0 ${
             activeCategory === 'power'
-              ? 'bg-amber-600 text-white shadow-xs'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <BatteryCharging className="h-3.5 w-3.5" />
           <span>Power & Comms</span>
-          <span className="text-[10px] opacity-75 font-mono">
+          <span className="text-pehra-text opacity-75 font-mono">
             ({items.filter((i) => i.category === 'power' && i.checked).length}/
             {items.filter((i) => i.category === 'power').length})
           </span>
@@ -389,15 +389,15 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
 
         <button
           onClick={() => setActiveCategory('protection')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-colors shrink-0 ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-medium transition-colors shrink-0 ${
             activeCategory === 'protection'
-              ? 'bg-emerald-600 text-white shadow-xs'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'bg-pehra-panel text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <FileText className="h-3.5 w-3.5" />
           <span>Docs & Cash</span>
-          <span className="text-[10px] opacity-75 font-mono">
+          <span className="text-pehra-text opacity-75 font-mono">
             ({items.filter((i) => i.category === 'protection' && i.checked).length}/
             {items.filter((i) => i.category === 'protection').length})
           </span>
@@ -410,18 +410,18 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
           <div
             key={item.id}
             onClick={() => toggleItem(item.id)}
-            className={`group relative flex items-start gap-3 p-3.5 rounded-2xl border transition-all cursor-pointer select-none ${
+            className={`group relative flex items-start gap-3 p-3.5 rounded-none border transition-all cursor-pointer select-none ${
               item.checked
-                ? 'bg-emerald-50/40 border-emerald-200 hover:bg-emerald-50/70'
-                : 'bg-white border-[#E5EAF0] hover:border-slate-300 hover:bg-slate-50/60'
+                ? 'bg-pehra-panel border-pehra-border-subtle hover:bg-pehra-panel'
+                : 'bg-white border-pehra-border-subtle hover:border-pehra-border-subtle hover:bg-pehra-panel'
             }`}
           >
             {/* Checkbox Icon */}
             <div className="mt-0.5 shrink-0">
               {item.checked ? (
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 fill-emerald-100 transition-transform group-active:scale-90" />
+                <CheckCircle2 className="h-5 w-5 text-pehra-text fill-emerald-100 transition-transform group-active:scale-90" />
               ) : (
-                <Circle className="h-5 w-5 text-slate-300 group-hover:text-slate-400 transition-colors" />
+                <Circle className="h-5 w-5 text-pehra-text group-hover:text-pehra-text transition-colors" />
               )}
             </div>
 
@@ -430,20 +430,20 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
               <div className="flex items-center gap-2">
                 <span
                   className={`text-xs font-bold leading-snug transition-colors ${
-                    item.checked ? 'text-slate-700 line-through decoration-emerald-500/70' : 'text-slate-900'
+                    item.checked ? 'text-pehra-text line-through decoration-emerald-500/70' : 'text-pehra-text'
                   }`}
                 >
                   {item.name}
                 </span>
 
                 {item.essential && (
-                  <span className="px-1.5 py-0.2 rounded-md bg-rose-50 text-rose-600 border border-rose-200 text-[9px] font-bold uppercase tracking-wider">
+                  <span className="px-1.5 py-0.2 rounded-md bg-pehra-panel text-pehra-text border border-pehra-border-subtle text-pehra-text font-bold uppercase tracking-wider">
                     CRITICAL
                   </span>
                 )}
               </div>
 
-              <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+              <p className="text-pehra-text text-pehra-text mt-1 leading-relaxed">
                 {item.description}
               </p>
             </div>
@@ -452,17 +452,17 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
       </div>
 
       {/* Emergency Flood Survival Rules Banner */}
-      <div className="rounded-2xl border border-blue-200 bg-blue-50/60 p-4">
+      <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-base">🚨</span>
-            <span className="text-xs font-bold text-blue-900">
+            <span className="text-xs font-bold text-pehra-text">
               Official Flood Survival Guidelines (NDRF & BMC Disaster Cell)
             </span>
           </div>
           <button
             onClick={() => setShowTips(!showTips)}
-            className="text-xs text-blue-700 hover:text-blue-900 font-medium flex items-center gap-1"
+            className="text-xs text-pehra-text hover:text-pehra-text font-medium flex items-center gap-1"
           >
             <span>{showTips ? 'Collapse' : 'Show Tips'}</span>
             {showTips ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
@@ -470,21 +470,21 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
         </div>
 
         {showTips && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 pt-3 border-t border-blue-100 text-xs text-slate-700">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 pt-3 border-t border-pehra-border-subtle text-xs text-pehra-text">
             <div className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">1.</span>
+              <span className="text-pehra-text font-bold">1.</span>
               <span>
                 <strong>Never walk in moving water:</strong> 15 cm (6 inches) of rapid current will knock you down.
               </span>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">2.</span>
+              <span className="text-pehra-text font-bold">2.</span>
               <span>
                 <strong>Turn off main power:</strong> Switch off electric main breaker if water rises near electrical sockets.
               </span>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">3.</span>
+              <span className="text-pehra-text font-bold">3.</span>
               <span>
                 <strong>Boil all drinking water:</strong> Submerged municipal pipes are prone to sewage back-siphonage.
               </span>
@@ -494,7 +494,7 @@ export const SurvivalChecklist: React.FC<SurvivalChecklistProps> = ({ compact = 
       </div>
 
       {/* Offline Persistence Notice */}
-      <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
+      <div className="flex items-center justify-between text-pehra-text text-pehra-text pt-1">
         <span>💾 State persists offline on this device via browser storage</span>
         <span className="font-mono">BMC Disaster Helpline: 1916</span>
       </div>
