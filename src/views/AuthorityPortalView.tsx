@@ -238,13 +238,13 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
             </div>
 
             <form onSubmit={handlePublishOfficialAlert} className="space-y-4 text-xs">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label className="block text-slate-700 font-medium mb-1">Target Ward / Municipal Locality</label>
                   <select
                     value={newVillageId}
                     onChange={(e) => setNewVillageId(e.target.value)}
-                    className="box-border w-full rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] px-3 py-2 text-slate-900 focus:bg-white focus:outline-none focus:border-[#2563EB]"
+                    className="box-border min-w-0 w-full max-w-full rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] px-3 py-2 text-slate-900 focus:bg-white focus:outline-none focus:border-[#2563EB]"
                   >
                     {villages.map((v) => (
                       <option key={v.id} value={v.id}>
@@ -259,7 +259,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                   <select
                     value={newStage}
                     onChange={(e) => setNewStage(e.target.value as any)}
-                    className="box-border w-full rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] px-3 py-2 text-slate-900 focus:bg-white focus:outline-none focus:border-[#2563EB]"
+                    className="box-border min-w-0 w-full max-w-full rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] px-3 py-2 text-slate-900 focus:bg-white focus:outline-none focus:border-[#2563EB]"
                   >
                     <option value="WATCH">WATCH (T-3 hours to expected overflow)</option>
                     <option value="WARNING">WARNING (T-1 hour: High runoff approaching)</option>
@@ -274,7 +274,7 @@ export const AuthorityPortalView: React.FC<AuthorityPortalViewProps> = ({
                   type="text"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="box-border w-full rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] px-3 py-2 text-slate-900 font-semibold focus:bg-white focus:outline-none focus:border-[#2563EB]"
+                  className="box-border min-w-0 w-full max-w-full rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] px-3 py-2 text-slate-900 font-semibold focus:bg-white focus:outline-none focus:border-[#2563EB]"
                   required
                 />
               </div>

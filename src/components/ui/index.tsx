@@ -133,7 +133,7 @@ export function DataModeStrip({
   gemini,
 }: {
   mumbaiAdapterAsOf: string;
-  openMeteo?: { lastSuccessAt: string | null; lastErrorAt: string | null; lastError: string | null };
+  openMeteo?: { lastSuccessAt: string | null; lastErrorAt: string | null; lastError: string | null; precipitationMm?: number | null; observedAt?: string | null };
   gemini?: { configured: boolean; lastSuccessAt: string | null; lastErrorAt: string | null };
 }) {
   const ageSeconds = openMeteo?.lastSuccessAt

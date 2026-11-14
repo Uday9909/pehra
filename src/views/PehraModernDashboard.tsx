@@ -40,10 +40,10 @@ import {
   Eye,
   Sliders,
 } from 'lucide-react';
-import { Village, Incident, Alert, Shelter, Hospital, DataSource, FloodReport } from '../types/index.ts';
+import { Village, Incident, Alert, Shelter, Hospital, DataSource, FloodReport, Observation } from '../types/index.ts';
 import { Language, TRANSLATIONS } from '../utils/i18n.ts';
 import { useBatteryStatus } from '../hooks/useBatteryStatus.ts';
-import { DataBadge, Panel, PanelHeader, StatValue } from '../components/ui/index.tsx';
+import { DataBadge, EmptyState, Panel, PanelHeader, StatValue } from '../components/ui/index.tsx';
 
 interface PehraModernDashboardProps {
   villages: Village[];
@@ -53,6 +53,8 @@ interface PehraModernDashboardProps {
   hospitals: Hospital[];
   sources: DataSource[];
   reports: FloodReport[];
+  observations: Observation[];
+  openMeteo?: { lastSuccessAt: string | null; lastErrorAt: string | null; lastError: string | null; precipitationMm?: number | null; observedAt?: string | null };
   language?: Language;
   onNavigate: (tab: string) => void;
   onSelectIncident?: (incident: Incident) => void;
@@ -68,6 +70,8 @@ export const PehraModernDashboard: React.FC<PehraModernDashboardProps> = ({
   hospitals,
   sources,
   reports,
+  observations,
+  openMeteo,
   language = 'en',
   onNavigate,
   onSelectIncident,
@@ -558,88 +562,28 @@ export const PehraModernDashboard: React.FC<PehraModernDashboardProps> = ({
         </div>
       </Panel>
 
-      {/* 4.5. LIVE SENSOR TELEMETRY STREAM RIBBON (Wind • Water Approaching • Flood Area • Battery) */}
-      <div className="rounded-2xl border border-[#35C9D0]/30 bg-gradient-to-r from-[#DDF8F6]/80 via-white to-[#F5F8FA] p-3 shadow-xs">
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 font-bold text-[#17242A] shrink-0">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#18B7A0] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#18B7A0]" />
-            </span>
-            <span className="uppercase tracking-wider text-[11px] text-[#18B7A0]">Hyperlocal Live Streams:</span>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 flex-1">
-            {/* Live Wind Pill */}
-            <div className="flex items-center gap-2 rounded-xl bg-white/90 border border-[#E2EAED] px-3 py-1.5 shadow-xs">
-              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-50 text-blue-600 shrink-0">
-                <Wind className="h-3.5 w-3.5 animate-pulse" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] text-[#6B7C83] font-medium leading-none truncate">{t.liveWindTitle}</div>
-                <div className="text-xs font-bold text-[#17242A] font-mono mt-0.5">
-                  {liveWind.speed} <span className="text-[10px] font-sans font-normal text-slate-500">km/h</span>{' '}
-                  <span className="text-[10px] text-blue-600 font-semibold">{liveWind.directionLabel}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Water Approaching Surge Pill */}
-            <div className="flex items-center gap-2 rounded-xl bg-white/90 border border-[#E2EAED] px-3 py-1.5 shadow-xs">
-              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-cyan-50 text-[#18B7A0] shrink-0">
-                <Waves className="h-3.5 w-3.5 animate-pulse" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] text-[#6B7C83] font-medium leading-none truncate">{t.waterApproachingTitle}</div>
-                <div className="text-xs font-bold text-[#17242A] font-mono mt-0.5">
-                  {liveWaterApproaching.velocity} <span className="text-[10px] font-sans font-normal text-slate-500">m/s</span>{' '}
-                  <span className="text-[10px] text-[#F28B55] font-semibold">Tide -{liveWaterApproaching.highTideEtaMinutes}m</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Flood Area Inundated Pill */}
-            <div className="flex items-center gap-2 rounded-xl bg-white/90 border border-[#E2EAED] px-3 py-1.5 shadow-xs">
-              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 shrink-0">
-                <Layers className="h-3.5 w-3.5" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] text-[#6B7C83] font-medium leading-none truncate">{t.floodAreaTitle}</div>
-                <div className="text-xs font-bold text-[#17242A] font-mono mt-0.5">
-                  {liveFloodArea.activeSubmergedKm2} <span className="text-[10px] font-sans font-normal text-slate-500">km²</span>{' '}
-                  <span className="text-[10px] text-rose-600 font-semibold">(5 Wards)</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Field Battery Shower Pill */}
-            <div className="flex items-center gap-2 rounded-xl bg-white/90 border border-[#E2EAED] px-3 py-1.5 shadow-xs">
-              <div className={`flex h-6 w-6 items-center justify-center rounded-lg shrink-0 ${
-                battery.isCritical
-                  ? 'bg-rose-50 text-rose-600'
-                  : battery.isLowBattery
-                  ? 'bg-amber-50 text-amber-600'
-                  : 'bg-teal-50 text-[#18B7A0]'
-              }`}>
-                {battery.isCharging ? (
-                  <BatteryCharging className="h-3.5 w-3.5 animate-pulse" />
-                ) : (
-                  <Battery className="h-3.5 w-3.5" />
-                )}
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] text-[#6B7C83] font-medium leading-none truncate">{t.batteryTitle}</div>
-                <div className="text-xs font-bold text-[#17242A] font-mono mt-0.5">
-                  {battery.level}%{' '}
-                  <span className="text-[10px] font-sans font-normal text-slate-500">
-                    {battery.isCharging ? 'Charging' : battery.isLowBattery ? 'Low' : 'Ready'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <Panel>
+        <PanelHeader title="Telemetry" badge={<DataBadge source="mumbai-flood-adapter" />} />
+        <div className="grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-4">
+          {observations.length > 0 ? observations.slice(0, 4).map((observation) => (
+            <StatValue
+              key={observation.id}
+              label={observation.location.name || observation.sourceType}
+              value={observation.value}
+              unit={observation.unit}
+              asOf={observation.observedAt}
+              badge={<DataBadge source="mumbai-flood-adapter" />}
+            />
+          )) : <EmptyState title="No telemetry returned" description="No seeded water-level observations are available." />}
+          <StatValue
+            label="Current rainfall, Kurla area"
+            value={openMeteo?.precipitationMm ?? 'Not provided'}
+            unit={openMeteo?.precipitationMm !== null && openMeteo?.precipitationMm !== undefined ? 'mm' : ''}
+            asOf={openMeteo?.observedAt || 'Not provided'}
+            badge={openMeteo?.precipitationMm !== null && openMeteo?.precipitationMm !== undefined ? <DataBadge source="open-meteo" freshnessSeconds={openMeteo.lastSuccessAt ? (Date.now() - Date.parse(openMeteo.lastSuccessAt)) / 1000 : undefined} staleAfterSeconds={900} /> : <DataBadge source="open-meteo" />}
+          />
         </div>
-      </div>
+      </Panel>
 
       {/* 5. 2-COLUMN MAIN CONTENT & RIGHT PANELS */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">

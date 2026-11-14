@@ -86,7 +86,7 @@ export default function App() {
   const [selectedVillage, setSelectedVillage] = useState<Village | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [health, setHealth] = useState<{
-    openMeteo?: { lastSuccessAt: string | null; lastErrorAt: string | null; lastError: string | null };
+    openMeteo?: { lastSuccessAt: string | null; lastErrorAt: string | null; lastError: string | null; precipitationMm: number | null; observedAt: string | null };
     gemini?: { configured: boolean; lastSuccessAt: string | null; lastErrorAt: string | null };
   }>({});
 
@@ -105,7 +105,6 @@ export default function App() {
         srcRes,
         rainRes,
         waterRes,
-        healthRes,
       ] = await Promise.all([
         api.getRiskMapData(),
         api.getIncidents(),
@@ -118,9 +117,7 @@ export default function App() {
         api.getSources(),
         api.getRainfall(),
         api.getWaterLevels(),
-        api.getDetailedHealth(),
       ]);
-      setHealth(healthRes?.components || {});
 
       if (riskRes?.villages) setVillages(riskRes.villages);
       if (incRes?.incidents) setIncidents(incRes.incidents);
@@ -145,6 +142,18 @@ export default function App() {
     } finally {
       setLoading(false);
     }
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    api.getDetailedHealth()
+      .then((response) => {
+        if (active) setHealth(response?.components || {});
+      })
+      .catch(() => {
+        if (active) setHealth({});
+      });
+    return () => { active = false; };
   }, []);
 
   // Initial load and periodic polling every 8s
@@ -300,6 +309,8 @@ export default function App() {
                       hospitals={hospitals}
                       sources={sources}
                       reports={reports}
+                      observations={observations}
+                      openMeteo={health.openMeteo}
                       language={language}
                       onNavigate={setCurrentTab}
                       onOpenReportModal={() => setIsReportModalOpen(true)}

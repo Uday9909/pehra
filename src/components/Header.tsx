@@ -85,10 +85,16 @@ export const Header: React.FC<HeaderProps> = ({
             <span>{language === 'en' ? 'मराठी' : 'EN'}</span>
           </button>
         )}
-        <a href={`tel:${EMERGENCY_CONTACTS[0].number}`} className="shell-control-button hidden md:inline-flex" aria-label={`${EMERGENCY_CONTACTS[0].label} ${EMERGENCY_CONTACTS[0].number}`}>
-          <PhoneCall className="h-3.5 w-3.5" aria-hidden="true" />
-          <span>{EMERGENCY_CONTACTS[0].number}</span>
-        </a>
+        <details className="relative hidden md:block">
+          <summary className="shell-control-button list-none cursor-pointer"><PhoneCall className="h-3.5 w-3.5" aria-hidden="true" /><span>Hotlines</span></summary>
+          <div className="absolute right-0 top-full z-50 mt-1 min-w-56 border border-pehra-border-control bg-pehra-panel p-2 shadow-lg">
+            {EMERGENCY_CONTACTS.map((contact) => (
+              <a key={contact.number} href={`tel:${contact.number}`} className="flex items-center justify-between gap-3 px-2 py-1.5 text-xs text-pehra-text hover:bg-pehra-raised" aria-label={`${contact.label} ${contact.number}`}>
+                <span>{contact.label}</span><strong>{contact.number}</strong>
+              </a>
+            ))}
+          </div>
+        </details>
         <button type="button" onClick={() => setCurrentTab('alerts')} className="shell-icon-button relative" aria-label={`Active alerts: ${activeAlertsCount}`}>
           <BellRing className="h-4 w-4" aria-hidden="true" />
           {activeAlertsCount > 0 && <span className="absolute -right-1 -top-1 h-4 w-5 overflow-visible bg-pehra-severity-critical p-0 text-center text-[10px] leading-4 text-pehra-action-text">{activeAlertsCount}</span>}
