@@ -61,23 +61,23 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Responder Tactical Banner */}
-      <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 sm:p-6 shadow-xs">
+      <div className="rounded-none border border-pehra-border-subtle bg-white p-5 sm:p-6 shadow-none">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] border border-blue-200 shrink-0">
+            <span className="flex h-11 w-11 items-center justify-center rounded-none bg-pehra-panel text-pehra-text border border-pehra-border-subtle shrink-0">
               <Shield className="h-5 w-5" />
             </span>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-mono font-semibold text-blue-700 border border-blue-200">
+                <span className="rounded-none bg-pehra-panel px-2.5 py-0.5 text-pehra-text font-mono font-semibold text-pehra-text border border-pehra-border-subtle">
                   TACTICAL FIRST RESPONDER CONSOLE
                 </span>
-                <span className="text-xs text-slate-500 font-medium">Commander Amit Shinde (NDRF 5th Bn)</span>
+                <span className="text-xs text-pehra-text font-medium">Commander Amit Shinde (NDRF 5th Bn)</span>
               </div>
-              <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-1">
+              <h1 className="text-xl sm:text-2xl font-bold text-pehra-text tracking-tight mt-1">
                 NDRF & Mumbai Fire Brigade Tactical Operations
               </h1>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
+              <p className="text-xs sm:text-sm text-pehra-text mt-1 max-w-2xl">
                 Field dispatch triage, inflatable rescue craft deployment, subway dewatering pump allocation, and hospital trauma emergency intake coordination.
               </p>
             </div>
@@ -86,14 +86,14 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => onNavigate('drone-recon')}
-              className="flex items-center gap-1.5 rounded-xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors shadow-xs"
+              className="flex items-center gap-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel px-3.5 py-2 text-xs font-bold text-pehra-text hover:bg-pehra-panel transition-colors shadow-none"
             >
               <Plane className="h-3.5 w-3.5" />
               <span>Live Drone Recon</span>
             </button>
             <button
               onClick={() => onNavigate('map')}
-              className="flex items-center gap-1.5 rounded-xl bg-[#2563EB] px-3.5 py-2 text-xs font-semibold text-white hover:bg-blue-700 shadow-xs transition-all"
+              className="flex items-center gap-1.5 rounded-none bg-pehra-panel px-3.5 py-2 text-xs font-semibold text-white hover:bg-pehra-panel shadow-none transition-all"
             >
               <Compass className="h-3.5 w-3.5" />
               <span>Tactical Map</span>
@@ -102,64 +102,64 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
         </div>
 
         {/* Live Tactical Equipment Counters */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-100 text-xs">
-          <div className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3">
-            <div className="flex items-center justify-between text-slate-500">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-pehra-border-subtle text-xs">
+          <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+            <div className="flex items-center justify-between text-pehra-text">
               <span className="font-medium">Rescue Boats Active</span>
-              <Anchor className="h-3.5 w-3.5 text-blue-600" />
+              <Anchor className="h-3.5 w-3.5 text-pehra-text" />
             </div>
-            <div className="mt-1 text-xl font-bold font-mono text-slate-900">{deployedBoatsCount} Units</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">2 Mithi, 1 Sion, 1 Poisar</div>
+            <div className="mt-1 text-xl font-bold font-mono text-pehra-text">{deployedBoatsCount} Units</div>
+            <div className="text-pehra-text text-pehra-text mt-0.5">2 Mithi, 1 Sion, 1 Poisar</div>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3">
-            <div className="flex items-center justify-between text-slate-500">
+          <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+            <div className="flex items-center justify-between text-pehra-text">
               <span className="font-medium">High-Capacity Pumps</span>
-              <Droplets className="h-3.5 w-3.5 text-emerald-600" />
+              <Droplets className="h-3.5 w-3.5 text-pehra-text" />
             </div>
-            <div className="mt-1 text-xl font-bold font-mono text-slate-900">{activePumpsCount} Deployed</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">Discharging @ 18,400 L/min</div>
+            <div className="mt-1 text-xl font-bold font-mono text-pehra-text">{activePumpsCount} Deployed</div>
+            <div className="text-pehra-text text-pehra-text mt-0.5">Discharging @ 18,400 L/min</div>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3">
-            <div className="flex items-center justify-between text-slate-500">
+          <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+            <div className="flex items-center justify-between text-pehra-text">
               <span className="font-medium">Trauma Beds Ready</span>
-              <HospitalIcon className="h-3.5 w-3.5 text-rose-600" />
+              <HospitalIcon className="h-3.5 w-3.5 text-pehra-text" />
             </div>
-            <div className="mt-1 text-xl font-bold font-mono text-slate-900">42 Beds</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">Across KEM, Sion, Bhabha</div>
+            <div className="mt-1 text-xl font-bold font-mono text-pehra-text">42 Beds</div>
+            <div className="text-pehra-text text-pehra-text mt-0.5">Across KEM, Sion, Bhabha</div>
           </div>
 
-          <div className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-3">
-            <div className="flex items-center justify-between text-slate-500">
+          <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3">
+            <div className="flex items-center justify-between text-pehra-text">
               <span className="font-medium">Tactical VHF Channel</span>
-              <Radio className="h-3.5 w-3.5 text-amber-600" />
+              <Radio className="h-3.5 w-3.5 text-pehra-text" />
             </div>
-            <div className="mt-1 text-xl font-bold font-mono text-slate-900">TAC-CH-04</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">Repeater: Sion Fort Tower</div>
+            <div className="mt-1 text-xl font-bold font-mono text-pehra-text">TAC-CH-04</div>
+            <div className="text-pehra-text text-pehra-text mt-0.5">Repeater: Sion Fort Tower</div>
           </div>
         </div>
       </div>
 
       {/* Action Notification Toast */}
       {actionSuccessMsg && (
-        <div className="rounded-xl border border-blue-200 bg-blue-50/80 p-3.5 text-xs text-blue-900 flex items-center justify-between shadow-xs animate-fade-in">
+        <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-3.5 text-xs text-pehra-text flex items-center justify-between shadow-none animate-fade-in">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0" />
+            <CheckCircle2 className="h-4 w-4 text-pehra-text shrink-0" />
             <span className="font-semibold">{actionSuccessMsg}</span>
           </div>
-          <span className="text-[10px] font-mono text-blue-700">ACKNOWLEDGED</span>
+          <span className="text-pehra-text font-mono text-pehra-text">ACKNOWLEDGED</span>
         </div>
       )}
 
       {/* Segmented Tactical Mode Tabs */}
-      <div className="flex items-center gap-1.5 border-b border-[#E5EAF0] pb-2 text-xs">
+      <div className="flex items-center gap-1.5 border-b border-pehra-border-subtle pb-2 text-xs">
         <button
           onClick={() => setActiveTab('DISPATCH')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'DISPATCH'
-              ? 'bg-[#2563EB] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <Activity className="h-3.5 w-3.5" />
@@ -168,10 +168,10 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
 
         <button
           onClick={() => setActiveTab('EQUIPMENT')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'EQUIPMENT'
-              ? 'bg-[#2563EB] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <Truck className="h-3.5 w-3.5" />
@@ -180,10 +180,10 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
 
         <button
           onClick={() => setActiveTab('HOSPITALS')}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none font-semibold transition-all ${
             activeTab === 'HOSPITALS'
-              ? 'bg-[#2563EB] text-white shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              ? 'bg-pehra-panel text-white shadow-none'
+              : 'text-pehra-text hover:text-pehra-text hover:bg-pehra-panel'
           }`}
         >
           <HospitalIcon className="h-3.5 w-3.5" />
@@ -200,63 +200,63 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
               return (
                 <div
                   key={inc.id}
-                  className={`rounded-2xl border p-5 flex flex-col justify-between transition-all bg-white shadow-xs ${
+                  className={`rounded-none border p-5 flex flex-col justify-between transition-all bg-white shadow-none ${
                     inc.severity === 'CRITICAL'
-                      ? 'border-rose-200'
+                      ? 'border-pehra-border-subtle'
                       : inc.severity === 'HIGH'
-                      ? 'border-amber-200'
-                      : 'border-[#E5EAF0]'
+                      ? 'border-pehra-border-subtle'
+                      : 'border-pehra-border-subtle'
                   }`}
                 >
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
                       <span
-                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase border ${
+                        className={`rounded-none px-2.5 py-0.5 text-pehra-text font-mono font-bold uppercase border ${
                           inc.severity === 'CRITICAL'
-                            ? 'bg-rose-50 border-rose-200 text-rose-700'
+                            ? 'bg-pehra-panel border-pehra-border-subtle text-pehra-text'
                             : inc.severity === 'HIGH'
-                            ? 'bg-amber-50 border-amber-200 text-amber-700'
-                            : 'bg-blue-50 border-blue-200 text-blue-700'
+                            ? 'bg-pehra-panel border-pehra-border-subtle text-pehra-text'
+                            : 'bg-pehra-panel border-pehra-border-subtle text-pehra-text'
                         }`}
                       >
                         {inc.severity} PRIORITY
                       </span>
 
-                      <span className="text-[11px] font-mono text-slate-500">
+                      <span className="text-pehra-text font-mono text-pehra-text">
                         {new Date(inc.startedAt).toLocaleTimeString()}
                       </span>
                     </div>
 
                     <div>
-                      <h3 className="text-base font-bold text-slate-900">{inc.title}</h3>
-                      <p className="text-xs text-slate-600 mt-1">
+                      <h3 className="text-base font-bold text-pehra-text">{inc.title}</h3>
+                      <p className="text-xs text-pehra-text mt-1">
                         {inc.timeline[0]?.description || 'Urban waterlogging and inundation reported in active sector.'}
                       </p>
                     </div>
 
-                    <div className="rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] p-2.5 text-[11px] space-y-1">
-                      <div className="text-slate-500">
-                        Location: <strong className="text-slate-800">{inc.originLocation?.name || 'Mumbai Sector'}</strong>
+                    <div className="rounded-none border border-pehra-border-subtle bg-pehra-panel p-2.5 text-pehra-text space-y-1">
+                      <div className="text-pehra-text">
+                        Location: <strong className="text-pehra-text">{inc.originLocation?.name || 'Mumbai Sector'}</strong>
                       </div>
-                      <div className="text-slate-500">
-                        Casualties / Persons Stranded: <strong className="text-rose-600">{inc.estimatedAffectedPeople}</strong>
+                      <div className="text-pehra-text">
+                        Casualties / Persons Stranded: <strong className="text-pehra-text">{inc.estimatedAffectedPeople}</strong>
                       </div>
-                      <div className="text-slate-500 font-mono">
-                        Incident ID: <span className="text-slate-700">{inc.id}</span>
+                      <div className="text-pehra-text font-mono">
+                        Incident ID: <span className="text-pehra-text">{inc.id}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                  <div className="mt-4 pt-3 border-t border-pehra-border-subtle flex items-center justify-between gap-2">
                     {isAck ? (
-                      <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
+                      <span className="flex items-center gap-1.5 text-xs font-semibold text-pehra-text bg-pehra-panel border border-pehra-border-subtle px-3 py-1.5 rounded-none">
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>Team Dispatched</span>
                       </span>
                     ) : (
                       <button
                         onClick={() => handleAcknowledge(inc.id, inc.title)}
-                        className="py-1.5 px-3 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-semibold transition-colors shadow-xs"
+                        className="py-1.5 px-3 rounded-none bg-pehra-panel hover:bg-pehra-panel text-white text-xs font-semibold transition-colors shadow-none"
                       >
                         Acknowledge & Deploy
                       </button>
@@ -265,14 +265,14 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => onNavigate('map')}
-                        className="p-1.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] text-slate-700 hover:bg-slate-100 text-xs"
+                        className="p-1.5 rounded-none border border-pehra-border-subtle bg-pehra-panel text-pehra-text hover:bg-pehra-panel text-xs"
                         title="View on Map"
                       >
                         <Compass className="h-4 w-4" />
                       </button>
                       <a
                         href="tel:101"
-                        className="flex items-center gap-1 rounded-xl border border-red-200 bg-red-50 px-2.5 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-100"
+                        className="flex items-center gap-1 rounded-none border border-pehra-border-subtle bg-pehra-panel px-2.5 py-1.5 text-xs font-semibold text-pehra-text hover:bg-pehra-panel"
                         title="Emergency Dispatch Link"
                       >
                         <PhoneCall className="h-3 w-3" />
@@ -292,78 +292,78 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Rescue Boats Card */}
-            <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 space-y-4 shadow-xs">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+              <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
                 <div className="flex items-center gap-2">
-                  <Anchor className="h-5 w-5 text-blue-600" />
-                  <h3 className="font-bold text-slate-900 text-sm">Inflatable Rescue Boats (Gemini Craft)</h3>
+                  <Anchor className="h-5 w-5 text-pehra-text" />
+                  <h3 className="font-bold text-pehra-text text-sm">Inflatable Rescue Boats (Gemini Craft)</h3>
                 </div>
-                <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">
+                <span className="font-mono text-xs font-bold text-pehra-text bg-pehra-panel border border-pehra-border-subtle px-2.5 py-0.5 rounded-none">
                   {deployedBoatsCount} In Field
                 </span>
               </div>
 
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-pehra-text">
                 Outboard motor boats allocated for swift-water rescue in Mithi estuary, Kranti Nagar, and Milan Subway.
               </p>
 
               <div className="space-y-2 text-xs">
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] flex justify-between">
-                  <span className="text-slate-700">Craft #01 (Mithi Kranti Nagar)</span>
-                  <span className="font-semibold text-emerald-600 font-mono">ACTIVE (6 Rescued)</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel flex justify-between">
+                  <span className="text-pehra-text">Craft #01 (Mithi Kranti Nagar)</span>
+                  <span className="font-semibold text-pehra-text font-mono">ACTIVE (6 Rescued)</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] flex justify-between">
-                  <span className="text-slate-700">Craft #02 (Sion Gandhi Market)</span>
-                  <span className="font-semibold text-emerald-600 font-mono">STANDBY ON TENDER</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel flex justify-between">
+                  <span className="text-pehra-text">Craft #02 (Sion Gandhi Market)</span>
+                  <span className="font-semibold text-pehra-text font-mono">STANDBY ON TENDER</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] flex justify-between">
-                  <span className="text-slate-700">Craft #03 (Kandivali Poisar)</span>
-                  <span className="font-semibold text-amber-600 font-mono">EN ROUTE</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel flex justify-between">
+                  <span className="text-pehra-text">Craft #03 (Kandivali Poisar)</span>
+                  <span className="font-semibold text-pehra-text font-mono">EN ROUTE</span>
                 </div>
               </div>
 
               <button
                 onClick={handleDeployBoat}
-                className="w-full py-2.5 rounded-xl bg-[#2563EB] text-white font-semibold text-xs hover:bg-blue-700 shadow-xs transition-colors"
+                className="w-full py-2.5 rounded-none bg-pehra-panel text-white font-semibold text-xs hover:bg-pehra-panel shadow-none transition-colors"
               >
                 + Deploy Reserve Boat Unit #0{deployedBoatsCount + 1}
               </button>
             </div>
 
             {/* Dewatering Pumps Card */}
-            <div className="rounded-2xl border border-[#E5EAF0] bg-white p-5 space-y-4 shadow-xs">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none">
+              <div className="flex items-center justify-between border-b border-pehra-border-subtle pb-3">
                 <div className="flex items-center gap-2">
-                  <Droplets className="h-5 w-5 text-emerald-600" />
-                  <h3 className="font-bold text-slate-900 text-sm">Submersible Dewatering Pumps</h3>
+                  <Droplets className="h-5 w-5 text-pehra-text" />
+                  <h3 className="font-bold text-pehra-text text-sm">Submersible Dewatering Pumps</h3>
                 </div>
-                <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                <span className="font-mono text-xs font-bold text-pehra-text bg-pehra-panel border border-pehra-border-subtle px-2.5 py-0.5 rounded-none">
                   {activePumpsCount} Active
                 </span>
               </div>
 
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-pehra-text">
                 Diesel-driven 6,000 to 12,000 LPM submersible units installed at critical railway dips and pedestrian subways.
               </p>
 
               <div className="space-y-2 text-xs">
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] flex justify-between">
-                  <span className="text-slate-700">Dadar TT Circle Pump #1</span>
-                  <span className="font-mono font-semibold text-slate-900">8,200 LPM • Diesel 84%</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel flex justify-between">
+                  <span className="text-pehra-text">Dadar TT Circle Pump #1</span>
+                  <span className="font-mono font-semibold text-pehra-text">8,200 LPM • Diesel 84%</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] flex justify-between">
-                  <span className="text-slate-700">Milan Subway Pump Station</span>
-                  <span className="font-mono font-semibold text-slate-900">12,000 LPM • Diesel 92%</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel flex justify-between">
+                  <span className="text-pehra-text">Milan Subway Pump Station</span>
+                  <span className="font-mono font-semibold text-pehra-text">12,000 LPM • Diesel 92%</span>
                 </div>
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] flex justify-between">
-                  <span className="text-slate-700">Hindmata Cinema Basins</span>
-                  <span className="font-mono font-semibold text-slate-900">10,500 LPM • Diesel 78%</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel flex justify-between">
+                  <span className="text-pehra-text">Hindmata Cinema Basins</span>
+                  <span className="font-mono font-semibold text-pehra-text">10,500 LPM • Diesel 78%</span>
                 </div>
               </div>
 
               <button
                 onClick={handleDeployPump}
-                className="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-semibold text-xs hover:bg-emerald-700 shadow-xs transition-colors"
+                className="w-full py-2.5 rounded-none bg-pehra-panel text-white font-semibold text-xs hover:bg-pehra-panel shadow-none transition-colors"
               >
                 + Dispatch Mobile Pump Tender to Next Bottleneck
               </button>
@@ -378,35 +378,35 @@ export const ResponderPortalView: React.FC<ResponderPortalViewProps> = ({
           {hospitals.map((hsp) => (
             <div
               key={hsp.id}
-              className="rounded-2xl border border-[#E5EAF0] bg-white p-5 space-y-4 shadow-xs"
+              className="rounded-none border border-pehra-border-subtle bg-white p-5 space-y-4 shadow-none"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-base">{hsp.name}</h3>
-                  <p className="text-xs text-slate-500 mt-0.5">{hsp.location.address}</p>
+                  <h3 className="font-bold text-pehra-text text-base">{hsp.name}</h3>
+                  <p className="text-xs text-pehra-text mt-0.5">{hsp.location.address}</p>
                 </div>
-                <span className="rounded-full bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 text-[10px] font-mono font-semibold uppercase">
+                <span className="rounded-none bg-pehra-panel border border-pehra-border-subtle text-pehra-text px-2 py-0.5 text-pehra-text font-mono font-semibold uppercase">
                   TRAUMA READY
                 </span>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC]">
-                  <span className="text-slate-500 text-[10px] block">Emergency Intake</span>
-                  <span className="text-sm font-bold font-mono text-slate-900">
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel">
+                  <span className="text-pehra-text text-pehra-text block">Emergency Intake</span>
+                  <span className="text-sm font-bold font-mono text-pehra-text">
                     {hsp.availableBeds} Beds Free
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC]">
-                  <span className="text-slate-500 text-[10px] block">Power & Generator</span>
-                  <span className="text-sm font-bold text-emerald-600 font-mono">100% SECURE</span>
+                <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel">
+                  <span className="text-pehra-text text-pehra-text block">Power & Generator</span>
+                  <span className="text-sm font-bold text-pehra-text font-mono">100% SECURE</span>
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl border border-[#E5EAF0] bg-[#F8FAFC] text-xs">
-                <span className="text-slate-500 text-[10px] block">Hospital Helpline:</span>
-                <a href={`tel:${hsp.contactPhone}`} className="font-mono text-blue-600 font-semibold block mt-0.5">
+              <div className="p-2.5 rounded-none border border-pehra-border-subtle bg-pehra-panel text-xs">
+                <span className="text-pehra-text text-pehra-text block">Hospital Helpline:</span>
+                <a href={`tel:${hsp.contactPhone}`} className="font-mono text-pehra-text font-semibold block mt-0.5">
                   📞 {hsp.contactPhone}
                 </a>
               </div>
