@@ -258,12 +258,14 @@ export function Button({
   type = 'button',
   onClick,
   disabled = false,
+  id,
 }: {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
   type?: 'button' | 'submit';
   onClick?: () => void;
   disabled?: boolean;
+  id?: string;
 }) {
   const styles = {
     primary: 'bg-pehra-action text-pehra-action-text border-pehra-border-control',
@@ -274,6 +276,7 @@ export function Button({
   return (
     <button
       type={type}
+      id={id}
       onClick={onClick}
       disabled={disabled}
       className={`min-h-8 border px-3 py-1.5 text-sm transition-colors duration-150 hover:bg-pehra-raised ${styles[variant]}`}

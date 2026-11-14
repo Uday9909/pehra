@@ -123,7 +123,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess, onContinue
             )}
             <div className="flex items-center justify-between gap-3 sm:col-span-2">
               <span className="text-xs text-pehra-text-muted">Demo access uses the seeded store.</span>
-              <Button type="submit" disabled={isAuthenticating}>{isAuthenticating ? 'Connecting…' : `Sign in to ${meta.label.replace(' Portal', '')}`}</Button>
+              <Button id="portal-sign-in-btn" type="submit" disabled={isAuthenticating}>{isAuthenticating ? 'Connecting…' : `Sign in to ${meta.label.replace(' Portal', '')}`}</Button>
             </div>
           </form>
         </Panel>
